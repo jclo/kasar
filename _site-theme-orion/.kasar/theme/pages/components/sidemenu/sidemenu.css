@@ -1,0 +1,146 @@
+/*
+ * -- SIDEMENU DEFAULT STYLE --
+ */
+.sidemenu {
+  position: fixed;
+  top: 0;
+  left: -25%;
+  width: 25%;
+  height: 100vh;
+  background-color: #1f2e38;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  z-index: 10
+}
+.sidemenu.open {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0)
+}
+.freeze {
+  overflow: hidden
+}
+
+.sidemenu .inner {
+  color: white;
+  text-align: right;
+  padding: 0.5em 0
+}
+.sidemenu .inner .close a {
+  font-size: 3em;
+  color: white
+}
+.sidemenu .inner .close a:hover {
+  text-decoration: none
+}
+
+.sidemenu .inner h1 {
+  margin: 0.1em 0.5em 0
+}
+
+.sidemenu .menu.pure-menu {
+  height: 90vh;
+  overflow-x: scroll
+}
+
+.sidemenu .menu .pure-menu-link {
+  padding: 1em 1em 1em 0;
+  margin: 1em 0 0 0
+}
+.sidemenu .menu .pure-menu-link:hover {
+}
+.sidemenu .menu .credits.pure-menu-item {
+  font-size: 0.8em;
+  padding: 5em 1em 0 0
+}
+
+.sidemenu .menu .pure-menu-item .bar {
+  padding: 1px 0;
+  background: url(../img/underline-red.png) 200% 0 no-repeat;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s
+}
+.sidemenu .menu > .pure-menu-list > .pure-menu-item:hover > .pure-menu-link > .bar {
+  background: url(../img/underline-red.png) 100% 0 no-repeat
+}
+.sidemenu .menu > .pure-menu-list > .pure-menu-item.pure-menu-active > .pure-menu-link {
+  background: transparent
+}
+.sidemenu .menu > .pure-menu-list > .pure-menu-item.pure-menu-active > .pure-menu-link > .bar  {
+  background: url(../img/underline-red.png) 100% 0 no-repeat
+}
+
+/*
+ * -- EXTENDED MENU --
+ */
+.sidemenu .menu .pure-menu-has-children > .pure-menu-link {
+  font-size: 1em;
+  font-weight: 600;
+  padding-top: 1.5em
+}
+.sidemenu .menu .pure-menu-has-children.pure-menu-only-expanded > .pure-menu-link::after {
+  content: none
+}
+.sidemenu .menu .pure-menu-has-children.pure-menu-active {
+  background-color: #314959
+}
+.sidemenu .menu .pure-menu-has-children.pure-menu-active > .pure-menu-link,
+.sidemenu .menu .pure-menu-has-children.pure-menu-active > .pure-menu-link:after {
+  content: '\25BE';
+  background-color: transparent
+}
+
+.sidemenu .menu .pure-menu-children .pure-menu-link {
+  font-size: 0.85em;
+  /* padding: 2em 1em 0 0 */
+}
+.sidemenu .menu .pure-menu-has-children:hover > .pure-menu-children,
+.sidemenu .menu .pure-menu-active > .pure-menu-children {
+  position: relative;
+  left: 0;
+  background: none
+}
+.sidemenu .menu .pure-menu-has-children > .pure-menu-children .pure-menu-active > .pure-menu-link {
+  /* font-weight: 600;
+  color: rgb(173, 31, 35); */
+  background-color: transparent
+}
+.sidemenu .menu .pure-menu-has-children.pure-menu-only-expanded > .pure-menu-children {
+  display: block;
+  position: relative;
+  left: 0;
+  background: none
+}
+.sidemenu .menu .pure-menu-children .pure-menu-item:hover .bar {
+  background: url(../img/underline-red.png) 110% 0 no-repeat
+}
+.sidemenu .menu .pure-menu-children .pure-menu-item.pure-menu-active .bar {
+  background: url(../img/underline-red.png) 110% 0 no-repeat
+}
+
+
+/*
+ * -- MEDIA DEPENDANT STYLE --
+ */
+@media (min-width: 320px) {
+  .sidemenu {
+    left: -60%;
+    width: 60%
+  }
+}
+@media (min-width: 768px) {
+  .sidemenu {
+    left: -25%;
+    width: 25%
+  }
+}
+@media (min-width: 992px) {
+}
+@media (min-width: 1200px) {
+}

@@ -1,0 +1,77 @@
+/*
+ * -- MENUS DEFAULT STYLE --
+ */
+.menu .pure-menu-heading {
+  color: inherit;
+  text-transform: none
+}
+.menu .pure-menu-link {
+  color: inherit;
+  padding: 0
+}
+.menu .pure-menu-link:hover {
+background-color: transparent
+}
+
+.menu a:hover {
+  text-decoration: none
+}
+
+
+/*
+ * -- HEADER MENU STYLE --
+ */
+header .top.menu {
+  font-size: 1em;
+  padding-top: 0.5em
+}
+header .logo .top.menu .pure-menu-heading {
+  font-size: 2em;
+  padding: 0
+}
+header .top.menu .pure-menu-list {
+  padding-top: 0.3em
+}
+header .top.left.menu .pure-menu-list {
+  padding-left: 2em
+}
+header .top.right.menu .pure-menu-list {
+  float: right
+}
+header .top.menu .pure-menu-item {
+  padding-top: 0.5em;
+  margin-left: 1em
+}
+header .top.menu .pure-menu-link:hover {
+  color: rgb(173, 31, 35)
+}
+
+header .top.left.menu .pure-menu-heading {
+  padding-left: 1.5em
+}
+@media (min-width:768px) {
+  header .top.left.menu .pure-menu-heading {
+    padding-left: 0
+  }
+}
+
+
+/*
+ * -- FOOTER MENU STYLE --
+ */
+footer .legal .pure-menu-heading {
+  padding: 0
+}
+footer .legal .pure-menu-item {
+  padding: 0.25em 0.5em
+}
+footer .legal .pure-menu-item:last-child {
+  padding: 0.25em 0 0.25em 0.5em
+}
+footer .legal .pure-menu-link:hover {
+  color: rgb(173, 31, 35)
+}
+footer .legal p {
+  margin: 0;
+  padding: 0.3em 0 0 0
+}

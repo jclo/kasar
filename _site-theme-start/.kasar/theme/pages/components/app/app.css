@@ -1,0 +1,29 @@
+/*
+ * -- GLOBAL STYLE --
+ */
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: rgb(81, 94, 113);
+  font-weight: 400;
+  line-height: 1.42857143
+}
+.pure-g {
+  font-family: 'Montserrat', sans-serif
+}
+.pure-g [class *="pure-u"] {
+  font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+  font-weight: 600
+}
+
+.container {
+  padding: 0 15px;
+  margin-right: auto;
+  margin-left: auto
+}
+@media (min-width:768px) { .container { width: 750px } }
+@media (min-width:992px) { .container { width: 970px } }
+@media (min-width:1200px) { .container { width: 1170px } }

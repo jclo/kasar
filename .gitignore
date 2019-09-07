@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+_old_*
+
+_site-theme-orion/_dist
+_site-theme-orion/.orion-plus
+site-theme-orion/vendor/*
+!site-theme-orion/vendor/README_HIGHLIGHT.md
+
+_site-theme-start/_dist
+
+site

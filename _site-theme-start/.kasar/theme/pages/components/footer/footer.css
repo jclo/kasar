@@ -1,0 +1,15 @@
+/*
+ * -- FOOTER STYLE --
+ */
+footer {
+  font-size: 0.85em;
+  font-weight: 300;
+}
+footer .top {
+  margin: 1em 0;
+  border-top: solid 1px rgb(220, 220, 220)
+}
+footer .legal {
+  margin-top: 2em;
+  border-top: solid 1px rgb(220, 220, 220)
+}
