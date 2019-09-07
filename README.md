@@ -1,12 +1,9 @@
 # Kasar
 
 [![NPM version][npm-image]][npm-url]
-<!-- [![Travis CI][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url] -->
 [![Dependencies status][dependencies-image]][dependencies-url]
 [![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![License][license-image]](LICENSE.md)
-<!--- [![node version][node-image]][node-url] -->
 
 [![NPM install][npm-install-image]][npm-install-url]
 

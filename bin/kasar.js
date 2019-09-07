@@ -211,7 +211,7 @@ function _init(options) {
 
     process.stdout.write(`creates and fills ${site}/webpages ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/webpages`);
-    shell.cp('-LR', `${basescript}/${theme}/webpages/*`, `${baseapp}/${site}/webpages/.`);
+    shell.cp('-R', `${basescript}/${theme}/webpages/*`, `${baseapp}/${site}/webpages/.`);
 
     // Create 'config.js':
     process.stdout.write(`creates ${site}/config.js ...\n`);
