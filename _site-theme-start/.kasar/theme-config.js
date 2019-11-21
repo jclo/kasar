@@ -69,7 +69,7 @@ module.exports = {
 
   // These are the files from 'HTML5 Boilerplate' to include in the project.
   html5: {
-    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.7.1.min.js`,
+    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.8.0.min.js`,
     normalize: `${base}/node_modules/html5-boilerplate/dist/css/normalize.css`,
   },
 

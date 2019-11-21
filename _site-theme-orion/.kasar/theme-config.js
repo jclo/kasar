@@ -72,7 +72,7 @@ module.exports = {
 
   // These are the files from 'HTML5 Boilerplate' to include in the project.
   html5: {
-    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.7.1.min.js`,
+    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.8.0.min.js`,
     normalize: `${base}/node_modules/html5-boilerplate/dist/css/normalize.css`,
   },
 
@@ -109,6 +109,7 @@ module.exports = {
     `${base}/node_modules/purecss/build/pure.css`,
     `${base}/node_modules/purecss/build/grids-responsive.css`,
     `${base}/node_modules/font-awesome/css/font-awesome.css`,
+    // `${base}/site/vendor/highlight/styles/default.css`,
     // From theme:
     `${base}/site/.kasar/theme/pages/components/app/app.css`,
     `${base}/site/.kasar/theme/pages/components/app/pureplus-callout.css`,

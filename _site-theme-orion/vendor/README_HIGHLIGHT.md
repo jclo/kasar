@@ -24,27 +24,44 @@ function buildsitemap() {
 
 The code is highlighted if you download the library `highlight.js` and put it in this folder. It is available [here](https://highlightjs.org). The library isn't included here because it requires building (see instruction on the website).
 
-When the library is available, you just have to uncomment in the file `theme-config` the line:
+When the library is available, you just have to uncomment, in the file `./kasar/theme-config`, the lines:
 
 ```javascript
 libs: {
   minified: [
     `${base}/node_modules/jquery/dist/jquery.min.js`,
     ...
-    // `${base}/site/vendor/highlight/highlight.pack.js`,
+    // `${base}/site/vendor/highlight/highlight.pack.js`,  <--- uncomment
     ...
+  ],
+  ...
+  css: [
+    // From vendor:
+    `${base}/node_modules/purecss/build/pure.css`,
+    ...
+    // `${base}/site/vendor/highlight/styles/default.css`,  <--- uncomment
   ],
 ```
 
-and in the file `config.js`, the line:
+in the file `config.js`, the line:
 
 ```Javascript
 scripts: [
   ...
-  // `${basepath}vendor/libs/highlight.pack.js`,
+  // `${basepath}vendor/libs/highlight.pack.js`,  <--- uncomment
   ...
   `${basepath}js/main.min.js`,
 ],
+
+
+```
+
+
+and, in the file `.kasar/theme/js/main.js`, the line:
+
+```javascript
+// -- Start highlight script:
+// hljs.initHighlightingOnLoad();  <--- uncomment
 ```
 
 That's all!

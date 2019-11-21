@@ -186,7 +186,7 @@ module.exports = {
               'chapter2_section2.md',
             ],
           },
-          output: `${basepath}doc/charts/chapter2.html`,
+          output: `${basepath}doc/book2/chapter2.html`,
         },
       ],
     },
@@ -250,7 +250,7 @@ module.exports = {
       { text: 'contact', link: `${basepath}contact.html` },
       { text: 'legal', link: `${basepath}legal.html` },
       { text: 'Kasar', link: `${basepath}kasar.html` },
-      { text: 'built with Kasar', link: null },
+      { text: 'built with Kasar', link: 'https://www.npmjs.com/package/@mobilabs/kasar' },
     ],
     mobile: {
       title: { text: 'Kasar', link: '#home' },
@@ -260,7 +260,7 @@ module.exports = {
         { text: 'contact', link: `${basepath}contact.html` },
         { text: 'legal', link: `${basepath}legal.html` },
         { text: 'Kasar', link: `${basepath}kasar.html` },
-        { text: 'built with Kasar', link: null, tag: 'credits' },
+        { text: 'built with Kasar', link: 'https://www.npmjs.com/package/@mobilabs/kasar', tag: 'credits' },
       ],
     },
   },
@@ -268,7 +268,7 @@ module.exports = {
   // These are the scripts to insert at the bottom of the body of the HTML
   // output.
   scripts: [
-    `${basepath}vendor/libs/modernizr-3.7.1.min.js`,
+    `${basepath}vendor/libs/modernizr-3.8.0.min.js`,
     `${basepath}vendor/libs/jquery.min.js`,
     `${basepath}vendor/libs/jquery.easing.min.js`,
     // `${basepath}vendor/libs/highlight.pack.js`,

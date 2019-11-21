@@ -185,7 +185,7 @@ const Content = View.Component({
             .attr('class', `${child.tag} pure-menu-item`)
             .append('a')
             .attr('class', 'pure-menu-link')
-            .attr('href', child.link)
+            .attr('href', child.link ? child.link : '#')
             .attr('target', child.target ? child.target : '_self')
             .appendTextChild(child.text)
           ;
@@ -200,7 +200,7 @@ const Content = View.Component({
             .attr('class', `${child.tag} pure-menu-item`)
             .append('a')
             .attr('class', 'pure-menu-link')
-            .attr('href', child.link)
+            .attr('href', child.link ? child.link : '#')
             .appendTextChild(child.text)
           ;
         }
