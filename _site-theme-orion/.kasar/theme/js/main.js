@@ -3,8 +3,9 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global jQuery, cookieChoices, hljs, Pixi */
-/* eslint one-var: 0, strict: ["error", "function"], semi-style: 0 */
+/* global jQuery, isThisBrowserIE, addMessageToAlertBanner */
+/* eslint strict: ["error", "function"] */
+/* eslint one-var: 0, semi-style: 0, no-var: 0, prefer-arrow-callback: 0 */
 (function($) {
   'use strict';
 
@@ -13,6 +14,7 @@
       , year
       , attr
       , text
+      , alert
       ;
 
     // -- Update the copyright date in the head and footer sections:
@@ -22,6 +24,12 @@
     $('meta[name=copyright]').attr('content', attr.replace('{{copyright:year}}', year));
     text = $('footer p.copyright').text();
     $('footer p.copyright').text(text.replace('{{copyright:year}}', year));
+
+    // -- Add a banner alert if needed:
+    if (isThisBrowserIE()) {
+      alert = 'You are using an <strong>outdated</strong> browser. Your browser is not compatible with xxx. Please upgrade it!';
+      // addMessageToAlertBanner(alert);
+    }
 
     // -- Start highlight script:
     // hljs.initHighlightingOnLoad();

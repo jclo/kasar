@@ -32,3 +32,12 @@ header .navbar .top.menu .pure-menu-item.active {
   border-bottom: 2px solid rgb(173, 31, 35)
   /* box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px */
 }
+
+header .banneralert.active {
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 0 #444;
+  padding: 5px 0;
+  background-color: rgb(153, 0, 0);
+  border: 2px solid rgb(255, 0, 0);
+}

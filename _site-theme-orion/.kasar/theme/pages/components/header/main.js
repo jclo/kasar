@@ -42,6 +42,7 @@ const Header = View.Component({
     return `
       <header>
         <div class="navbar navbar-fixed-top">
+          <div class="banneralert"></div>
           <div class="container">
             <!-- grid -->
             <div class="pure-g">

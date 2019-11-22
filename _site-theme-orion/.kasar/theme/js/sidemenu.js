@@ -4,7 +4,9 @@
  * ************************************************************************** */
 // ESLint declarations
 /* global jQuery */
-/* eslint strict: ["error", "function"], one-var: 0, semi-style: 0 */
+/* eslint strict: ["error", "function"] */
+/* eslint one-var: 0, semi-style: 0, no-var: 0, prefer-arrow-callback: 0,
+  prefer-template: 0 */
 (function($) {
   'use strict';
 

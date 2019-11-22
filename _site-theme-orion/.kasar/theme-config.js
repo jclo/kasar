@@ -93,6 +93,7 @@ module.exports = {
   // website folder under the directory 'js'. All these files are concatened
   // and uglifyed in one file 'main.js'.
   pjs: [
+    `${base}/site/.kasar/theme/js/alertbrowser.js`,
     `${base}/site/.kasar/theme/js/menus.js`,
     `${base}/site/.kasar/theme/js/sidemenu.js`,
     `${base}/site/.kasar/theme/js/smoothscrolling.js`,
