@@ -6,7 +6,6 @@
 // -- Node modules
 /* eslint-disable-next-line object-curly-newline */
 const { src, dest, series, parallel } = require('gulp')
-    // , del    = require('del')
     , rename = require('gulp-rename')
     , uglify = require('gulp-uglify-es')
     ;

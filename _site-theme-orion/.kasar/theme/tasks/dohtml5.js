@@ -8,8 +8,6 @@
 const { src, dest, parallel } = require('gulp')
     , concat   = require('gulp-concat')
     , cleanCSS = require('gulp-clean-css')
-    , footer   = require('gulp-footer')
-    , header   = require('gulp-header')
     ;
 
 

@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.3 (January 3, 2020)
+
+  * Updated the dependencies,
+  * Removed the unused node modules,
+  * ...,
+
+
 ### 0.0.2 (November 22, 2019)
 
   * Added an alert banner to the header of the orion theme,

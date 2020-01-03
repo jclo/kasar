@@ -35,13 +35,6 @@ const Header    = require('../header/main')
  * @since 0.0.0
  */
 const Body = View.Component({
-  // Recommended by HTML5 boilerplate 7.0.1.
-  IE: `
-  <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-  `,
-
   /**
    * Renders the web component.
    */
@@ -55,7 +48,6 @@ const Body = View.Component({
 
     return `
       <div>
-        ${this.IE}
         <Header />
         <SideMenu />
         <Content />

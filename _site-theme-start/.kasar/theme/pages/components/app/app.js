@@ -35,9 +35,9 @@ const Header = require('../header/main')
  * @since 0.0.0
  */
 const Body = View.Component({
-  // Recommended by HTML5 boilerplate 7.0.1.
+  // Recommended by HTML5 boilerplate 7.1.0.
   IE: `
-  <!--[if lte IE 9]>
+  <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
   `,
