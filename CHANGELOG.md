@@ -4,7 +4,7 @@
 
   * Updated the dependencies,
   * Removed the unused node modules,
-  * ...,
+  * Release.
 
 
 ### 0.0.2 (November 22, 2019)
