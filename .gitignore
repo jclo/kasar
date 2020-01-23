@@ -4,6 +4,7 @@ _old_*
 
 _site-theme-orion/_dist
 _site-theme-orion/.orion-plus
+_site-theme-orion/img
 _site-theme-orion/vendor/*
 !_site-theme-orion/vendor/README_HIGHLIGHT.md
 

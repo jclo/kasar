@@ -32,7 +32,13 @@ module.exports = {
     `${base}/site/tobuildweb/.htaccess`,
     `${base}/site/tobuildweb/maintenance.html`,
     `${base}/site/tobuildweb/robot.txt`,
+    `${base}/site/tobuildweb/favicon.ico`,
+    `${base}/site/tobuildweb/site.webmanifest`,
+    `${base}/site/tobuildweb/manifest.json`,
   ],
+
+  // The location of the sofware worker:
+  sw: `${base}/site/sw.js`,
 
   // These are the vendor Javascript scripts that must not be bundled. They are
   // included in you website folder under the directory 'vendor/libs'.

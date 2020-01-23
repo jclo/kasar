@@ -23,6 +23,7 @@ const themeconfig = require('../../theme-config')
 const { dist } = config
     , { pjs }  = themeconfig
     , { css }  = themeconfig
+    , { sw }   = themeconfig
     ;
 
 
@@ -65,6 +66,22 @@ function _dojsu(done) {
 
 
 /**
+ * Concatenates and uglyfies js files.
+ */
+function _dosw(done) {
+  if (!sw || !sw.length) {
+    done();
+    return null;
+  }
+
+  return src(sw)
+    .pipe(uglify())
+    .pipe(dest(dist))
+  ;
+}
+
+
+/**
  * Merges and minifies all CSS in one.
  */
 function _docss(done) {
@@ -77,7 +94,8 @@ function _docss(done) {
     .pipe(cleanCSS({
       specialComments: 1,
       format: 'keep-breaks',
-      rebaseTo: './theme/pages/components/css',
+      // rebaseTo: './theme/pages/components/css',
+      rebaseTo: '',
     }))
     .pipe(concat('style.css'))
     .pipe(replace('../../../../node_modules/font-awesome/', '../'))
@@ -94,6 +112,10 @@ module.exports = {
 
   dojsu() {
     return _dojsu();
+  },
+
+  dosw() {
+    return _dosw();
   },
 
   docss() {

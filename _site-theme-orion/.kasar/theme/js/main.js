@@ -9,6 +9,9 @@
 (function($) {
   'use strict';
 
+  // -- Service Worker Script:
+  var sw = '/sw.js';
+
   $(document).ready(function() {
     var date
       , year
@@ -16,6 +19,19 @@
       , text
       , alert
       ;
+
+    // -- Start the Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register(sw)
+        .then((/* reg */) => {
+          console.log('Service Worker registered ...');
+        })
+        .catch((/* err */) => {
+          console.log('Service Worker NOT registered ...');
+        });
+    } else {
+      console.log('Service Worker NOT supported ...');
+    }
 
     // -- Update the copyright date in the head and footer sections:
     date = new Date();
@@ -32,7 +48,9 @@
     }
 
     // -- Start highlight script:
-    // hljs.initHighlightingOnLoad();
+    // document.querySelectorAll('pre code').forEach((block) => {
+    //   hljs.highlightBlock(block);
+    // });
 
     // -- Start the smooth scrolling:
     $('body').smoothScrolling({ buttons: '.nav' }, function() {

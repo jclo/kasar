@@ -54,7 +54,7 @@ module.exports = {
     email: 'contact(at)mycompany.com',
     url: {
       protocol: 'https',
-      domain: 'www.mycompany.com',
+      domain: 'localhost:8080',
     },
     // Nota:
     // you should not replace © by &copy; because JSDOM convert ';' to &amp. So,
@@ -126,6 +126,13 @@ module.exports = {
       description: 'Explains how to use it.',
       content: `${base}/site/webpages/kasar.md`,
       output: `${basepath}kasar.html`,
+    },
+    offline: {
+      name: 'Offline',
+      title: 'Offline',
+      description: '...',
+      content: `${base}/site/webpages/offline.md`,
+      output: `${basepath}offline.html`,
     },
   },
 

@@ -18,6 +18,7 @@ const themeconfig     = require('../../theme-config')
     , dohtml5         = require('./dohtml5')
     , { dojs }        = require('./doproject')
     , { dojsu }       = require('./doproject')
+    , { dosw }        = require('./doproject')
     , { docss }       = require('./doproject')
     , dophp           = require('./dophp')
     , dopostskeleton  = require('./dopostskeleton')
@@ -174,7 +175,7 @@ module.exports = series(
   create,
   parallel(
     cpjs, cpminifiedlibs, cp2minifylibs, cpga, cptrackerjs, cptrackerphp, cpfonts, cpimg,
-    dohtml5, dojs, dojsu, docss, dophp,
+    dohtml5, dojs, dojsu, dosw, docss, dophp,
   ),
   dopostskeleton,
 );

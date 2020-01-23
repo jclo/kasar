@@ -71,17 +71,26 @@ function getDOMHead() {
     { tag: 'meta', name: 'verify-v1', content: '...' },
     { tag: 'meta', name: 'description', content: '...' },
     { tag: 'meta', name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { tag: 'meta', name: 'ccorp', content: '...' },
-    { tag: 'meta', name: 'copyright', content: '{{head:copyright}}' },
+    { tag: 'meta', name: `${company.name}`, content: `${company.description}` },
+    { tag: 'meta', name: 'copyright', content: `${company.copyright}` },
+    { tag: 'link', rel: 'canonical', href: `${company.url.protocol}://${company.url.domain}` },
 
-    { tag: 'link', rel: 'manifest', href: 'site.webmanifest' },
-    { tag: 'link', rel: 'apple-touch-icon', href: 'icon.png' },
+    // PWA manifest, Web manifest
+    { tag: 'link', rel: 'manifest', href: `${basepath}manifest.json` },
+    { tag: 'link', rel: 'manifest', href: `${basepath}site.webmanifest` },
 
     // Place favicon.ico in the root directory
-    { tag: 'link', rel: 'shortcut icon', href: '{{path:root}}img/favicon.ico', type: 'image/x-icon' },
+    { tag: 'link', rel: 'shortcut icon', href: `${basepath}favicon.ico`, type: 'image/x-icon' },
+
+    // iOS support
+    { tag: 'meta', name: 'apple-mobile-web-app-capable', content: 'yes' },
+    { tag: 'meta', name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+    { tag: 'meta', name: 'apple-mobile-web-app-title', content: '{{app:title}}' },
+    { tag: 'link', rel: 'apple-touch-icon', href: `${basepath}img/icons/icon-152x152.png` },
+
     { tag: 'style', type: 'text/css' },
-    { tag: 'link', rel: 'stylesheet', href: '{{path:fonts}}' },
-    { tag: 'link', rel: 'stylesheet', href: '{{path:root}}css/style.css' },
+    { tag: 'link', rel: 'stylesheet', href: `${fonts.remote}` },
+    { tag: 'link', rel: 'stylesheet', href: `${basepath}css/style.css` },
     { tag: 'meta', name: 'theme-color', content: '#fafafa' },
   ];
 }
@@ -180,6 +189,10 @@ const methods = {
    */
   updateTitle(title) {
     document.title = title;
+    document
+      .querySelector('meta[name="apple-mobile-web-app-title"]')
+      .setAttribute('content', title)
+    ;
     return this;
   },
 
@@ -216,90 +229,6 @@ const methods = {
       .querySelector('meta[name="description"]')
       .setAttribute('content', desc)
     ;
-    return this;
-  },
-
-  /**
-   * Updates the company meta tag.
-   *
-   * @method (arg1, arg2)
-   * @public
-   * @param {String}        the company name,
-   * @param {String}        the company description,
-   * @returns {Object}      returns this,
-   * @since 0.0.0
-   */
-  updateCompany(corp, desc) {
-    const el = document.querySelector('meta[name="ccorp"]');
-    el.setAttribute('name', corp);
-    el.setAttribute('content', desc);
-    return this;
-  },
-
-  /**
-   * Updates the company copyright.
-   *
-   * @method (arg1)
-   * @public
-   * @param {String}        the company name,
-   * @param {String}        the company description,
-   * @returns {Object}      returns this,
-   * @since 0.0.0
-   */
-  updateCopyright(copyright) {
-    const el = document.querySelector('meta[name="copyright"]');
-    el.setAttribute('content', copyright);
-    return this;
-  },
-
-  /**
-   * Updates the favicon path.
-   *
-   * Nota:
-   * By default, the path is at the root level. This method allows to set a
-   * different path value.
-   * @method (arg1)
-   * @public
-   * @param {String}        the path,
-   * @returns {Object}      returns this,
-   * @since 0.0.0
-   */
-  updateFaviconPath(path) {
-    document
-      .querySelector('link[rel="shortcut icon"]')
-      .setAttribute('href', `${path}img/favicon.ico`)
-    ;
-    return this;
-  },
-
-  /**
-   * Updates the url of the server supplying the fonts.
-   *
-   * @method (arg1)
-   * @public
-   * @param {String}        the url,
-   * @returns {Object}      returns this,
-   * @since 0.0.0
-   */
-  updateFontUrl(url) {
-    const el = document.querySelectorAll('link[rel="stylesheet"]');
-    el[0].setAttribute('href', url);
-    return this;
-  },
-
-  /**
-   * Updates the path of the css file.
-   * (same reason as for the favicon)
-   *
-   * @method (arg1)
-   * @public
-   * @param {String}        the url,
-   * @returns {Object}      returns this,
-   * @since 0.0.0
-   */
-  updateCSSPath(path) {
-    const el = document.querySelectorAll('link[rel="stylesheet"]');
-    el[1].setAttribute('href', `${path}css/style.css`);
     return this;
   },
 
@@ -343,11 +272,6 @@ const methods = {
       .updateTitle(title)
       .updateGoogleVerify(google)
       .updateDescription(description)
-      .updateCompany(company.name, company.description)
-      .updateCopyright(company.copyright)
-      .updateFaviconPath(basepath)
-      .updateFontUrl(fonts.remote)
-      .updateCSSPath(basepath)
       .addNormalize(norm)
     ;
     return this;

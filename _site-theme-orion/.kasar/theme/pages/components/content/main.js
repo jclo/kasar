@@ -98,7 +98,7 @@ const Content = View.Component({
    * inside the DOM.
    */
   setFront() {
-    this.$().html(getFront());
+    this.$().appendHTML(getFront());
     return this;
   },
 
@@ -107,7 +107,7 @@ const Content = View.Component({
    * inside the DOM.
    */
   setInternal() {
-    this.$().html(getInternal());
+    this.$().appendHTML(getInternal());
     return this;
   },
 
@@ -231,7 +231,7 @@ const Content = View.Component({
   render() {
     return `
       <div class="content">
-        <!-- empty -->
+        <noscript><p style="text-align:center;padding-top:5em;">We are sorry, but this website doesn't work properly without JavaScript enabled!</p></noscript>
       </div>
     `;
   },

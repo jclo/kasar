@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/kasar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "View-powered Static Website Generator",
   "main": "index.js",
   "bin": {
@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/jclo/kasar",
   "dependencies": {
-    "@mobilabs/view": "0.0.4",
+    "@mobilabs/view": "0.0.6",
     "browser-sync": "2.26.7",
     "del": "5.1.0",
     "font-awesome": "4.7.0",
@@ -50,7 +50,7 @@
     "html5-boilerplate": "7.3.0",
     "jquery": "3.4.1",
     "jquery.easing": "1.4.1",
-    "jsdom": "15.2.1",
+    "jsdom": "16.0.1",
     "markdown-it": "10.0.0",
     "markdown-it-anchor": "5.2.5",
     "markdown-it-attrs": "3.0.1",
@@ -61,6 +61,7 @@
     "shelljs": "0.8.3"
   },
   "devDependencies": {
+    "cross-env": "6.0.3",
     "eslint": "6.8.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.19.1"
