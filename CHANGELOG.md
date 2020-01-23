@@ -3,7 +3,7 @@
 ### 0.0.4 (January 23, 2020)
 
   * Added PWA capability,
-  * ...,
+  * Release.
 
 
 ### 0.0.3 (January 3, 2020)
