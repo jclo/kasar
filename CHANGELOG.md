@@ -3,7 +3,7 @@
 ### 0.0.5 (February 9, 2020)
 
   * Fixed a few minor issues,
-  * ...,
+  * Release.
 
 
 ### 0.0.4 (January 23, 2020)
