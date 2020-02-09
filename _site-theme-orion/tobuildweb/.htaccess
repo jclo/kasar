@@ -92,7 +92,6 @@ DirectoryIndex index.html
 # ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteCond %{HTTP_HOST} ^mydomain\.com [NC]
   RewriteCond %{SERVER_PORT} 80
   RewriteRule ^(.*)$ https://www.mydomain.com/$1 [R,L]
 </IfModule>

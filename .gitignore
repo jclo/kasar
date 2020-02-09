@@ -2,6 +2,11 @@
 node_modules
 _old_*
 
+_site-theme-colorado/_dist
+_site-theme-colorado/.colorado-plus
+_site-theme-colorado/img
+_site-theme-colorado/vendor/*
+
 _site-theme-orion/_dist
 _site-theme-orion/.orion-plus
 _site-theme-orion/img

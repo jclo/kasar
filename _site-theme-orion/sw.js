@@ -12,6 +12,7 @@ const MAXCACHESIZE = 15
     , filesToCache = [
       '/',
       '/index.html',
+      '/offline.html',
       '/css/style.css',
       '/js/main.min.js',
     ]
