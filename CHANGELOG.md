@@ -4,7 +4,7 @@
 
   * Fixed the issue relative to the sw.js script,
   * Updated the dependencies,
-  * ...,
+  * Release.
 
 
 ### 0.0.5 (February 9, 2020)
