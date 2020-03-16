@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.6 (February 10, 2020)
+
+  * Fixed the issue relative to the sw.js script,
+  * Updated the dependencies,
+  * ...,
+
+
 ### 0.0.5 (February 9, 2020)
 
   * Fixed a few minor issues,

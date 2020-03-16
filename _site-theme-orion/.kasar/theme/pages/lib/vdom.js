@@ -43,7 +43,7 @@ function getDOMTemplate(product, kversion, theme) {
     <!doctype html>
     <!-- {{product:name}} v{{product:version}} built with Kasar {{kasar:release}} and the theme {{kasar:theme.name}} v{{kasar:theme.version}} -->
     <!-- based on HTML5 boilerplate v7.3.0 -->
-    <html class="no-js" lang=""><head></head><body></body></html>`;
+    <html class="no-js" lang="${config.lang}"><head></head><body></body></html>`;
 
   const t = T.replace(/{{product:name}}/, product.name)
     .replace(/{{product:version}}/, product.version)

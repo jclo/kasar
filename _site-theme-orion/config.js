@@ -42,6 +42,9 @@ module.exports = {
     version,
   },
 
+  // This is the lang to specify in the html tag (<html class="no-js" lang="en">)
+  lang: 'en',
+
   // These are the parameters that define your company:
   company: {
     name: 'MyCompany',

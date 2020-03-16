@@ -192,6 +192,7 @@ function _init(options) {
     process.stdout.write(`creates and fills ${site}/img ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/img`);
     shell.cp('-R', `${basescript}/${theme}/img/README.md`, `${baseapp}/${site}/img/.`);
+    shell.cp('-R', `${basescript}/${theme}/img/icons`, `${baseapp}/${site}/img/.`);
 
     process.stdout.write(`creates and fills ${site}/php ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/php`);
@@ -221,6 +222,12 @@ function _init(options) {
     process.stdout.write('creates the .htaccess files ...\n');
     shell.cp('-R', `${basescript}/${theme}/php/.htaccess`, `${baseapp}/${site}/php/.htaccess`);
     shell.cp('-R', `${basescript}/${theme}/tobuildweb/.htaccess`, `${baseapp}/${site}/tobuildweb/.htaccess`);
+
+    if (theme === orion) {
+      // Create 'sw.js':
+      process.stdout.write(`creates ${site}/sw.js ...\n`);
+      shell.cp('-R', `${basescript}/${theme}/sw.js`, `${baseapp}/${site}/sw.js`);
+    }
 
     // Copy Vendor Highlight:
     if (theme === orion) {
