@@ -42,7 +42,7 @@ function getDOMTemplate(product, kversion, theme) {
   const T =  `
     <!doctype html>
     <!-- {{product:name}} v{{product:version}} built with Kasar {{kasar:release}} and the theme {{kasar:theme.name}} v{{kasar:theme.version}} -->
-    <!-- based on HTML5 boilerplate v7.3.0 -->
+    <!-- based on HTML5 boilerplate v8.0.0 -->
     <html class="no-js" lang="${config.lang}"><head></head><body></body></html>`;
 
   const t = T.replace(/{{product:name}}/, product.name)
@@ -302,16 +302,20 @@ const methods = {
    *
    * @method (arg1, arg2)
    * @public
-   * @param {String}        the tracker name,
-   * @param {Object}        the tracker config object,
+   * @param {Object}        the tracker,
+   * @param {String}        the tracker id,
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  appendTracker(tracker) {
+  appendTracker(tracker, id) {
     if (tracker) {
       const script = document.createElement('script');
-      script.text = tracker;
+      script.text = tracker.script.replace(/{{tracker:siteid}}/, id);
       document.getElementsByTagName('body')[0].appendChild(script);
+      document
+        .getElementsByTagName('body')[0]
+        .insertAdjacentHTML('beforeend', tracker.url)
+      ;
     }
     return this;
   },

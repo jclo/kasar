@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.7 (August 13, 2020)
+
+  * Updated the project dependencies,
+  * Updated Google Analytics script,
+  * ...,
+
+
 ### 0.0.6 (February 10, 2020)
 
   * Fixed the issue relative to the sw.js script,

@@ -60,11 +60,9 @@ function createPage(pagename, title, description, content, norm) {
   app.fillContent(pagename, content);
 
   // Completes the DOM with the scripts.
-  vdom
-    .appendScripts(scripts)
-    .appendTracker(google && google.siteid ? GA.replace(/{{tracker:siteid}}/, google.siteid) : '')
-    .appendTracker(kiwi && kiwi.siteid ? KA.replace(/{{tracker:siteid}}/, kiwi.siteid) : '')
-  ;
+  vdom.appendScripts(scripts);
+  if (google && google.siteid) vdom.appendTracker(GA, google.siteid);
+  if (kiwi && kiwi.siteid) vdom.appendTracker(KA, kiwi.siteid);
 
   // Serializes the generated DOM and returns it.
   return vdom.serialize();

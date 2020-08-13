@@ -78,7 +78,7 @@ module.exports = {
 
   // These are the files from 'HTML5 Boilerplate' to include in the project.
   html5: {
-    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.8.0.min.js`,
+    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.11.2.min.js`,
     normalize: `${base}/node_modules/html5-boilerplate/dist/css/normalize.css`,
   },
 
@@ -138,13 +138,12 @@ module.exports = {
   // These are the javascript trackers to insert at the bottom of the page. if
   // you don't want to insert a tracker, make the associated 'siteid' undefined
   // or null in 'site/config.js'.
-  GA: `
-    // Google Analytics
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', '{{tracker:siteid}}', 'auto');
-    ga('send', 'pageview');
-  `,
+  GA: {
+    script: `
+      // Google Analytics
+      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+      ga('create', '{{tracker:siteid}}', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    `,
+    url: '<script src="https://www.google-analytics.com/analytics.js" async></script>',
+  },
 };
