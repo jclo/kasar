@@ -4,7 +4,7 @@
 
   * Updated the project dependencies,
   * Updated Google Analytics script,
-  * ...,
+  * Release.
 
 
 ### 0.0.6 (February 10, 2020)
