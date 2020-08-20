@@ -1,10 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 
@@ -24,6 +24,35 @@ const Header = require('../header/main')
 
 
 // -- Private Function(s) ------------------------------------------------------
+
+/**
+ * Minifies the HTML body.
+ *
+ * Nota:
+ * The two most effective operations are the suppression of the comments and
+ * the suppression of the leading blank spaces preceeding a tag.
+ *
+ * @function ()
+ * @private
+ * @param {}                -,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+/* eslint-disable no-multi-spaces */
+function _minify() {
+  let xml = document.body.innerHTML;
+
+  xml = xml.replace(/<!--(.*?)-->/g, '')    // remove comments
+    .replace(/\n\s+</g, '\n<')              // remove leading spaces before a tag,
+    .replace(/\n<\/div>/g, '</div>')        // remove unwanted `\n`,
+    .replace(/\n<\/ul>/g, '</ul>')          // -
+    .replace(/\n<\/li>/g, '</li>')          // -
+    .replace(/\n<\/a>/g, '</a>')            // -
+  ;
+
+  document.body.innerHTML = xml;
+}
+/* eslint-enable no-multi-spaces */
 
 /**
  * Defines the body structure of the web page.
@@ -165,6 +194,10 @@ const methods = {
       default:
         this.content.fill(content);
     }
+
+    // Minify the body
+    _minify();
+
     return this;
   },
 };

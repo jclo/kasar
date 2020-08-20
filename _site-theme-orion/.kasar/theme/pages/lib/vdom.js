@@ -116,6 +116,7 @@ function createVDOM(product, kversion, theme) {
   global.window = vdom.window;
   global.document = vdom.window.document;
   global.navigator = { userAgent: 'node.js' };
+  global.DOMParser = vdom.window.DOMParser;
   return vdom;
 }
 
@@ -326,7 +327,7 @@ const methods = {
    * @method ()
    * @public
    * @param {}              -,
-   * @returns {String}      returns DOM,
+   * @returns {XMLString}   returns the DOM,
    * @since 0.0.0
    */
   serialize() {

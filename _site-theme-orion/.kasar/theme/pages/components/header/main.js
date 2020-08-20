@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 

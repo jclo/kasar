@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.1.0 (August 20, 2020)
+
+  * Replaced the module @View by @RView,
+  * ...,
+
+
 ### 0.0.7 (August 13, 2020)
 
   * Updated the project dependencies,

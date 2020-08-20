@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 
@@ -28,13 +28,14 @@ const View = require('@mobilabs/view')
  * @returns {String}        returns the marketing HTML structure,
  * @since 0.0.0
  */
-function getFront() {
+function getFront(content) {
   return `
     <div class="marketing">
       <div class="container">
         <div class="splash">
           <noscript>Your browser does not support JavaScript!</noscript>
           <!-- content here -->
+          ${content || ''}
         </div>
       </div>
     </div>
@@ -80,7 +81,7 @@ const Marketing = View.Component({
    * Adds the marketing structure to the frontpage.
    */
   setFront() {
-    this.$().html(getFront());
+    this.$setState({ mkt: getFront() });
     return this;
   },
 
@@ -88,7 +89,7 @@ const Marketing = View.Component({
    * Adds the marketing structure to the internal pages.
    */
   setInternal() {
-    this.$().html(getInternal());
+    this.$setState({ mkt: getInternal() });
     return this;
   },
 
@@ -96,15 +97,15 @@ const Marketing = View.Component({
    * Adds the marketing content for the frontpage.
    */
   fillFrontContent(content) {
-    this.$('.splash').html(content);
+    this.$setState({ mkt: getFront(content) });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
-    return '<div></div><!-- /.marketing -->';
+  render(state) {
+    return `<div>${state.mkt || ''}</div><!-- /.marketing -->`;
   },
 });
 

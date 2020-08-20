@@ -107,6 +107,7 @@ function createVDOM(product, kversion, theme) {
   global.window = vdom.window;
   global.document = vdom.window.document;
   global.navigator = { userAgent: 'node.js' };
+  global.DOMParser = vdom.window.DOMParser;
   return vdom;
 }
 
@@ -383,18 +384,18 @@ const methods = {
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-   appendTracker(tracker, id) {
-     if (tracker) {
-       const script = document.createElement('script');
-       script.text = tracker.script.replace(/{{tracker:siteid}}/, id);
-       document.getElementsByTagName('body')[0].appendChild(script);
-       document
-         .getElementsByTagName('body')[0]
-         .insertAdjacentHTML('beforeend', tracker.url)
-       ;
-     }
-     return this;
-   },
+  appendTracker(tracker, id) {
+    if (tracker) {
+      const script = document.createElement('script');
+      script.text = tracker.script.replace(/{{tracker:siteid}}/, id);
+      document.getElementsByTagName('body')[0].appendChild(script);
+      document
+        .getElementsByTagName('body')[0]
+        .insertAdjacentHTML('beforeend', tracker.url)
+      ;
+    }
+    return this;
+  },
 
   /**
    * Returns a string representation of the DOM.

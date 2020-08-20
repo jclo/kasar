@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 
@@ -22,35 +22,25 @@ const View = require('@mobilabs/view')
 /**
  * Adds the menu to the DOM.
  *
- * @function (arg1, arg2)
+ * @function (arg1)
  * @private
- * @param {Object}          the menu parent node,
  * @param {Array}           the menu items,
- * @returns {}               -,
+ * @returns {XMLString}     the HTML menu,
  * @since 0.0.0
  */
-function appendMenu(node, menu) {
+function appendMenu(menu) {
+  let li = '';
   for (let i = 0; i < menu.length; i++) {
     if (menu[i].link) {
-      node
-        .append('li')
-        .attr('class', 'pure-menu-item')
-        .append('a')
-        .attr('class', 'nav pure-menu-link')
-        .attr('href', menu[i].link)
-        .text(menu[i].text)
-        .parent()
-        .parent()
-      ;
+      li += `
+        <li class="pure-menu-item">
+          <a class="nav pure-menu-link" href="${menu[i].link}">${menu[i].text}</a>
+        </li>`;
     } else {
-      node
-        .append('li')
-        .attr('class', 'pure-menu-item')
-        .text(menu[i].text)
-        .parent()
-      ;
+      li += `<li class="pure-menu-item">${menu[i].text}</li>`;
     }
   }
+  return li;
 }
 
 
@@ -71,10 +61,7 @@ const TLMenu = View.Component({
    * Adds the menu title.
    */
   setTitle(title) {
-    this.$('a')
-      .attr('href', title.link)
-      .text(title.text)
-    ;
+    this.$setState({ link: title.link, title: title.text });
     return this;
   },
 
@@ -82,18 +69,21 @@ const TLMenu = View.Component({
    * Fills the menu.
    */
   setMenu(menu) {
-    appendMenu(this.$('ul'), menu);
+    this.$setState({ menu: appendMenu(menu) });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(state) {
     return `
       <div class="top left menu pure-menu pure-menu-horizontal">
-        <a class="nav pure-menu-heading" href="{{page:home}}">{{head:company}}</a>
-        <ul class="pure-menu-list"><!-- top left menu here --></ul>
+        <a class="nav pure-menu-heading" href="${state.link}">${state.title}</a>
+        <ul class="pure-menu-list">
+          <!-- top left menu here -->
+          ${state.menu || ''}
+        </ul>
       </div><!-- /.top left menu -->
     `;
   },
@@ -114,17 +104,20 @@ const TRMenu = View.Component({
    * Fills the menu.
    */
   set(menu) {
-    appendMenu(this.$('ul'), menu);
+    this.$setState({ menu: appendMenu(menu) });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(state) {
     return `
       <div class="top right menu pure-menu pure-menu-horizontal">
-        <ul class="pure-menu-list"><!-- top right menu here --></ul>
+        <ul class="pure-menu-list">
+          <!-- top right menu here -->
+          ${state.menu}
+        </ul>
       </div><!-- /.top right menu -->
     `;
   },
@@ -146,17 +139,20 @@ const BOTMenu = View.Component({
    * Fills the menu.
    */
   set(menu) {
-    appendMenu(this.$('ul'), menu);
+    this.$setState({ menu: appendMenu(menu) });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(state) {
     return `
       <div class="bottom menu pure-menu pure-menu-horizontal">
-        <ul class="pure-menu-list pull-right"><!-- bottom menu here --></ul>
+        <ul class="pure-menu-list pull-right">
+          <!-- bottom menu here -->
+          ${state.menu}
+        </ul>
       </div><!-- /.bottom menu -->
     `;
   },

@@ -1,10 +1,11 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0,
+  no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 
@@ -21,120 +22,115 @@ const View = require('@mobilabs/view')
 
 
 /**
- * Adds the main menu.
+ * Builds the child menu.
  *
- * @function (arg1, arg2)
+ * @function (arg1)
  * @private
- * @param {Object}          the node object,
- * @param {Array}           the menu items,
- * @returns {}              -,
+ * @param {Array}           the child level menu,
+ * @returns {Object}        returns the menu,
  * @since 0.0.0
  */
-function addMenu(node, menu) {
-  for (let i = 0; i < menu.length; i++) {
-    const classes = menu[i].tag ? `${menu[i].tag} pure-menu-item` : 'pure-menu-item';
-
-    if (menu[i].link) {
-      node
-        .append('li')
-        .attr('class', classes)
-        .append('a')
-        .attr('class', 'pure-menu-link')
-        .attr('href', menu[i].link)
-        .attr('target', menu[i].target ? menu[i].target : '_self')
-        .appendTextChild(menu[i].text)
-        // .parent()
-        .append('div')
-        .attr('class', 'bar')
-        .parent()
-        .parent()
-        .parent()
-      ;
-    } else {
-      node
-        .append('li')
-        .attr('class', classes)
-        .appendTextChild(menu[i].text)
-        .parent()
-      ;
-    }
-  }
-}
-
-/**
- * Adds the side menu.
- *
- * @function (arg1, arg2)
- * @private
- * @param {Object}          the node object,
- * @param {Array}           the menu items,
- * @returns {}              -,
- * @since 0.0.0
- */
-function addSidemenu(node, sidemenu) {
-  node
-    .select('.here')
-    .append('ul')
-    .attr('class', 'pure-menu-list')
-  ;
-
-  for (let i = 0; i < sidemenu.length; i++) {
-    let classes = sidemenu[i].tag ? sidemenu[i].tag : '';
-    classes += ' pure-menu-item  pure-menu-has-children';
-    classes += sidemenu[i].onlyExpanded ? ' pure-menu-only-expanded' : '';
-
-    node
-      .append('li')
-      .attr('class', classes)
-      .append('a')
-      .attr('class', 'pure-menu-link')
-      .attr('href', sidemenu[i].link ? sidemenu[i].link : '#')
-      .appendTextChild(sidemenu[i].text)
-      .parent()
-      .append('ul')
-      .attr('class', 'pure-menu-children')
+function _buildChildren(children) {
+  let s
+    , child
+    , target
+    , active
     ;
 
-    // Append childs
-    for (let j = 0; j < sidemenu[i].children.length; j++) {
-      const child = sidemenu[i].children[j];
-      node
-        .append('li')
-        .attr('class', `${child.tag} pure-menu-item`)
-        .append('a')
-        .attr('class', 'pure-menu-link')
-        .attr('href', child.link)
-        .attr('target', child.target ? child.target : '_self')
-        .appendTextChild(child.text)
-        .append('div')
-        .attr('class', 'bar')
-        .parent()
-        .parent()
-        .parent()
-      ;
-    }
-    node.parent();
+  s = '';
+  for (let i = 0; i < children.length; i++) {
+    child = children[i];
+    target = child.target ? child.target : '_self';
+    if (!active && child.tag === 'youarehere') active = true;
+
+    s += `
+      <li class="${child.tag} pure-menu-item">
+        <a class="pure-menu-link" href="${child.link}" target="${target}">${child.text}
+          <div class="bar"></div>
+        </a>
+      </li>
+    `;
   }
+  return { active, menu: s };
 }
 
 /**
- * Adds the submenu to the side menu.
+ * Builds the side menu.
+ *
+ * @function (arg1)
+ * @private
+ * @param {Array}           the side level menu,
+ * @returns {XMLString}     returns the menu,
+ * @since 0.0.0
+ */
+function _buildSideMenu(sidemenu) {
+  let s
+    , classes
+    , href
+    , mchild
+    ;
+
+  s = '<ul class="pure-menu-list">';
+  for (let i = 0; i < sidemenu.length; i++) {
+    classes = sidemenu[i].tag ? sidemenu[i].tag : '';
+    classes += ' pure-menu-item  pure-menu-has-children';
+    classes += sidemenu[i].onlyExpanded ? ' pure-menu-only-expanded' : '';
+    href = sidemenu[i].link ? sidemenu[i].link : '#';
+
+    mchild = _buildChildren(sidemenu[i].children);
+    classes += mchild.active ? ' pure-menu-active' : '';
+
+    s += `
+      <li class="${classes}">
+        <a class="pure-menu-link" href="${href}">${sidemenu[i].text}</a>
+        <ul class="pure-menu-children">
+          ${mchild.menu}
+        </ul>
+      </li>
+    `;
+  }
+  s += '</ul>';
+  return s;
+}
+
+/**
+ * Builds the menu.
  *
  * @function (arg1, arg2)
  * @private
- * @param {Object}          the node object,
- * @param {Array}           the menu items,
- * @returns {}              -,
+ * @param {Array}           the first level menu,
+ * @param {Array}           the side menu,
+ * @returns {XMLString}     returns the menu,
  * @since 0.0.0
  */
-function addSubmenu(node, submenu) {
-  node
-    .parent()
-    .parent()
-    .addClass('pure-menu-active')
-    .select('.youarehere')
-    .addClass('pure-menu-active')
-  ;
+function _buildMenu(menu, sidemenu) {
+  let s
+    , classes
+    , target
+    ;
+
+  s = '';
+  for (let i = 0; i < menu.length; i++) {
+    classes = menu[i].tag ? `${menu[i].tag} pure-menu-item` : 'pure-menu-item';
+    target = menu[i].target ? menu[i].target : '_self';
+
+    if (menu[i].link) {
+      s += `
+        <li class="${classes}">
+          <a class="pure-menu-link" href="${menu[i].link}" target="${target}">${menu[i].text}
+            <div class="bar"></div>
+          </a>
+          <!-- side menu here -->
+          ${menu[i].tag === 'here' && sidemenu ? _buildSideMenu(sidemenu) : ''}
+        </li>
+      `;
+    } else {
+      s += `
+        <li class="${classes}">${menu[i].text}</li>
+      `;
+    }
+  }
+  return s;
 }
 
 
@@ -154,26 +150,15 @@ const SideMenu = View.Component({
   /**
    * Fills the menu.
    */
-  fill(mobile, sidemenu, submenu) {
+  fill(mobile, sidemenu /* , submenu */) {
     const { menu } = mobile;
-
-    // Add title:
-    this.$('h1').text(mobile.title.text);
-
-    // Add Menu:
-    addMenu(this.$('ul'), menu);
-
-    // Add Side Menu:
-    if (sidemenu) {
-      addSidemenu(this.$('ul'), sidemenu);
-      addSubmenu(this.$('.youarehere'), submenu);
-    }
+    this.$setState({ title: mobile.title.text, menu: _buildMenu(menu, sidemenu) });
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(state) {
     return `
       <div class="sidemenu">
         <div class="sidebutton">
@@ -183,10 +168,11 @@ const SideMenu = View.Component({
           </a>
         </div>
         <div class="inner">
-          <h1>???</h1>
+          <h1>${state.title}</h1>
           <div class="menu pure-menu custom-restricted-width">
             <ul class="pure-menu-list">
               <!-- menu here -->
+              ${state.menu || ''}
             </ul>
           </div>
         </div>

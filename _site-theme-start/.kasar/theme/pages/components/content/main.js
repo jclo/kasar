@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 
@@ -18,51 +18,6 @@ const View = require('@mobilabs/view')
 
 
 // -- Private Function(s) ------------------------------------------------------
-
-/**
- * Defines the content structure of the front web page.
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {String}        returns the content HTML structure,
- * @since 0.0.0
- */
-function getFront() {
-  return `
-    <div class="content front">
-      <div class="container">
-        <!-- empty -->
-      </div><!-- /.container -->
-    </div>
-  `;
-}
-
-/**
- * Defines the content structure of the internal web pages.
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {String}        returns the content HTML structure,
- * @since 0.0.0
- */
-function getInternal() {
-  return `
-    <div class="content">
-      <div class="container">
-        <div class="menu pure-menu pure-menu-horizontal">
-          <!-- homemenu:inc -->
-          <!-- endinject -->
-          <!-- contentmenu:inc -->
-          <!-- endinject -->
-        </div>
-        <!-- content:inc -->
-        <!-- endinject -->
-      </div><!-- /.container -->
-    </div>
-  `;
-}
 
 
 // -- Public Function(s) -------------------------------------------------------
@@ -83,7 +38,7 @@ const Content = View.Component({
    * Inserts the content structure of the frontpage inside the DOM.
    */
   setFront() {
-    this.$().html(getFront());
+    this.state.level = 'front';
     return this;
   },
 
@@ -91,7 +46,7 @@ const Content = View.Component({
    * Inserts the content structure of the internal pages inside the DOM.
    */
   setInternal() {
-    this.$().html(getInternal());
+    this.state.level = '';
     return this;
   },
 
@@ -99,15 +54,21 @@ const Content = View.Component({
    * Fills the content.
    */
   fill(content) {
-    this.$('.container').html(content);
+    this.$setState({ content });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
-    return '<div></div><!-- /.content -->';
+  render(state) {
+    return `
+      <div class="content ${state.level || ''}">
+        <div class="container">
+          ${state.content || '<!-- empty -->'}
+        </div><!-- /.container -->
+      </div>
+    `;
   },
 });
 

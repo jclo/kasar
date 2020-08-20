@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/view')
+const View = require('@mobilabs/rview')
     ;
 
 
@@ -33,21 +33,18 @@ const TLMenu = View.Component({
   /**
    * Fills the menu.
    */
-  set(corp, basepath) {
-    this.$('.nav')
-      .attr('href', basepath)
-      .text(corp)
-    ;
+  set(company, basepath) {
+    this.$setState({ basepath, company });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(state) {
     return `
       <div class="top left menu pure-menu pure-menu-horizontal">
-        <a class="nav pure-menu-heading" href="{{page:home}}">{{head:company}}</a>
+        <a class="nav pure-menu-heading" href="${state.basepath}">${state.company}</a>
         <ul class="pure-menu-list">
           <li class="pure-menu-item"><a href="{{page:...}}" class="nav pure-menu-link">...</a></li>
         </ul>
@@ -69,20 +66,18 @@ const TLMenu = View.Component({
 const TRMenu = View.Component({
 
   set(path) {
-    this.$('.pure-menu-item a')
-      .attr('href', path)
-    ;
+    this.$setState({ path });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(state) {
     return `
       <div class="top right menu pure-menu pure-menu-horizontal">
         <ul class="pure-menu-list">
-          <li class="pure-menu-item"><a href="..." class="nav pure-menu-link">Contact Us</a></li>
+          <li class="pure-menu-item"><a href=${state.path} class="nav pure-menu-link">Contact Us</a></li>
         </ul>
       </div><!-- /.top menu -->
     `;
