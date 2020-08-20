@@ -3,6 +3,7 @@
 ### 0.1.0 (August 20, 2020)
 
   * Replaced the module @View by @RView,
+  * First release candidate,
   * ...,
 
 
