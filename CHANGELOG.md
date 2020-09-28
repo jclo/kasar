@@ -5,7 +5,7 @@
   * Replaced the module @View by @RView,
   * First release candidate,
   * Updated the dependencies,
-  * ...,
+  * Release.
 
 
 ### 0.0.7 (August 13, 2020)
