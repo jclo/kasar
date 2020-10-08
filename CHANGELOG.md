@@ -3,7 +3,7 @@
 ### 1.0.2 (October 8, 2020)
 
   * Fixed an issue on kasar.js script,
-  * ...,
+  * Release.
 
 
 ### 1.0.1 (October 8, 2020)
