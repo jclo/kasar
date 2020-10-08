@@ -1,6 +1,7 @@
 *
 
 !_site-theme-orion/**/*
+!_site-theme-code/**/*
 !_site-theme-start/**/*
 !bin/**/*
 !libs/**/*

@@ -170,6 +170,7 @@ function _checkIfAlreadyExist(dir, cb) {
 function _init(options) {
   const defaultTheme = '_site-theme-start'
       , orion        = '_site-theme-orion'
+      , code         = '_site-theme-code'
       ;
 
   // Check if 'site' exists?
@@ -180,6 +181,8 @@ function _init(options) {
     let theme;
     if (options.argv.remain[1] === 'orion') {
       theme = orion;
+    } else if (options.argv.remain[1] === 'code') {
+      theme = code;
     } else {
       theme = defaultTheme;
     }
@@ -223,14 +226,14 @@ function _init(options) {
     shell.cp('-R', `${basescript}/${theme}/php/.htaccess`, `${baseapp}/${site}/php/.htaccess`);
     shell.cp('-R', `${basescript}/${theme}/tobuildweb/.htaccess`, `${baseapp}/${site}/tobuildweb/.htaccess`);
 
-    if (theme === orion) {
+    if (theme === orion || theme === code) {
       // Create 'sw.js':
       process.stdout.write(`creates ${site}/sw.js ...\n`);
       shell.cp('-R', `${basescript}/${theme}/sw.js`, `${baseapp}/${site}/sw.js`);
     }
 
     // Copy Vendor Highlight:
-    if (theme === orion) {
+    if (theme === orion || theme === code) {
       shell.mkdir('-p', `${baseapp}/${site}/vendor`);
       shell.cp('-R', `${basescript}/${theme}/vendor/*.md`, `${baseapp}/${site}/vendor/.`);
     }

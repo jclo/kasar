@@ -95,40 +95,10 @@ module.exports = {
       name: 'Home',
       title: 'My Company | We are expert in ...',
       description: 'this page ...',
-      content: {
-        path: `${base}/site/webpages/front`,
-        // If your consider that a page contains multiple sections and you prefer
-        // multiple files to describe it, you can. You just have to add the
-        // property block and list in it your files.
-        blocks: [
-          'marketing.md',
-          'contactus.md',
-        ],
-      },
+      content: `${base}/site/webpages/index.md`,
       // All the files are merged together in an unique output file following
       // the order defined in the 'blocks' array.
       output: `${basepath}index.html`,
-    },
-    contact: {
-      name: 'Contact',
-      title: 'Contact page',
-      description: 'bla bla ...',
-      content: `${base}/site/webpages/contact.md`,
-      output: `${basepath}contact.html`,
-    },
-    legal: {
-      name: 'Legal',
-      title: 'legal page',
-      description: 'bla bla ...',
-      content: `${base}/site/webpages/legal.md`,
-      output: `${basepath}legal.html`,
-    },
-    kasar: {
-      name: 'Kasar',
-      title: 'Kasar Tutorial',
-      description: 'Explains how to use it.',
-      content: `${base}/site/webpages/kasar.md`,
-      output: `${basepath}kasar.html`,
     },
     offline: {
       name: 'Offline',
@@ -238,15 +208,9 @@ module.exports = {
   menu: {
     top: {
       left: {
-        title: { text: 'Kasar', link: `${basepath}` },
+        title: { text: 'My Library', link: `${basepath}` },
         menu: [
           { text: 'Home', link: '#home' },
-          { text: 'Section 1', link: '#section1' },
-          { text: 'Section 2', link: '#section2' },
-          { text: 'Section 3', link: '#section3' },
-          { text: 'Section 4', link: '#section4' },
-          { text: 'Section 5', link: '#section5' },
-          { text: 'contact us', link: '#contactus' },
         ],
       },
       right: [
@@ -257,19 +221,13 @@ module.exports = {
       ],
     },
     bottom: [
-      { text: 'contact', link: `${basepath}contact.html` },
-      { text: 'legal', link: `${basepath}legal.html` },
-      { text: 'Kasar', link: `${basepath}kasar.html` },
       { text: 'built with Kasar', link: 'https://www.npmjs.com/package/@mobilabs/kasar' },
     ],
     mobile: {
-      title: { text: 'Kasar', link: '#home' },
+      title: { text: 'My Library', link: '#home' },
       menu: [
         { text: 'Home', link: `${basepath}` },
         { text: 'Documentation', link: `${basepath}doc/book1/chapter1.html`, tag: 'here' },
-        { text: 'contact', link: `${basepath}contact.html` },
-        { text: 'legal', link: `${basepath}legal.html` },
-        { text: 'Kasar', link: `${basepath}kasar.html` },
         { text: 'built with Kasar', link: 'https://www.npmjs.com/package/@mobilabs/kasar', tag: 'credits' },
       ],
     },
@@ -281,7 +239,7 @@ module.exports = {
     `${basepath}vendor/libs/modernizr-3.11.2.min.js`,
     `${basepath}vendor/libs/jquery.min.js`,
     `${basepath}vendor/libs/jquery.easing.min.js`,
-    // `${basepath}vendor/libs/highlight.pack.js`,
+    `${basepath}vendor/libs/highlight.pack.js`,
     `${basepath}js/main.min.js`,
   ],
 };

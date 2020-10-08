@@ -1,0 +1,115 @@
+/*
+ * -- OVERVIEW CUSTOM STYLE --
+ */
+.showcase .card {
+   min-height: 250px;
+   padding: 0 10px;
+   margin: 0 25px 0 0
+}
+.showcase .cardgis {
+  margin: 0 25px 0 0
+}
+.showcase .thumbnail {
+}
+.showcase h2.title {
+  font-size: 2em;
+  font-weight: 600
+}
+.showcase h3.title {
+  font-size: 1.5em;
+  font-weight: 600
+}
+.showcase .legend {
+  margin: 15px 0 40px 0
+}
+.showcase a:hover {
+  text-decoration: none;
+  font-weight: bold
+}
+
+
+/* -- THUMBNAILS -- */
+ .thumbnails {}
+ .top20 {
+   padding-top: 20px
+ }
+ .top40 {
+   padding-top: 40px
+ }
+ .left30 {
+   padding-left: 30px
+ }
+
+/*
+ * -- GET PRODUCT CUSTOM STYLE --
+ */
+code.sha1 {
+  font-size: 0.9em
+}
+
+
+/*
+ * -- PRICING PLAN CUSTOM STYLE --
+ */
+.content.front .box p.price {
+  font-size: 3em;
+  color: #657b83;
+  padding: 0;
+  margin: 0
+}
+.content.front .box p.cond {
+  padding: 0;
+  margin: 0 0 1em
+}
+.content.front .box p.fixedheight {
+  min-height: 130px
+}
+.content.front .box p.support {
+  padding: 0;
+  margin: 0 0 1em
+}
+.content.front .box sup {
+  font-size: .5em;
+  top: -.3em
+}
+
+/*
+ * -- LICENSING CUSTOM STYLE --
+ */
+.pureplus-modal {
+  font-size: .9em
+}
+.pureplus-modal-footer {
+  margin-top: 0;
+  padding: 10px 20px
+}
+.content.front .pureplus-modal h2 {
+  font-size: 1.5em;
+  font-weight: 600
+}
+.pureplus-modal i.fa.fa-check {
+  color: #32cd32
+}
+.pureplus-modal-dialog pre code {
+  max-height: 500px
+}
+
+
+/*
+ * -- DOC PAGE CUSTOM STYLE --
+ */
+.content .api {
+    font-size: .9em
+}
+.content .api .attribute {
+    width: 20%
+}
+.content .api .default, .content .api .type {
+    width: 10%
+}
+.content .api .info {
+    width: 60%
+}
+.content .api .center {
+  text-align: center
+}

@@ -11,6 +11,16 @@ _site-theme-orion/img/*
 _site-theme-orion/vendor/*
 !_site-theme-orion/vendor/README_HIGHLIGHT.md
 
+_site-theme-code/_dist
+_site-theme-code/img/*
+!_site-theme-code/img/README.md
+_site-theme-code/vendor/highlight/CHANGES.md
+_site-theme-code/vendor/highlight/LICENSE
+_site-theme-code/vendor/highlight/README.md
+_site-theme-code/vendor/highlight/README.ru.md
+_site-theme-code/vendor/highlight/styles/*
+!_site-theme-code/vendor/highlight/styles/default.css
+
 _site-theme-start/_dist
 
 site

@@ -1,0 +1,22 @@
+/*
+ * -- 404 PAGE CONTENT STYLE --
+ */
+.oops {
+  font-size: 1.2em;
+  color: rgb(101, 123, 131);
+  text-align: center
+}
+.oops h1 {
+  font-weight: 400;
+  font-size: 4em;
+  margin: 0
+}
+.oops p {
+}
+.oops hr {
+  width: 100px;
+  height: 2px;
+  border: none;
+  margin: 2em auto;
+  background: rgb(173, 31, 35)
+}

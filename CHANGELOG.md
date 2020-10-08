@@ -1,5 +1,12 @@
 ### HEAD
 
+### 1.0.1 (October 8, 2020)
+
+  * Updated the dependencies,
+  * Added the 'code' theme,
+  * ...,
+
+
 ### 1.0.0 (September 28, 2020)
 
   * Replaced the module @View by @RView,

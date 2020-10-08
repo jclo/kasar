@@ -1,0 +1,43 @@
+/*
+ * -- Callout --
+ */
+.pureplus-callout {
+  margin: 20px 0;
+  padding: 15px;
+  border-left: 3px solid #eee;
+}
+.pureplus-callout h3 {
+  margin-top: 0;
+  margin-bottom: 5px
+}
+.pureplus-callout p:last-child {
+  margin-bottom: 0;
+}
+.pureplus-callout code,
+.pureplus-callout .highlight {
+  background-color: #fff;
+  border-radius:3px
+}
+
+.pureplus-callout-info {
+  background-color: #f4f8fa;
+  border-color: #5bc0de;
+}
+.pureplus-callout-warning {
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
+}
+.pureplus-callout-error {
+  background-color: #fdf7f7;
+  border-color: #ad1f23;
+}
+
+.pureplus-callout-info h3 {
+  color: #5bc0de;
+}
+.pureplus-callout-warning h3 {
+  color: #f0ad4e;
+}
+.pureplus-callout-error h3 {
+  color: #ad1f23;
+}

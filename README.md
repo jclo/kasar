@@ -6,7 +6,7 @@
 [![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![License][license-image]](LICENSE.md)
 
-Kasar is static site generator. It creates a static website from markdown or HTML pages. It is powered by **Gulp** and **View**.
+Kasar is static site generator. It creates a static website from markdown or HTML pages. It is powered by **Gulp** and **RView**.
 
 The advantages of the static websites are their responsiveness, the limited server resources needed and the simplicity of installation.
 
