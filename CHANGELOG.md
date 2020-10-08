@@ -4,7 +4,7 @@
 
   * Updated the dependencies,
   * Added the 'code' theme,
-  * ...,
+  * Release.
 
 
 ### 1.0.0 (September 28, 2020)
