@@ -237,6 +237,12 @@ function _init(options) {
       shell.mkdir('-p', `${baseapp}/${site}/vendor`);
       shell.cp('-R', `${basescript}/${theme}/vendor/*.md`, `${baseapp}/${site}/vendor/.`);
     }
+
+    if (theme === code) {
+      shell.mkdir('-p', `${baseapp}/${site}/vendor/highlight/styles`);
+      shell.cp('-R', `${basescript}/${theme}/vendor/highlight/*.js`, `${baseapp}/${site}/vendor/highlight/.`);
+      shell.cp('-R', `${basescript}/${theme}/vendor/highlight/styles/default.css`, `${baseapp}/${site}/vendor/highlight/styles/default.css`);
+    }
   });
 }
 

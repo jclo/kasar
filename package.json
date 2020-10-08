@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/kasar",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "View-powered Static Website Generator",
   "main": "index.js",
   "bin": {
