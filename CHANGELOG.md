@@ -3,7 +3,7 @@
 ### 1.0.4 (November 11, 2020)
 
   * Reinstalled markdown-it 11.x as 12.x isn't compatible with attrs plugin,
-  * ...,
+  * Release.
 
 
 ### 1.0.3 (November 10, 2020)
