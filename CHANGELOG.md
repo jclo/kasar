@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.5 (January 28, 2021)
+
+  * Updated the project dependencies,
+  * ...
+
+
 ### 1.0.4 (November 11, 2020)
 
   * Reinstalled markdown-it 11.x as 12.x isn't compatible with attrs plugin,
