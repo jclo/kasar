@@ -3,7 +3,7 @@
 ### 1.0.5 (January 28, 2021)
 
   * Updated the project dependencies,
-  * ...
+  * Release.
 
 
 ### 1.0.4 (November 11, 2020)
