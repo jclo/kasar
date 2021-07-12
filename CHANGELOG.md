@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.6 (July 12, 2021)
+
+  * Updated the project dependencies except @mobilabs/rview,
+  * ...
+
+
 ### 1.0.5 (January 28, 2021)
 
   * Updated the project dependencies,
