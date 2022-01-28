@@ -4,6 +4,7 @@
 
   * Updated the project dependencies,
   * Updated the copyright,
+  * Removed testing from .travis.yml,
   * ...,
 
 
