@@ -5,6 +5,7 @@
   * Updated the project dependencies,
   * Updated the copyright,
   * Removed testing from .travis.yml,
+  * Added the template _site/theme-code,
   * ...,
 
 
