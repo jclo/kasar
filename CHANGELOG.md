@@ -6,7 +6,8 @@
   * Updated the copyright,
   * Removed testing from .travis.yml,
   * Added the template _site/theme-code,
-  * ...,
+  * Removed a wrong link,
+  * Release.
 
 
 ### 1.0.6 (July 12, 2021)
