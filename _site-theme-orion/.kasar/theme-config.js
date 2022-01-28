@@ -87,7 +87,7 @@ module.exports = {
   fonts: {
     remote: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,600',
     local: [
-      `${base}/node_modules/font-awesome/fonts/*`,
+      `${base}/node_modules/@fortawesome/**/*`,
     ],
   },
 
@@ -115,7 +115,7 @@ module.exports = {
     // From vendor:
     `${base}/node_modules/purecss/build/pure.css`,
     `${base}/node_modules/purecss/build/grids-responsive.css`,
-    `${base}/node_modules/font-awesome/css/font-awesome.css`,
+    `${base}/node_modules/@fortawesome/fontawesome-free/css/all.css`,
     // `${base}/site/vendor/highlight/styles/default.css`,
     // From theme:
     `${base}/site/.kasar/theme/pages/components/app/app.css`,

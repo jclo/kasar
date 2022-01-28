@@ -2,8 +2,6 @@
 
 [![NPM version][npm-image]][npm-url]
 [![GitHub last commit][commit-image]][commit-url]
-[![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url]
 [![License][license-image]](LICENSE.md)
 
 Kasar is static site generator. It creates a static website from markdown or HTML pages. It is powered by **Gulp** and **RView**.
@@ -102,8 +100,6 @@ On the displayed page, click the button `click me` to read the detailed document
 [commit-image]: https://img.shields.io/github/last-commit/jclo/kasar.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/jclo/kasar.svg?style=flat-square
 [coveralls-image]: https://img.shields.io/coveralls/jclo/kasar/master.svg?style=flat-square
-[dependencies-image]: https://david-dm.org/jclo/kasar/status.svg?theme=shields.io
-[devdependencies-image]: https://david-dm.org/jclo/kasar/dev-status.svg?theme=shields.io
 [npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/kasar.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/@mobilabs/kasar.svg?style=flat-square
 
@@ -112,7 +108,5 @@ On the displayed page, click the button `click me` to read the detailed document
 [commit-url]: https://github.com/jclo/kasar/commits/master
 [travis-url]: https://travis-ci.org/jclo/kasar
 [coveralls-url]: https://coveralls.io/github/jclo/kasar?branch=master
-[dependencies-url]: https://david-dm.org/jclo/kasar
-[devdependencies-url]: https://david-dm.org/jclo/kasar?type=dev
 [license-url]: http://opensource.org/licenses/MIT
 [npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/@mobilabs/kasar
