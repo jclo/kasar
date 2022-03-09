@@ -1,3 +1,4 @@
+// ESLint declarations
 /* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
 
@@ -16,8 +17,8 @@ const themeconfig = require('../../theme-config')
 
 // -- Local constants
 const { base } = themeconfig
-    // , { dist } = config
-    // , img      = `${base}/site/img/**/*`
+    , { dist } = config
+    , img      = `${base}/site/img/**/*`
     ;
 
 
@@ -29,8 +30,10 @@ const { base } = themeconfig
 /**
  * Copies images.
  */
-function cpimg(done) {
-  done();
+function cpimg() {
+  return src(img)
+    .pipe(dest(`${dist}/img`))
+  ;
 }
 
 

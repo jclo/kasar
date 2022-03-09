@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -32,7 +32,7 @@ const View = require('@mobilabs/rview')
  * @returns {}              -,
  * @since 0.0.0
  */
-const Content = View.Component({
+const Content = RView.Component({
 
   /**
    * Inserts the content structure of the frontpage inside the DOM.

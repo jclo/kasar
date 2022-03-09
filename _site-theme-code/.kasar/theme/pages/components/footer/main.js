@@ -1,10 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -29,7 +29,7 @@ const { BOTMenu } = require('../menus/menus')
  * @returns {}              -,
  * @since 0.0.0
  */
-const Footer = View.Component({
+const Footer = RView.Component({
 
   /**
    * Adds the copyright.

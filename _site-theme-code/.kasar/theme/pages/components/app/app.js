@@ -1,20 +1,19 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0
-  no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
 // -- Local modules
-const Header    = require('../header/main')
-    , SideMenu  = require('../sidemenu/sidemenu')
-    , Content   = require('../content/main')
-    , Footer    = require('../footer/main')
-    , config    = require('../../../../../config')
+const Header   = require('../header/main')
+    , SideMenu = require('../sidemenu/sidemenu')
+    , Content  = require('../content/main')
+    , Footer   = require('../footer/main')
+    , config   = require('../../../../../config')
     ;
 
 
@@ -25,7 +24,6 @@ const Header    = require('../header/main')
 
 
 // -- Private Function(s) ------------------------------------------------------
-
 
 /**
  * Minifies the HTML body.
@@ -57,38 +55,6 @@ function _minify() {
 /* eslint-enable no-multi-spaces */
 
 /**
- * Defines the body structure of the web page.
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-const Body = View.Component({
-  /**
-   * Renders the web component.
-   */
-  render() {
-    this.children = {
-      '<Header />': Header,
-      '<SideMenu />': SideMenu,
-      '<Content />': Content,
-      '<Footer />': Footer,
-    };
-
-    return `
-      <div>
-        <Header />
-        <SideMenu />
-        <Content />
-        <Footer />
-      </div>
-    `;
-  },
-});
-
-/**
  * Renders in the virtual DOM the body of the web page.
  *
  * @function ()
@@ -98,12 +64,20 @@ const Body = View.Component({
  * @since 0.0.0
  */
 function render() {
-  return View.render({
-    el: document.body,
-    children: { '<Body />': Body },
+  return RView.render({
+    el: '#kasarapp',
+    children: {
+      '<Header />': Header,
+      '<SideMenu />': SideMenu,
+      '<Content />': Content,
+      '<Footer />': Footer,
+    },
     template: `
       <div>
-        <Body />
+        <Header />
+        <SideMenu />
+        <Content />
+        <Footer />
       </div>
     `,
   });
@@ -126,7 +100,6 @@ function App() {
   const obj = Object.create(methods);
   const view = render();
   // Attaches all the 'web components' to this object.
-  obj.body = view.$getChild('<Body />');
   obj.header = view.$getChild('<Header />');
   obj.tlmenu = view.$getChild('<TLMenu />');
   obj.trmenu = view.$getChild('<TRMenu />');
@@ -189,16 +162,20 @@ const methods = {
     const levels = sidemenu ? 'h2' : 'h1, h2, h3, h4, h5';
     let submenu;
 
-    if (page === 'Home') {
-      this.content.fillFront(content);
-    } else {
-      submenu = this.content.getSubMenu(content, levels);
-      this.content.fillInternal(content, sidemenu, submenu);
+    switch (page) {
+      case 'Home':
+        this.content.fillFront(content);
+        break;
+
+      default:
+        submenu = this.content.getSubMenu(content, levels);
+        this.content.fillInternal(content, sidemenu, submenu);
+        break;
     }
     this.sidemenu.fill(mobile, sidemenu, submenu);
 
     // Minify the body
-    _minify();
+    // _minify();
 
     return this;
   },

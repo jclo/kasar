@@ -1,10 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -28,7 +28,7 @@ const View = require('@mobilabs/rview')
  * @returns {XMLString}     the HTML menu,
  * @since 0.0.0
  */
-function appendMenu(menu) {
+function _appendMenu(menu) {
   let li = '';
   for (let i = 0; i < menu.length; i++) {
     if (menu[i].link) {
@@ -55,7 +55,7 @@ function appendMenu(menu) {
  * @returns {}              -,
  * @since 0.0.0
  */
-const TLMenu = View.Component({
+const TLMenu = RView.Component({
 
   /**
    * Adds the menu title.
@@ -69,7 +69,7 @@ const TLMenu = View.Component({
    * Fills the menu.
    */
   setMenu(menu) {
-    this.$setState({ menu: appendMenu(menu) });
+    this.$setState({ menu: _appendMenu(menu) });
     return this;
   },
 
@@ -98,13 +98,13 @@ const TLMenu = View.Component({
  * @returns {}              -,
  * @since 0.0.0
  */
-const TRMenu = View.Component({
+const TRMenu = RView.Component({
 
   /**
    * Fills the menu.
    */
   set(menu) {
-    this.$setState({ menu: appendMenu(menu) });
+    this.$setState({ menu: _appendMenu(menu) });
     return this;
   },
 
@@ -133,13 +133,13 @@ const TRMenu = View.Component({
  * @returns {}              -,
  * @since 0.0.0
  */
-const BOTMenu = View.Component({
+const BOTMenu = RView.Component({
 
   /**
    * Fills the menu.
    */
   set(menu) {
-    this.$setState({ menu: appendMenu(menu) });
+    this.$setState({ menu: _appendMenu(menu) });
     return this;
   },
 

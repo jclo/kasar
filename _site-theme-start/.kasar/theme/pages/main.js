@@ -25,6 +25,7 @@ const { product } = config
     , { scripts } = config
     , { google }  = config
     , { kiwi }    = config
+    // , { menu: { mobile } } = config
     ;
 
 
@@ -36,7 +37,7 @@ const { product } = config
 /**
  * Creates the web page in a virtual DOM and returns its HTML representation.
  *
- * @function (arg1, arg2, arg3, arg4, arg5)
+ * @function (arg1, arg2, arg3, arg4, arg5, arg6)
  * @public
  * @param {String}          the name of the web page (home, contact, etc.),
  * @param {String}          the title of the web page,
@@ -46,7 +47,7 @@ const { product } = config
  * @returns {String}        returns the HTML representation of the generated web page,
  * @since 0.0.0
  */
-function createPage(pagename, title, description, content, norm) {
+function createPage(pagename, title, description, content, norm, sidemenu) {
   // Creates the DOM & adds the DOM head.
   const vdom = VDOM(product, kversion, theme);
   vdom.addHead(title, description, norm);
@@ -57,7 +58,7 @@ function createPage(pagename, title, description, content, norm) {
   // link is createVDOM in './lib/vdom.js')
   const app = App();
   app.configure(pagename);
-  app.fillContent(pagename, content);
+  app.fillContent(pagename, content, sidemenu/* , mobile */);
 
   // Completes the DOM with the scripts.
   vdom.appendScripts(scripts);

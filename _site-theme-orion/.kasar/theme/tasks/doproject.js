@@ -1,4 +1,4 @@
-// ESLint declarations
+/* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0,
   no-underscore-dangle: 0 */
 
@@ -98,7 +98,7 @@ function _docss(done) {
       rebaseTo: '',
     }))
     .pipe(concat('style.css'))
-    .pipe(replace('../../../../node_modules/font-awesome/', '../'))
+    .pipe(replace('../webfonts', '../fonts/fontawesome-free/webfonts'))
     .pipe(dest(`${dist}/css/`))
   ;
 }

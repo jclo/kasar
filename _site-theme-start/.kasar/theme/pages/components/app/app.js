@@ -4,16 +4,16 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
 // -- Local modules
-const Header = require('../header/main')
+const Header    = require('../header/main')
     , Marketing = require('../marketing/main')
-    , Content = require('../content/main')
-    , Footer = require('../footer/main')
-    , config = require('../../../../../config')
+    , Content   = require('../content/main')
+    , Footer    = require('../footer/main')
+    , config    = require('../../../../../config')
     ;
 
 
@@ -55,46 +55,6 @@ function _minify() {
 /* eslint-enable no-multi-spaces */
 
 /**
- * Defines the body structure of the web page.
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-const Body = View.Component({
-  // Recommended by HTML5 boilerplate 7.1.0.
-  IE: `
-  <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-  `,
-
-  /**
-   * Renders the web component.
-   */
-  render() {
-    this.children = {
-      '<Header />': Header,
-      '<Marketing />': Marketing,
-      '<Content />': Content,
-      '<Footer />': Footer,
-    };
-
-    return `
-      <div>
-        ${this.IE}
-        <Header />
-        <Marketing />
-        <Content />
-        <Footer />
-      </div>
-    `;
-  },
-});
-
-/**
  * Renders in the virtual DOM the body of the web page.
  *
  * @function ()
@@ -104,12 +64,20 @@ const Body = View.Component({
  * @since 0.0.0
  */
 function render() {
-  return View.render({
-    el: document.body,
-    children: { '<Body />': Body },
+  return RView.render({
+    el: '#kasarapp',
+    children: {
+      '<Header />': Header,
+      '<Marketing />': Marketing,
+      '<Content />': Content,
+      '<Footer />': Footer,
+    },
     template: `
       <div>
-        <Body />
+        <Header />
+        <Marketing />
+        <Content />
+        <Footer />
       </div>
     `,
   });
@@ -132,7 +100,6 @@ function App() {
   const obj = Object.create(methods);
   const view = render();
   // Attaches all the 'web components' to this object.
-  obj.body = view.$getChild('<Body />');
   obj.header = view.$getChild('<Header />');
   obj.tlmenu = view.$getChild('<TLMenu />');
   obj.topmenu = view.$getChild('<TRMenu />');
@@ -159,6 +126,7 @@ const methods = {
    */
   configure(page) {
     switch (page) {
+      case 'Home':
       case 'home':
         this.mkt.setFront();
         this.content.setFront();
@@ -187,12 +155,14 @@ const methods = {
    */
   fillContent(page, content) {
     switch (page) {
+      case 'Home':
       case 'home':
         this.mkt.fillFrontContent(content);
         break;
 
       default:
         this.content.fill(content);
+        break;
     }
 
     // Minify the body

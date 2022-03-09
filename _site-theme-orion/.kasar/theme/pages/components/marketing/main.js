@@ -1,10 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -28,7 +28,7 @@ const View = require('@mobilabs/rview')
  * @returns {String}        returns the marketing HTML structure,
  * @since 0.0.0
  */
-function getFront() {
+function _getFront() {
   return `
     <div class="marketing">
       <div class="container">
@@ -50,7 +50,7 @@ function getFront() {
  * @returns {String}        returns the marketing HTML structure,
  * @since 0.0.0
  */
-function getInternal() {
+function _getInternal() {
   return `
     <div class="marketing inside">
       <div class="container">
@@ -71,13 +71,13 @@ function getInternal() {
  * @returns {}              -,
  * @since 0.0.0
  */
-const Marketing = View.Component({
+const Marketing = RView.Component({
 
   /**
    * Adds the marketing structure to the frontpage.
    */
   setFront() {
-    this.$().html(getFront());
+    this.$setState({ mkt: _getFront() });
     return this;
   },
 
@@ -85,7 +85,7 @@ const Marketing = View.Component({
    * Adds the marketing structure to the internal pages.
    */
   setInternal() {
-    this.$().html(getInternal());
+    this.$setState({ mkt: _getInternal() });
     return this;
   },
 
@@ -93,7 +93,7 @@ const Marketing = View.Component({
    * Adds the marketing content for the frontpage.
    */
   fillFrontContent(content) {
-    this.$('.splash').html(content);
+    this.$setState({ mkt: _getFront(content) });
     return this;
   },
 

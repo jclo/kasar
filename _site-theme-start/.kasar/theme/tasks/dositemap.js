@@ -1,3 +1,4 @@
+// ESLint declarations
 /* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
 
@@ -14,7 +15,7 @@ const { src, dest } = require('gulp')
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     , extra       = require('../../../tobuildweb/extraUrls')
-    , expired     = require('../../../tobuildweb/expiredUrls.js')
+    , expired     = require('../../../tobuildweb/expiredUrls')
     ;
 
 

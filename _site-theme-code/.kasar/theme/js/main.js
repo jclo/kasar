@@ -3,23 +3,15 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global jQuery, isThisBrowserIE, addMessageToAlertBanner */
-/* eslint strict: ["error", "function"] */
-/* eslint one-var: 0, semi-style: 0, no-var: 0, prefer-arrow-callback: 0 */
+/* global jQuery, isThisBrowserIE, hljs */
+/* eslint strict: ["error", "function"], semi-style: 0 */
 (function($) {
   'use strict';
 
   // -- Service Worker Script:
-  var sw = '/sw.js';
+  const sw = '/sw.js';
 
-  $(document).ready(function() {
-    var date
-      , year
-      , attr
-      , text
-      , alert
-      ;
-
+  $(document).ready(() => {
     // -- Start the Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register(sw)
@@ -34,16 +26,16 @@
     }
 
     // -- Update the copyright date in the head and footer sections:
-    date = new Date();
-    year = date.getFullYear();
-    attr = $('meta[name=copyright]').attr('content');
+    const date = new Date();
+    const year = date.getFullYear();
+    const attr = $('meta[name=copyright]').attr('content');
     $('meta[name=copyright]').attr('content', attr.replace('{{copyright:year}}', year));
-    text = $('footer p.copyright').text();
+    const text = $('footer p.copyright').text();
     $('footer p.copyright').text(text.replace('{{copyright:year}}', year));
 
     // -- Add a banner alert if needed:
     if (isThisBrowserIE()) {
-      alert = 'You are using an <strong>outdated</strong> browser. Your browser is not compatible with xxx. Please upgrade it!';
+      // const alert = 'You are using an <strong>outdated</strong> browser. Your browser is not compatible with xxx. Please upgrade it!';
       // addMessageToAlertBanner(alert);
     }
 
@@ -53,10 +45,8 @@
     });
 
     // -- Start the smooth scrolling:
-    $('body').smoothScrolling({ buttons: '.nav' }, function() {
+    $('body').smoothScrolling({ buttons: '.nav' }, () => {
       //
     });
-
-    //
   });
 }(jQuery));

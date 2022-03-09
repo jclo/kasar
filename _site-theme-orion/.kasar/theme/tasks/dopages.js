@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const fs        = require('fs')
+const fs       = require('fs')
     , fse       = require('fs-extra')
     , Markdown  = require('markdown-it')
     , mdAttrs   = require('markdown-it-attrs')
@@ -20,7 +20,7 @@ const config     = require('../../../config')
 
 
 // -- Local constants
-const { dist } = config
+const { dist }     = config
     , { basedist } = config
     ;
 

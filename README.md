@@ -26,7 +26,7 @@ Then, you should add the three following scripts in the script section of the fi
   "scripts": {
     "kinit": "kasar init",
     "build": "kasar build",
-    "web": "kasar serve"
+    "app": "kasar serve"
   }
 }
 ```

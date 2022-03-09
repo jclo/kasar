@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -55,7 +55,7 @@ function appendMenu(menu) {
  * @returns {}              -,
  * @since 0.0.0
  */
-const TLMenu = View.Component({
+const TLMenu = RView.Component({
 
   /**
    * Adds the menu title.
@@ -98,7 +98,7 @@ const TLMenu = View.Component({
  * @returns {}              -,
  * @since 0.0.0
  */
-const TRMenu = View.Component({
+const TRMenu = RView.Component({
 
   /**
    * Fills the menu.
@@ -133,7 +133,7 @@ const TRMenu = View.Component({
  * @returns {}              -,
  * @since 0.0.0
  */
-const BOTMenu = View.Component({
+const BOTMenu = RView.Component({
 
   /**
    * Fills the menu.

@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/kasar",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "View-powered Static Website Generator",
   "main": "index.js",
   "bin": {
@@ -28,7 +28,8 @@
   },
   "homepage": "https://github.com/jclo/kasar",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-free": "^6.0.0",
+    "@mobilabs/pureplus": "^0.90.1",
     "@mobilabs/rview": "^1.0.10",
     "browser-sync": "^2.27.7",
     "del": "^6.0.0",

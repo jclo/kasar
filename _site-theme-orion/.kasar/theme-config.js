@@ -32,7 +32,7 @@ module.exports = {
     `${base}/site/tobuildweb/.htaccess`,
     `${base}/site/tobuildweb/maintenance.html`,
     `${base}/site/tobuildweb/robot.txt`,
-    `${base}/site/tobuildweb/favicon.ico`,
+    `${base}/site/tobuildweb/icon-32x32.png`,
     `${base}/site/tobuildweb/site.webmanifest`,
     `${base}/site/tobuildweb/manifest.json`,
   ],
@@ -55,7 +55,6 @@ module.exports = {
       `${base}/node_modules/jquery/dist/jquery.min.js`,
       `${base}/node_modules/jquery/dist/jquery.min.map`,
       `${base}/node_modules/jquery.easing/jquery.easing.min.js`,
-      // `${base}/site/vendor/highlight/highlight.pack.js`,
     ],
     tominify: [
       // '',
@@ -64,14 +63,12 @@ module.exports = {
 
   // These are the tracker script files. The javascript file must be included
   // in the folder './js' and the php file in the folder './php'.
-  // theme-config-plus:
   tracker: {
     // js: ``,
     // php: ``,
   },
 
   // These are the PHP files to include in your website folder.
-  //
   php: [
     `${base}/site/php/.htaccess`,
   ],
@@ -116,7 +113,6 @@ module.exports = {
     `${base}/node_modules/purecss/build/pure.css`,
     `${base}/node_modules/purecss/build/grids-responsive.css`,
     `${base}/node_modules/@fortawesome/fontawesome-free/css/all.css`,
-    // `${base}/site/vendor/highlight/styles/default.css`,
     // From theme:
     `${base}/site/.kasar/theme/pages/components/app/app.css`,
     `${base}/site/.kasar/theme/pages/components/app/pureplus-callout.css`,
@@ -146,4 +142,6 @@ module.exports = {
     `,
     url: '<script src="https://www.google-analytics.com/analytics.js" async></script>',
   },
+
+  KA: {},
 };

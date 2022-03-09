@@ -1,4 +1,5 @@
 // ESLint declarations
+/* eslint-env node */
 /* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
 
 'use strict';
@@ -23,6 +24,7 @@ const server       = browserSync.create()
     ;
 
 // -- Local variables
+
 
 // -- Gulp Private Tasks
 const build = require('../tasks/build')

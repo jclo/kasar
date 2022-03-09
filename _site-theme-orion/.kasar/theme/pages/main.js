@@ -44,7 +44,6 @@ const { product } = config
  * @param {String}          the description of the web page,
  * @param {String}          the HTML contents of the web page,
  * @param {String}          the normalyze style to insert in the head of the web page,
- * @param {Array}           a special sidemenu if any,
  * @returns {String}        returns the HTML representation of the generated web page,
  * @since 0.0.0
  */

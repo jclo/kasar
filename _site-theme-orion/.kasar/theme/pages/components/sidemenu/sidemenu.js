@@ -5,7 +5,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -145,7 +145,7 @@ function _buildMenu(menu, sidemenu) {
  * @returns {}              -,
  * @since 0.0.0
  */
-const SideMenu = View.Component({
+const SideMenu = RView.Component({
 
   /**
    * Fills the menu.

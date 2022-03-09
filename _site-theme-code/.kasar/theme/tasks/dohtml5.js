@@ -1,4 +1,4 @@
-// ESLint declarations
+/* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0,
   no-underscore-dangle: 0 */
 

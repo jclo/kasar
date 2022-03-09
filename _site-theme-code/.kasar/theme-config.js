@@ -19,7 +19,7 @@ module.exports = {
 
   // This is the theme used to build your website:
   theme: {
-    name: 'Orion',
+    name: 'Code',
     version: '{{theme:version}}',
   },
 
@@ -32,7 +32,7 @@ module.exports = {
     `${base}/site/tobuildweb/.htaccess`,
     `${base}/site/tobuildweb/maintenance.html`,
     `${base}/site/tobuildweb/robot.txt`,
-    `${base}/site/tobuildweb/favicon.ico`,
+    `${base}/site/tobuildweb/icon-32x32.png`,
     `${base}/site/tobuildweb/site.webmanifest`,
     `${base}/site/tobuildweb/manifest.json`,
   ],
@@ -64,14 +64,12 @@ module.exports = {
 
   // These are the tracker script files. The javascript file must be included
   // in the folder './js' and the php file in the folder './php'.
-  // theme-config-plus:
   tracker: {
     // js: ``,
     // php: ``,
   },
 
   // These are the PHP files to include in your website folder.
-  //
   php: [
     `${base}/site/php/.htaccess`,
   ],
@@ -146,4 +144,6 @@ module.exports = {
     `,
     url: '<script src="https://www.google-analytics.com/analytics.js" async></script>',
   },
+
+  KA: {},
 };

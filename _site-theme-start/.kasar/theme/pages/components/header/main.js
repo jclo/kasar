@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -31,7 +31,7 @@ const { TLMenu } = require('../menus/main')
  * @returns {}              -,
  * @since 0.0.0
  */
-const Header = View.Component({
+const Header = RView.Component({
 
   /**
    * Renders the web component.

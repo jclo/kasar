@@ -1,10 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -28,13 +28,14 @@ const View = require('@mobilabs/rview')
  * @returns {String}        returns the marketing HTML structure,
  * @since 0.0.0
  */
-function getFront() {
+function getFront(content) {
   return `
     <div class="marketing">
       <div class="container">
         <div class="splash">
           <noscript>Your browser does not support JavaScript!</noscript>
           <!-- content here -->
+          ${content || ''}
         </div>
       </div>
     </div>
@@ -54,6 +55,9 @@ function getInternal() {
   return `
     <div class="marketing inside">
       <div class="container">
+        <div class="inbox">
+          <img src="img/banner.jpg" alt="" />
+        </div>
       </div>
     </div>
   `;
@@ -71,13 +75,13 @@ function getInternal() {
  * @returns {}              -,
  * @since 0.0.0
  */
-const Marketing = View.Component({
+const Marketing = RView.Component({
 
   /**
    * Adds the marketing structure to the frontpage.
    */
   setFront() {
-    this.$().html(getFront());
+    this.$setState({ mkt: getFront() });
     return this;
   },
 
@@ -85,7 +89,7 @@ const Marketing = View.Component({
    * Adds the marketing structure to the internal pages.
    */
   setInternal() {
-    this.$().html(getInternal());
+    this.$setState({ mkt: getInternal() });
     return this;
   },
 
@@ -93,14 +97,14 @@ const Marketing = View.Component({
    * Adds the marketing content for the frontpage.
    */
   fillFrontContent(content) {
-    this.$('.splash').html(content);
+    this.$setState({ mkt: getFront(content) });
     return this;
   },
 
   /**
    * Renders the web component.
    */
-  render() {
+  render(/* state */) {
     return '<div></div><!-- /.marketing -->';
   },
 });

@@ -1,10 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint one-var: 0, semi-style: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -31,7 +31,7 @@ const { TLMenu } = require('../menus/menus')
  * @returns {}              -,
  * @since 0.0.0
  */
-const Header = View.Component({
+const Header = RView.Component({
 
   /**
    * Renders the web component.
@@ -42,7 +42,6 @@ const Header = View.Component({
     return `
       <header>
         <div class="navbar navbar-fixed-top">
-          <div class="banneralert"></div>
           <div class="container">
             <!-- grid -->
             <div class="pure-g">

@@ -1,3 +1,81 @@
 /*
  * -- MARKETING STYLE --
  */
+.splash {
+  position: relative;
+  text-align: center;
+  padding: 100px 60px 20px 60px;
+  z-index: 2
+}
+.splash h1 {
+  font-size: 3em;
+  font-weight: 400;
+  padding-top: 50px
+}
+.splash hr {
+  width: 100px;
+  height: 2px;
+  border: none;
+  margin: 35px auto;
+  background: red
+}
+.splash .slogan {
+  font-size: 1.5em;
+  font-weight: 400
+}
+
+
+/*
+ * -- FRONT PAGE MARKETING STYLE --
+ *
+ */
+.marketing {
+  position: relative;
+  /* color: white; */
+  width: auto;
+  height: 85vh;
+  margin-top: 50px
+}
+
+.marketing.inside {
+  height: auto;
+  min-height: 1em
+}
+
+.marketing .overlay {
+  position: absolute;
+  width: 100%;
+  height:100%;
+  background: transparent url(../img/dot.png);
+  z-index: 1
+}
+
+/* All browsers */
+.marketing .background {
+  position: absolute;
+  width: 100%;
+  height:100%;
+  background: transparent url(../img/dc_l.jpg) no-repeat 50% 0;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px)
+ }
+
+/* Specific Firefox */
+.no-cssfilters.svgfilters .marketing .background {
+  filter: url(../img/blur.svg#blur)
+ }
+
+/* Specific ie9- */
+.no-cssfilters.no-svgfilters .marketing .background {
+  background: transparent url(../img/dc_blur.jpg) no-repeat 50% 0
+}
+
+/* Hack for ie10+ has svgfilter blur does not work! */
+.ie .marketing .background {
+  background: transparent url(../img/dc_blur.jpg) no-repeat 50% 0
+}
+
+/* oOo */

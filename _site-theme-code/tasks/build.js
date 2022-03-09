@@ -7,8 +7,6 @@
 
 
 // -- Local modules
-const build = require('../.kasar/theme/tasks/build')
-    ;
 
 
 // -- Local constants
@@ -18,6 +16,8 @@ const build = require('../.kasar/theme/tasks/build')
 
 
 // -- Gulp Private Tasks
+const build = require('../.kasar/theme/tasks/build')
+    ;
 
 
 // Gulp Public Tasks:

@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -28,7 +28,7 @@ const View = require('@mobilabs/rview')
  * @returns {}              -,
  * @since 0.0.0
  */
-const TLMenu = View.Component({
+const TLMenu = RView.Component({
 
   /**
    * Fills the menu.
@@ -63,7 +63,7 @@ const TLMenu = View.Component({
  * @returns {}              -,
  * @since 0.0.0
  */
-const TRMenu = View.Component({
+const TRMenu = RView.Component({
 
   set(path) {
     this.$setState({ path });
@@ -94,7 +94,7 @@ const TRMenu = View.Component({
  * @returns {}              -,
  * @since 0.0.0
  */
-const BOTMenu = View.Component({
+const BOTMenu = RView.Component({
 
   /**
    * Renders the web component.

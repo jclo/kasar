@@ -1,4 +1,4 @@
-// ESLint declarations
+/* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
 
 'use strict';
@@ -174,8 +174,20 @@ function cpimg() {
 module.exports = series(
   create,
   parallel(
-    cpjs, cpminifiedlibs, cp2minifylibs, cpga, cptrackerjs, cptrackerphp, cpfonts, cpimg,
-    dohtml5, dojs, dojsu, dosw, docss, dophp,
+    cpjs,
+    cpminifiedlibs,
+    cp2minifylibs,
+    cpga,
+    cptrackerjs,
+    cptrackerphp,
+    cpfonts,
+    cpimg,
+    dohtml5,
+    dojs,
+    dojsu,
+    dosw,
+    docss,
+    dophp,
   ),
   dopostskeleton,
 );

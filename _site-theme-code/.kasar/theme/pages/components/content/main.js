@@ -1,11 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0,
-  no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const View = require('@mobilabs/rview')
+const RView = require('@mobilabs/rview')
     ;
 
 
@@ -281,7 +280,7 @@ function _getMenu(sidemenu, submenu) {
  * @returns {}              -,
  * @since 0.0.0
  */
-const Content = View.Component({
+const Content = RView.Component({
 
   /**
    * Inserts the content structure of the frontpage

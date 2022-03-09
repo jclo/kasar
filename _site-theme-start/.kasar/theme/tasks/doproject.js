@@ -1,3 +1,4 @@
+// ESLint declarations
 /* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0,
   no-underscore-dangle: 0 */
@@ -23,6 +24,7 @@ const themeconfig = require('../../theme-config')
 const { dist } = config
     , { pjs }  = themeconfig
     , { css }  = themeconfig
+    , { sw }   = themeconfig
     ;
 
 
@@ -65,6 +67,22 @@ function _dojsu(done) {
 
 
 /**
+ * Concatenates and uglyfies js files.
+ */
+function _dosw(done) {
+  if (!sw || !sw.length) {
+    done();
+    return null;
+  }
+
+  return src(sw)
+    .pipe(uglify())
+    .pipe(dest(dist))
+  ;
+}
+
+
+/**
  * Merges and minifies all CSS in one.
  */
 function _docss(done) {
@@ -80,7 +98,7 @@ function _docss(done) {
       rebaseTo: './theme/pages/components/css',
     }))
     .pipe(concat('style.css'))
-    .pipe(replace('../../../../node_modules/font-awesome/', '../'))
+    .pipe(replace('../webfonts', '../fonts/fontawesome-free/webfonts'))
     .pipe(dest(`${dist}/css/`))
   ;
 }
@@ -94,6 +112,10 @@ module.exports = {
 
   dojsu() {
     return _dojsu();
+  },
+
+  dosw() {
+    return _dosw();
   },
 
   docss() {

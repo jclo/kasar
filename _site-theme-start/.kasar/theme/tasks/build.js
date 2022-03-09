@@ -1,3 +1,4 @@
+// ESLint declarations
 /* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
 
@@ -27,7 +28,8 @@ const removeprevious = require('./remove')
 
 // Gulp Public Tasks
 module.exports = series(
-  removeprevious, doskeleton,
+  removeprevious,
+  doskeleton,
   parallel(dopages, dositemap),
   cleanup,
 );

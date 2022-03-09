@@ -1,5 +1,4 @@
 // ESLint declarations
-/* global */
 /* eslint one-var: 0, semi-style: 0 */
 
 'use strict';
@@ -52,12 +51,12 @@ module.exports = {
     street: '1, avenue de France',
     city: '75001 Paris',
     country: 'France',
-    phone: '+33 01 01 01 01 01',
+    phone: '+33 1 01 01 01 01',
     fax: '+33 1 01 01 01 02',
     email: 'contact(at)mycompany.com',
     url: {
       protocol: 'https',
-      domain: 'localhost:8080',
+      domain: 'www.mycompany.com',
     },
     // Nota:
     // you should not replace © by &copy; because JSDOM convert ';' to &amp. So,
@@ -78,7 +77,7 @@ module.exports = {
   google: {
     verify: {
       v1: '-',
-      // v2: `${base}/site/googlexxxxxx.html`,
+      // v2: `${base}/site/googlexxxx.html`,
     },
     siteid: 'UA-XXXXXXX-X',
   },
@@ -88,8 +87,8 @@ module.exports = {
   // description unique for each page.
   // If the contents of your page is detailed using markdown with or without html
   // tags, choose for the extension '.md'. If your contents is entirely written
-  // with html tags, choose for the extension '.html'. The pages with the suffix
-  // .html won't be processed by the markdown parser.
+  // with html tags, choose for the extension '.html'. This page won't be
+  // processed by the markdown parser.
   website: {
     home: {
       name: 'Home',

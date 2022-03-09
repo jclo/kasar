@@ -1,3 +1,4 @@
+// ESLint declarations
 /* eslint-env node */
 /* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
 
@@ -17,6 +18,7 @@ const themeconfig     = require('../../theme-config')
     , dohtml5         = require('./dohtml5')
     , { dojs }        = require('./doproject')
     , { dojsu }       = require('./doproject')
+    , { dosw }        = require('./doproject')
     , { docss }       = require('./doproject')
     , dophp           = require('./dophp')
     , dopostskeleton  = require('./dopostskeleton')
@@ -172,8 +174,20 @@ function cpimg() {
 module.exports = series(
   create,
   parallel(
-    cpjs, cpminifiedlibs, cp2minifylibs, cpga, cptrackerjs, cptrackerphp, cpfonts, cpimg,
-    dohtml5, dojs, dojsu, docss, dophp,
+    cpjs,
+    cpminifiedlibs,
+    cp2minifylibs,
+    cpga,
+    cptrackerjs,
+    cptrackerphp,
+    cpfonts,
+    cpimg,
+    dohtml5,
+    dojs,
+    dojsu,
+    dosw,
+    docss,
+    dophp,
   ),
   dopostskeleton,
 );
