@@ -3,6 +3,7 @@
 ### 1.1.0 (March 9, 2022)
 
   * Improved the _site-theme-start template,
+  * Added the missing files,
   * ...,
 
 

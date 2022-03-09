@@ -22,5 +22,7 @@ _site-theme-code/vendor/highlight/styles/*
 !_site-theme-code/vendor/highlight/styles/default.css
 
 _site-theme-start/_dist
+_site-theme-start/img/*
+!_site-theme-start/img/README.md
 
 site
