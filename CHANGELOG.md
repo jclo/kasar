@@ -4,7 +4,7 @@
 
   * Improved the _site-theme-start template,
   * Added the missing files,
-  * ...,
+  * Release.
 
 
 ### 1.0.7 (January 28, 2022)
