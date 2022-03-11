@@ -1,5 +1,6 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
+  import/no-extraneous-dependencies: 0 */
 
 'use strict';
 
@@ -133,14 +134,9 @@ function _insertNormalize(vdom, norm) {
  * @since 0.0.0
  */
 function _appendTracker(vdom, tracker, id) {
-  if (tracker) {
-    const script = vdom.window.document.createElement('script');
-    script.text = tracker.script.replace(/{{tracker:siteid}}/, id);
-    vdom.window.document.getElementsByTagName('body')[0].appendChild(script);
-    vdom.window.document
-      .getElementsByTagName('body')[0]
-      .insertAdjacentHTML('beforeend', tracker.url)
-    ;
+  if (tracker && typeof tracker.xmlString === 'string') {
+    const html = tracker.xmlString.replace(/{{tracker:siteid}}/g, id);
+    vdom.window.document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', html);
   }
 }
 
@@ -293,11 +289,8 @@ const methods = {
   addHead(title, description, norm) {
     _setTitle(this.vdom, title);
     _setGoogleVerify(this.vdom, google);
-    // _setCompany(this.vdom, company.name, company.description);
     _setDescription(this.vdom, description);
-    // _setCopyright(this.vdom, company.copyright);
     _setFontUrl(this.vdom, fonts.remote);
-    // _setCSSPath(this.vdom, basepath);
     _insertNormalize(this.vdom, norm);
     return this;
   },

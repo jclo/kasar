@@ -135,13 +135,17 @@ module.exports = {
   // you don't want to insert a tracker, make the associated 'siteid' undefined
   // or null in 'site/config.js'.
   GA: {
-    script: `
-      // Google Analytics
-      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-      ga('create', '{{tracker:siteid}}', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    xmlString: `
+      <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+      <script>
+        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+        ga('create', '{{tracker:siteid}}', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+      </script>
+      <script async src="https://www.google-analytics.com/analytics.js"></script>
     `,
-    url: '<script src="https://www.google-analytics.com/analytics.js" async></script>',
   },
 
-  KA: {},
+  KA: {
+    xmlString: null,
+  },
 };

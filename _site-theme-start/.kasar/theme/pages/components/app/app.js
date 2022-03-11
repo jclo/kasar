@@ -1,5 +1,6 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
+  import/no-extraneous-dependencies: 0 */
 
 'use strict';
 

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.1.1 (March 11, 2022)
+
+  * Reworked how to define and insert a tracker (ex. google analytics),
+  * ...,
+
+
 ### 1.1.0 (March 9, 2022)
 
   * Improved the _site-theme-start template,
