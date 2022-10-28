@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.1.2 (October 28, 2022)
+
+  * Updated the project dependencies,
+  * ...
+
+
 ### 1.1.1 (March 11, 2022)
 
   * Reworked how to define and insert a tracker (ex. google analytics),
