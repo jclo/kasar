@@ -5,6 +5,7 @@
   * Updated the project dependencies,
   * Added an empty test script,
   * Release.
+  * Updated the version!
 
 
 ### 1.1.1 (March 11, 2022)
