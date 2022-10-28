@@ -3,6 +3,7 @@
 ### 1.1.2 (October 28, 2022)
 
   * Updated the project dependencies,
+  * Added an empty test script,
   * ...
 
 

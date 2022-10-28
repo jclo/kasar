@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "gulp -f site/.kasar/gulpfile.js build",
-    "app": "gulp -f site/.kasar/gulpfile.js serve"
+    "app": "gulp -f site/.kasar/gulpfile.js serve",
+    "test": ""
   },
   "repository": {
     "type": "git",
