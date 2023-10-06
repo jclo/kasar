@@ -1,10 +1,10 @@
 /*
- * -- GLOBAL STYLE --
+ * -- STYLE FOR THE APP --
+ *
  */
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
-  color: rgb(81, 94, 113);
   font-weight: 400;
   line-height: 1.42857143
 }
@@ -27,5 +27,18 @@ strong {
 @media (min-width:768px) { .container { width: 750px } }
 @media (min-width:992px) { .container { width: 970px } }
 @media (min-width:1200px) { .container { width: 1170px } }
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+body {
+  color: var(--ksr-body-color);
+  background-color: var(--ksr-body-background-color);
+}
+
+
 
 /* oOo */

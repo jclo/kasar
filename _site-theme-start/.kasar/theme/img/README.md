@@ -1,3 +1,7 @@
 # README
 
-Copy here the image specific to your theme.
+Copy here the images specific to your theme.
+
+That's all!
+
+-- oOo --

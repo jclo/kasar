@@ -1,17 +1,59 @@
 /*
- * -- FOOTER STYLE --
+ * -- STYLE FOR THE FOOTER --
+ *
  */
 footer {
   font-size: 0.85em;
-  font-weight: 300;
+  font-weight: 300
 }
+
+footer.container {
+  padding-bottom: 2em
+}
+
 footer .top {
-  margin: 1em 0;
-  border-top: solid 1px rgb(220, 220, 220)
+  margin: 1em 0
 }
+
 footer .legal {
-  margin-top: 2em;
-  border-top: solid 1px rgb(220, 220, 220)
+  margin-top: 2em
 }
+
+footer .legal {
+  display: flex;
+  flex-direction: row
+}
+
+footer .legal > div {
+  flex: initial
+}
+
+footer .legal > div:last-child {
+  margin-left: auto
+}
+
+/**
+ * FLEXBOXES VISIBILITY
+ */
+footer .legal > div:last-child {
+  display: none
+}
+
+@media (min-width:768px) {
+  footer .legal > div:last-child {
+    display: block
+  }
+}
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+footer .legal {
+  border-top: var(--ksr-body-border-solid)
+}
+
+
 
 /* oOo */

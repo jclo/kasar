@@ -1,0 +1,79 @@
+/*
+ * -- VARIABLES SHARED BY ALL THE APP --
+ *
+ */
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+/**
+ * LIGHT
+ */
+:root {
+  --ksr-body-color: rgb(81, 94, 113);
+  --ksr-body-background-color: rgb(255, 255, 255);
+  --ksr-body-titles: rgb(81, 94, 113);
+  --ksr-body-links: rgb(173, 31, 35);
+  --ksr-body-hr-separator: red;
+  --ksr-body-border-solid: 1px solid rgb(220, 220, 220);
+
+  --ksr-header-background-color: rgba(255, 255, 255, 0.97);
+
+  --ksr-menu-arrow-border-color-before: #fff;
+  --ksr-menu-arrow-border-color-after: rgba(0, 0, 0, 0.15);
+  --ksr-menu-dropdown-background-color: #fff;
+  --ksr-menu-dropdown-box-shadow: 0 0 10px 0 rgb(26, 46, 69, 0.3);
+
+  --ksr-mobilemenu-background-color: rgb(40, 44, 52);
+  --ksr-mobilemenu-background-text-color: rgb(255, 255, 255);
+  --ksr-mobilemenu-icon-color: rgb(40, 44, 52);
+
+  --ksr-callout-border-left: 3px solid #eee;
+  --ksr-callout-info-color: #5bc0de;
+  --ksr-callout-info-background-color: #f4f8fa;
+  --ksr-callout-warning-color: #f0ad4e;
+  --ksr-callout-warning-background-color: #fcf8f2;
+  --ksr-callout-error-color: #ad1f23;
+  --ksr-callout-error-background-color: #fdf7f7;
+  --ksr-callout-code-background-color: #fff;
+}
+
+/**
+ * DARK
+ */
+:root[data-theme="dark"] {
+  --ksr-body-color: rgb(227, 227, 227);
+  --ksr-body-background-color: rgb(27, 27, 29);
+  --ksr-body-titles: rgb(227, 227, 227);
+  --ksr-body-links: rgb(173, 31, 35);
+  --ksr-body-hr-separator: red;
+  --ksr-body-border-solid: 1px solid rgb(220, 220, 220);
+
+  --ksr-header-background-color: rgba(27, 27, 29, 0.99);
+
+  --ksr-menu-arrow-border-color-before: rgb(40, 44, 52);
+  --ksr-menu-arrow-border-color-after: rgba(0, 0, 0, 0.1);
+  --ksr-menu-dropdown-background-color: rgb(40, 44, 52);
+  --ksr-menu-dropdown-box-shadow: 0 0 10px 0 rgb(26, 46, 69, 0.3);
+
+  --ksr-mobilemenu-background-color: rgb(40, 44, 52);
+  --ksr-mobilemenu-background-text-color: rgb(255, 255, 255);
+  --ksr-mobilemenu-icon-color: rgb(255, 255, 255);
+
+  --ksr-callout-border-left: 3px solid #eee;
+  --ksr-callout-info-color: #5bc0de;
+  --ksr-callout-info-background-color: rgb(40, 44, 52);;
+  --ksr-callout-warning-color: #f0ad4e;
+  --ksr-callout-warning-background-color: rgb(40, 44, 52);;
+  --ksr-callout-error-color: #ad1f23;
+  --ksr-callout-error-background-color: rgb(40, 44, 52);;
+  --ksr-callout-code-background-color: #fff;
+}
+
+
+
+/* oOo */

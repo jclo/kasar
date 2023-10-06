@@ -1,0 +1,66 @@
+/*
+ * -- STYLE OF THE PUREPLUS-CALLOUT --
+ *
+ */
+ .pureplus-callout {
+  margin: 20px 0;
+  padding: 15px
+}
+
+.pureplus-callout h3 {
+  margin-top: 0;
+  margin-bottom: 5px
+}
+
+.pureplus-callout p:last-child {
+  margin-bottom: 0
+}
+
+.pureplus-callout code,
+.pureplus-callout .highlight {
+  border-radius: 3px
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.pureplus-callout {
+  border-left: var(--ksr-callout-border-left);
+}
+
+.pureplus-callout code,
+.pureplus-callout .highlight {
+  background-color: var(--ksr-callout-code-background-color);
+}
+
+.pureplus-callout-info {
+  background-color: var(--ksr-callout-info-background-color);
+  border-color: var(--ksr-callout-info-color);
+
+}
+.pureplus-callout-info h3 {
+  color: var(--ksr-callout-info-color);
+}
+
+.pureplus-callout-warning {
+  background-color: var(--ksr-callout-warning-background-color);
+  border-color: var(--ksr-callout-warning-color);
+}
+.pureplus-callout-warning h3 {
+  color: var(--ksr-callout-warning-color);
+}
+
+.pureplus-callout-error {
+  background-color: var(--ksr-callout-error-background-color);
+  border-color: var(--ksr-callout-error-color);
+}
+.pureplus-callout-error h3 {
+  color: var(--ksr-callout-error-color);
+}
+
+
+
+/* oOo */

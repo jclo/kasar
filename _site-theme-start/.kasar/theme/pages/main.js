@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const kasar = require('../tasks/_kasar')
+const kasar = require('../tasks/libs/kasar')
     ;
 
 
@@ -13,19 +13,22 @@ const VDOM        = require('./lib/vdom')
     , App         = require('./components/app/app')
     , themeconfig = require('../../theme-config')
     , config      = require('../../../config')
+    , U           = require('./lib/util')
     ;
 
 
 // -- Local constants
-const { product } = config
-    , kversion    = kasar.VERSION
-    , { theme }   = themeconfig
-    , { GA }      = themeconfig
-    , { KA }      = themeconfig
-    , { scripts } = config
-    , { google }  = config
-    , { kiwi }    = config
-    // , { menu: { mobile } } = config
+const { product }    = config
+    , kversion       = kasar.VERSION
+    , { theme }      = themeconfig
+    , { GA4 }        = themeconfig
+    , { KA }         = themeconfig
+    , { Axeptio }    = themeconfig
+    , { topscripts } = config
+    , { scripts }    = config
+    , { google }     = config
+    , { kiwi }       = config
+    , { axeptio }    = config
     ;
 
 
@@ -47,25 +50,29 @@ const { product } = config
  * @returns {String}        returns the HTML representation of the generated web page,
  * @since 0.0.0
  */
-function createPage(pagename, title, description, content, norm, sidemenu) {
+function createPage(website, menu, lang, page, content, norm, company) {
   // Creates the DOM & adds the DOM head.
-  const vdom = VDOM(product, kversion, theme);
-  vdom.addHead(title, description, norm);
+  const vdom = VDOM(product, kversion, theme, lang);
+  vdom.addHead(website[lang][page].title, website[lang][page].description, norm);
 
   // Creates an App linked with this virtual DOM and fills the body.
   // (the virtual dom is attached to Node.js global window and document variables.
   // it is by this way that App can access to the vdom. The function creating this
   // link is createVDOM in './lib/vdom.js')
   const app = App();
-  app.configure(pagename);
-  app.fillContent(pagename, content, sidemenu/* , mobile */);
+  app.configure(website, menu, lang, page, company);
+  app.fillContent(page, content);
 
   // Completes the DOM with the scripts.
   vdom.appendScripts(scripts);
-  if (google && google.siteid) vdom.appendTracker(GA, google.siteid);
+  vdom.appendTopScripts(topscripts);
+  if (google && google.sitega4id) vdom.appendTracker(GA4, google.sitega4id, 'GA4');
   if (kiwi && kiwi.siteid) vdom.appendTracker(KA, kiwi.siteid);
+  if (axeptio && axeptio.siteid) vdom.appendTracker(Axeptio, axeptio.siteid);
 
   // Serializes the generated DOM and returns it.
+  vdom.vdom.window.document.head.innerHTML = U.minify(vdom.vdom.window.document.head.innerHTML);
+  vdom.vdom.window.document.body.innerHTML = U.minify(vdom.vdom.window.document.body.innerHTML);
   return vdom.serialize();
 }
 

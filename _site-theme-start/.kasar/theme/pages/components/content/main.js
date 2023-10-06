@@ -1,5 +1,32 @@
-// ESLint declarations
-/* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
+/** ****************************************************************************
+ *
+ * Defines the content section of the web page.
+ *
+ * main.js extends the RView object. In other words, it creates
+ * an object that inherits from the RView object.
+ *
+ * Private Functions:
+ *  . _getContent                 returns the XMLString of the component,
+ *
+ *
+ * Overwritten Public Methods:
+ *  . render                      returns the XMLString of the component,
+ *
+ *
+ * Specific Public Methods:
+ *  . fill                        fills the content,
+ *
+ *
+ *
+ * @namespace -
+ * @exports   -
+ * @author    -
+ * @since     0.0.0
+ * @version   -
+ * ************************************************************************** */
+/* global */
+/* eslint-disable one-var, semi-style, no-underscore-dangle,
+  import/no-extraneous-dependencies */
 
 'use strict';
 
@@ -17,51 +44,41 @@ const RView = require('@mobilabs/rview')
 // -- Local variables
 
 
-// -- Private Function(s) ------------------------------------------------------
-
-
-// -- Public Function(s) -------------------------------------------------------
-
+// -- Private Functions --------------------------------------------------------
 
 /**
- * Defines the web component.
+ * Returns the contents of the pages.
  *
- * @function ()
- * @public
- * @param {}                -,
- * @returns {}              -,
+ * @function (arg1)
+ * @private
+ * @param {XMLString}       the content of the page,
+ * @returns {XMLString}     returns the contents structure,
  * @since 0.0.0
  */
+function _getContent(content) {
+  return `
+    <div class="content-body">${content}</div>
+  `;
+}
+
+
+// -- Public -------------------------------------------------------------------
+
 const Content = RView.Component({
 
-  /**
-   * Inserts the content structure of the frontpage inside the DOM.
-   */
-  setFront() {
-    this.state.level = 'front';
-    return this;
-  },
+  // -- Overwritten Methods ----------------------------------------------------
 
   /**
-   * Inserts the content structure of the internal pages inside the DOM.
+   * Returns the XMLString of the component.
+   *
+   * @method (arg1, arg2)
+   * @public
+   * @param {Object}        the state properties,
+   * @param {Object}        the optional properties,
+   * @returns {XMLString}   returns the XMLString of the component,
+   * @since 0.0.0
    */
-  setInternal() {
-    this.state.level = '';
-    return this;
-  },
-
-  /**
-   * Fills the content.
-   */
-  fill(content) {
-    this.$setState({ content });
-    return this;
-  },
-
-  /**
-   * Renders the web component.
-   */
-  render(state) {
+  render(state/* , props */) {
     return `
       <div class="content ${state.level || ''}">
         <div class="container">
@@ -69,6 +86,23 @@ const Content = RView.Component({
         </div><!-- /.container -->
       </div>
     `;
+  },
+
+
+  // -- Specific Methods -------------------------------------------------------
+
+  /**
+   * Fills the content.
+   *
+   * @method (arg1)
+   * @public
+   * @param {XMLString}     the content of the page,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
+   */
+  fill(content) {
+    this.$setState({ content: _getContent(content) });
+    return this;
   },
 });
 

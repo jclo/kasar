@@ -31,20 +31,21 @@ const { fonts }    = themeconfig
 /**
  * Returns the HTML Page template.
  *
- * @function (arg1, arg2, arg3)
+ * @function (arg1, arg2, arg3, arg4)
  * @private
  * @param {Object}          the reference to the product built,
  * @param {String}          the version of Kasar that created the product,
  * @param {Object}          the reference to the theme used to build the product,
+ * @param {String}          the language,
  * @returns {String}        returns the DOM template,
  * @since 0.0.0
  */
-function _getHTMLTemplate(product, kversion, theme) {
+function _getHTMLTemplate(product, kversion, theme, lang) {
   return `
     <!doctype html>
     <!-- ${product.name} v${product.version} built with Kasar ${kversion} and the theme ${theme.name} v${theme.version} -->
     <!-- based on HTML5 boilerplate v8.0.0 -->
-    <html class="no-js" lang="${config.lang || ''}">
+    <html class="no-js" lang="${lang || ''}" data-theme="light">
       <head>
         <meta charset="utf-8">
         <title></title>
@@ -76,6 +77,7 @@ function _getHTMLTemplate(product, kversion, theme) {
         </style>
         <link rel="stylesheet" href="{{path:fonts}}">
         <link rel="stylesheet" href="${basepath}css/style.css">
+        <link id="highlight-color-theme" rel="stylesheet" href="${basepath}css/fake.css">
 
         <meta name="theme-color" content="#fafafa">
       </head>
@@ -96,6 +98,73 @@ function _getHTMLTemplate(product, kversion, theme) {
       </body>
     </html>
   `;
+}
+
+/**
+ * Inserts the tracker script.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {Object}          the VDOM object,
+ * @param {Object}          the tracker,
+ * @param {String}          the tracker id,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _appendTracker(vdom, tracker, id, type) {
+  if (tracker && typeof tracker.xmlString === 'string' && type === 'GA4') {
+    const script = tracker.xmlString.replace(/{{tracker:siteid}}/g, id);
+    vdom.window.document.getElementsByTagName('head')[0].insertAdjacentHTML('afterbegin', script);
+    return;
+  }
+
+  if (tracker && typeof tracker.xmlString === 'string') {
+    const html = tracker.xmlString.replace(/{{tracker:siteid}}/g, id);
+    vdom.window.document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', html);
+  }
+}
+
+/**
+ * Appends the script to the end of the body section.
+ *
+ * @function (arg1, arg2)
+ * @private
+ * @param {Object}          the VDOM object,
+ * @param {Array}           the list of scripts,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _appendScripts(vdom, scripts) {
+  const node = vdom.window.document.getElementsByTagName('body')[0];
+
+  for (let i = 0; i < scripts.length; i++) {
+    const script = vdom.window.document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', scripts[i]);
+    node.appendChild(script);
+  }
+}
+
+/**
+ * Appends scripts to the top of the head section.
+ *
+ * @function (arg1, arg2)
+ * @private
+ * @param {Object}          the VDOM object,
+ * @param {Array}           the list of scripts,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _appendTopScripts(vdom, scripts) {
+  const node = vdom.window.document.getElementsByTagName('head')[0];
+
+  for (let i = scripts.length - 1; i > -1; i--) {
+    const script = vdom.window.document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', scripts[i]);
+    node.appendChild(script);
+    node.insertBefore(script, node.firstChild);
+  }
 }
 
 /**
@@ -123,44 +192,6 @@ function _insertNormalize(vdom, norm) {
 }
 
 /**
- * Inserts the tracker script.
- *
- * @function (arg1, arg2, arg3)
- * @private
- * @param {Object}          the VDOM object,
- * @param {Object}          the tracker,
- * @param {String}          the tracker id,
- * @returns {}              -,
- * @since 0.0.0
- */
-function _appendTracker(vdom, tracker, id) {
-  if (tracker && typeof tracker.xmlString === 'string') {
-    const html = tracker.xmlString.replace(/{{tracker:siteid}}/g, id);
-    vdom.window.document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeend', html);
-  }
-}
-
-/**
- * Appends the script to the end of the body section.
- *
- * @function (arg1, arg2)
- * @private
- * @param {Object}          the VDOM object,
- * @param {Array}           the list of scripts,
- * @returns {}              -,
- * @since 0.0.0
- */
-function _appendScripts(vdom, scripts) {
-  const node = vdom.window.document.getElementsByTagName('body')[0];
-
-  for (let i = 0; i < scripts.length; i++) {
-    const script = vdom.window.document.createElement('script');
-    script.setAttribute('src', scripts[i]);
-    node.appendChild(script);
-  }
-}
-
-/**
  * Sets the url of the server supplying the fonts.
  *
  * @function (arg1, arg2)
@@ -172,7 +203,7 @@ function _appendScripts(vdom, scripts) {
  */
 function _setFontUrl(vdom, url) {
   const el = vdom.window.document.querySelectorAll('link[rel="stylesheet"]');
-  el[0].setAttribute('href', url);
+  el[0].setAttribute('href', url || '');
 }
 
 /**
@@ -230,16 +261,17 @@ function _setTitle(vdom, title) {
 /**
  * Returns the created DOM.
  *
- * @function (arg1, arg2, arg3)
+ * @function (arg1, arg2, arg3, arg4)
  * @private
  * @param {Object}          the reference to the product built,
  * @param {String}          the version of Kasar that created the product,
  * @param {Object}          the reference to the theme used to build the product,
+ * @param {String}          the language,
  * @returns {String}        returns the DOM,
  * @since 0.0.0
  */
-function _createVDOM(product, kversion, theme) {
-  const template = _getHTMLTemplate(product, kversion, theme)
+function _createVDOM(product, kversion, theme, lang) {
+  const template = _getHTMLTemplate(product, kversion, theme, lang)
       , vdom = new JSDOM(template)
       ;
 
@@ -257,18 +289,19 @@ function _createVDOM(product, kversion, theme) {
 /**
  * Create the virtual DOM.
  *
- * @constructor (arg1, arg2, arg3)
+ * @constructor (arg1, arg2, arg3, arg4)
  * @public
  * @param {Object}          the reference to the product built,
  * @param {String}          the version of Kasar that created the product,
  * @param {Object}          the reference to the theme used to build the product,
+ * @param {String}          the language,
  * @returns {Object}        returns the create object,
  * @since 0.0.0
  */
-function VDOM(product, kversion, theme) {
+function VDOM(product, kversion, theme, lang) {
   /* eslint-disable-next-line no-use-before-define */
   const obj = Object.create(methods);
-  obj.vdom = _createVDOM(product, kversion, theme);
+  obj.vdom = _createVDOM(product, kversion, theme, lang);
   return obj;
 }
 
@@ -296,6 +329,20 @@ const methods = {
   },
 
   /**
+   * Inserts js libraies in the head section.
+   *
+   * @method (arg1)
+   * @public
+   * @param {Array}         the list of js librairies,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
+   */
+  appendTopScripts(scripts) {
+    _appendTopScripts(this.vdom, scripts);
+    return this;
+  },
+
+  /**
    * Inserts js libraries.
    *
    * @method (arg1)
@@ -312,15 +359,16 @@ const methods = {
   /**
    * Inserts the tracker script.
    *
-   * @method (arg1, arg2)
+   * @method (arg1, arg2, arg3)
    * @public
    * @param {Object}        the tracker,
    * @param {String}        the tracker id,
+   * @param {String}        if Google GA4,
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  appendTracker(tracker, id) {
-    _appendTracker(this.vdom, tracker, id);
+  appendTracker(tracker, id, type) {
+    _appendTracker(this.vdom, tracker, id, type);
     return this;
   },
 

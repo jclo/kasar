@@ -7,11 +7,14 @@
 
 // -- Local modules
 const themeconfig = require('./.kasar/theme-config')
+    // , docu        = require('./docu')
     ;
 
 
 // -- Local constants
-const { base }    = themeconfig
+const FR          = 'fr'
+    , EN          = 'en'
+    , { base }    = themeconfig
     , { version } = require('../package.json')
     , basepath    = '/'
     ;
@@ -40,9 +43,6 @@ module.exports = {
     name: 'xyz',
     version,
   },
-
-  // This is the lang to specify in the html tag (<html class="no-js" lang="en">)
-  lang: 'en',
 
   // These are the parameters that define your company:
   company: {
@@ -79,7 +79,16 @@ module.exports = {
       v1: '-',
       // v2: `${base}/site/googlexxxx.html`,
     },
-    siteid: 'UA-XXXXXXX-X',
+    sitega4id: null,
+  },
+
+  // This is the tag to include in Kiwi tracker.
+  kiwi: {
+    siteid: null,
+  },
+
+  axeptio: {
+    siteid: null,
   },
 
   // These are the pages to build. Google doesn't like that the title and the
@@ -90,56 +99,197 @@ module.exports = {
   // with html tags, choose for the extension '.html'. This page won't be
   // processed by the markdown parser.
   website: {
-    home: {
-      name: 'Home',
-      title: 'My Company | We are expert in ...',
-      description: 'this page ...',
-      content: `${base}/site/webpages/frontpage.md`,
-      output: `${basepath}index.html`,
+    fr: {
+      home: {
+        name: 'Home',
+        title: 'My Company | We are expert in ...',
+        description: 'this page ...',
+        content: `${base}/site/webpages/${FR}/frontpage.md`,
+        output: `${basepath}${FR}/index.html`,
+      },
+      kasar: {
+        name: 'Kasar',
+        title: 'Kasar Tutorial',
+        description: 'Explains how to use it.',
+        content: `${base}/site/webpages/${FR}/kasar.md`,
+        output: `${basepath}${FR}/kasar.html`,
+      },
+      contact: {
+        name: 'Contact',
+        title: 'contact page',
+        description: '...',
+        content: `${base}/site/webpages/${FR}/contact.md`,
+        output: `${basepath}${FR}/contact.html`,
+      },
+      legal: {
+        name: 'Legal',
+        title: 'My Company | Legal Terms',
+        description: '...',
+        content: `${base}/site/webpages/${FR}/legal.md`,
+        output: `${basepath}${FR}/legal.html`,
+      },
+      oops: {
+        name: 'Error page',
+        title: 'My Company | Error 404 Page',
+        description: '...',
+        content: `${base}/site/webpages/${FR}/404.md`,
+        output: `${basepath}${FR}/404.html`,
+      },
+      offline: {
+        name: 'Offline',
+        title: 'Offline',
+        description: '...',
+        content: `${base}/site/webpages/${FR}/offline.md`,
+        output: `${basepath}offline.html`,
+      },
     },
-    kasar: {
-      name: 'Kasar',
-      title: 'Kasar Tutorial',
-      description: 'Explains how to use it.',
-      content: `${base}/site/webpages/kasar.md`,
-      output: `${basepath}kasar.html`,
-    },
-    contact: {
-      name: 'Contact',
-      title: 'contact page',
-      description: '...',
-      content: `${base}/site/webpages/contact.md`,
-      output: `${basepath}contact.html`,
-    },
-    legal: {
-      name: 'Legal',
-      title: 'My Company | Legal Terms',
-      description: '...',
-      content: `${base}/site/webpages/legal.md`,
-      output: `${basepath}legal.html`,
-    },
-    oops: {
-      name: 'Error page',
-      title: 'My Company | Error 404 Page',
-      description: '...',
-      content: `${base}/site/webpages/404.md`,
-      output: `${basepath}404.html`,
-    },
-    offline: {
-      name: 'Offline',
-      title: 'Offline',
-      description: '...',
-      content: `${base}/site/webpages/offline.md`,
-      output: `${basepath}offline.html`,
+    en: {
+      home: {
+        name: 'Home',
+        title: 'My Company | We are expert in ...',
+        description: 'this page ...',
+        content: `${base}/site/webpages/${EN}/frontpage.md`,
+        output: `${basepath}${EN}/index.html`,
+      },
+      kasar: {
+        name: 'Kasar',
+        title: 'Kasar Tutorial',
+        description: 'Explains how to use it.',
+        content: `${base}/site/webpages/${EN}/kasar.md`,
+        output: `${basepath}${EN}/kasar.html`,
+      },
+      contact: {
+        name: 'Contact',
+        title: 'contact page',
+        description: '...',
+        content: `${base}/site/webpages/${EN}/contact.md`,
+        output: `${basepath}${EN}/contact.html`,
+      },
+      legal: {
+        name: 'Legal',
+        title: 'My Company | Legal Terms',
+        description: '...',
+        content: `${base}/site/webpages/${EN}/legal.md`,
+        output: `${basepath}${EN}/legal.html`,
+      },
+      oops: {
+        name: 'Error page',
+        title: 'My Company | Error 404 Page',
+        description: '...',
+        content: `${base}/site/webpages/${EN}/404.md`,
+        output: `${basepath}${EN}/404.html`,
+      },
+      offline: {
+        name: 'Offline',
+        title: 'Offline',
+        description: '...',
+        content: `${base}/site/webpages/${EN}/offline.md`,
+        output: `${basepath}offline.html`,
+      },
     },
   },
+
+  // Adds the documentation:
+  // doc: docu.doc || null,
+
+  // These are the top and bottom menus and a special 'mobile' menu that
+  // replace the default menus (top and bottom) on devices with a small screen.
+  /* eslint-disable object-curly-newline */
+  menu: {
+    fr: {
+      top: {
+        left: [
+          { text: 'Home', link: '#home' },
+          { text: 'Section 1', link: '#section1' },
+          { text: 'Section 2', link: '#section2' },
+          { text: 'Section 3', link: '#section3' },
+          { text: 'Section 4', link: '#section4' },
+          { text: 'Section 5', link: '#section5' },
+        ],
+        right: [
+          { text: 'Google', link: 'https://www.google.com', target: '_blank' },
+          { text: 'FR',
+            link: null,
+            target: null,
+            lang: FR,
+            children: [
+              { icon: '<span class="fi fi-gb"></span>', text: 'English', link: null, lang: EN },
+              { icon: '<span class="fi fi-fr"></span>', text: 'Français', link: null, lang: FR },
+            ],
+          },
+          { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
+          { icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-color-icons-light-sun">', text: '', link: '#switchtheme', lang: null },
+        ],
+      },
+      bottom: [
+        { text: 'contact', link: `${basepath}${FR}/contact.html` },
+        { text: 'legal', link: `${basepath}${FR}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${FR}/kasar.html` },
+        { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
+      ],
+      mobile: [
+        { text: 'Home', link: `${basepath}${FR}/index.html` },
+        { text: 'Contact', link: `${basepath}${FR}/contact.html` },
+        { text: 'Legal', link: `${basepath}${FR}/Legal.html` },
+        { text: 'Kasar', link: `${basepath}${FR}/kasar.html` },
+        { icon: '<span class="fi fi-gb"></span>', text: '', link: null, lang: EN },
+        { icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-color-icons-light-sun">', text: '', link: '#switchtheme', lang: null },
+      ],
+    },
+    en: {
+      top: {
+        left: [
+          { text: 'Home', link: '#home' },
+          { text: 'Section 1', link: '#section1' },
+          { text: 'Section 2', link: '#section2' },
+          { text: 'Section 3', link: '#section3' },
+          { text: 'Section 4', link: '#section4' },
+          { text: 'Section 5', link: '#section5' },
+        ],
+        right: [
+          { text: 'Google', link: 'https://www.google.com', target: '_blank' },
+          {
+            text: 'EN',
+            link: null,
+            target: null,
+            lang: EN,
+            children: [
+              { icon: '<span class="fi fi-fr"></span>', text: 'Français', link: null, lang: FR },
+              { icon: '<span class="fi fi-gb"></span>', text: 'English', link: null, lang: EN },
+            ],
+          },
+          { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
+          { icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-color-icons-light-moon">', text: '', link: '#switchtheme', lang: null },
+        ],
+      },
+      bottom: [
+        { text: 'contact', link: `${basepath}${EN}/contact.html` },
+        { text: 'legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'designed with &#10084;&#65039; by ourselves and Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
+      ],
+      mobile: [
+        { text: 'Home', link: `${basepath}${EN}/index.html` },
+        { text: 'Contact', link: `${basepath}${EN}/contact.html` },
+        { text: 'Legal', link: `${basepath}${EN}/Legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { icon: '<span class="fi fi-fr"></span>', text: '', link: null, lang: FR },
+        { icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-color-icons-light-moon">', text: '', link: '#switchtheme', lang: null },
+      ],
+    },
+  },
+
+  // These are the scripts to insert at the toop of the head of the HTML
+  // output.
+  topscripts: [
+    `${basepath}js/colortheme.min.js`,
+  ],
 
   // These are the scripts to insert at the bottom of the body of the HTML
   // output.
   scripts: [
     `${basepath}vendor/libs/modernizr-3.11.2.min.js`,
-    `${basepath}vendor/libs/jquery.min.js`,
-    `${basepath}vendor/libs/jquery.easing.min.js`,
+    `${basepath}vendor/libs/highlight.min.js`,
     `${basepath}js/main.min.js`,
   ],
 };

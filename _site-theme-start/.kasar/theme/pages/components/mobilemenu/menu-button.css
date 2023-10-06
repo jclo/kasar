@@ -1,0 +1,83 @@
+/*
+ * -- STYLE FOR MOBILE MENU BUTTON --
+ *
+ */
+.mobilemenu-button {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 33px;
+  margin-top: 15px;
+  z-index: 3;
+}
+
+.mobilemenu-icon {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 4px;
+  border-radius: 10px;
+  -webkit-transition: background-color 0.7s;
+  -moz-transition: background-color 0.7s;
+  transition: background-color 0.7s;
+}
+
+.mobilemenu-icon:after, .mobilemenu-icon:before {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -webkit-transition: -webkit-transform 0.7s;
+  -moz-transition: -moz-transform 0.7s;
+  transition: transform 0.7s;
+}
+
+.mobilemenu-icon:before {
+  top: -7px;
+}
+
+.mobilemenu-icon:after {
+  top: 7px;
+}
+
+.mobilemenu-icon-clicked:before {
+  top: 0;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.mobilemenu-icon-clicked:after {
+  top: 0;
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.mobilemenu-button {
+  background-color: transparent
+}
+.mobilemenu-icon, .mobilemenu-icon:after, .mobilemenu-icon:before {
+  background-color: var(--ksr-mobilemenu-icon-color)
+}
+.mobilemenu-icon-clicked {
+  background-color: transparent
+}
+
+
+
+/* oOo */

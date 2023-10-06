@@ -1,5 +1,12 @@
 ### HEAD
 
+### 2.0.0 (October 6, 2023)
+
+  * Replaced Gulp by npm scripts,
+  * Added light/dark option to the start theme,
+  * ...,
+
+
 ### 1.1.2 (October 28, 2022)
 
   * Updated the project dependencies,

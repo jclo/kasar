@@ -4,5 +4,5 @@
 !_site-theme-code/**/*
 !_site-theme-start/**/*
 !bin/**/*
-!libs/**/*
+!tasks/**/*
 !index

@@ -3,18 +3,16 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global jQuery */
-/* eslint one-var: 0, strict: ["error", "function"], semi-style: 0
-  no-console: 0 */
+/* global PicoQ, hljs */
+/* eslint-disable strict, no-console */
 (function($) {
-  'use strict';
-
+  //
   // -- Service Worker Script:
   const sw = '/sw.js';
 
-  $(document).ready(() => {
+  $().DOMready(() => {
     // -- Start the Service Worker:
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker-xxxx' in navigator) {
       navigator.serviceWorker.register(sw)
         .then((/* reg */) => {
           console.log('Service Worker registered ...');
@@ -36,14 +34,8 @@
 
 
     // -- Start the highlight script:
-    // none,
-
-
-    // -- Activate the cookie banner:
-    // none,
-
-
-    // -- Start the smooth scrolling:
-    // none,
+    hljs.highlightAll();
   });
-}(jQuery));
+}(PicoQ));
+
+/* eslint-disable strict, no-console */

@@ -1,12 +1,39 @@
-// ESLint declarations
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
+/** ****************************************************************************
+ *
+ * Defines the Marketing section of the web page.
+ *
+ * main.js extends the RView object. In other words, it creates
+ * an object that inherits from the RView object.
+ *
+ * Private Functions:
+ *  . _getFront                   defines the mkt structure of the front page,
+ *  . _getInternal                defines the mkt structure of the internal page(s),
+ *
+ *
+ * Overwritten Public Methods:
+ *  . render                      returns the XMLString of the component,
+ *
+ *
+ * Specific Public Methods:
+ *  . fillInternal                adds the marketing content for the internal pages,
+ *  . fillFrontContent            adds the marketing content for the frontpage,
+ *
+ *
+ *
+ * @namespace -
+ * @exports   -
+ * @author    -
+ * @since     0.0.0
+ * @version   -
+ * ************************************************************************** */
+/* global */
+/* eslint-disable one-var, semi-style, no-underscore-dangle,
+  import/no-extraneous-dependencies */
 
 'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview')
-    ;
+const RView = require('@mobilabs/rview');
 
 
 // -- Local modules
@@ -23,10 +50,10 @@ const RView = require('@mobilabs/rview')
 /**
  * Defines the marketing structure of the front web page.
  *
- * @function ()
+ * @function (arg1)
  * @private
- * @param {}                -,
- * @returns {String}        returns the marketing HTML structure,
+ * @param {XMLString}       the content of the page,
+ * @returns {XMLString}     returns the marketing HTML structure,
  * @since 0.0.0
  */
 function _getFront(content) {
@@ -44,12 +71,12 @@ function _getFront(content) {
 }
 
 /**
- * Defines the marketing structure of the front web page.
+ * Defines the marketing structure of the internal web page(s).
  *
  * @function ()
  * @private
  * @param {}                -,
- * @returns {String}        returns the marketing HTML structure,
+ * @returns {XMLString}     returns the marketing HTML structure,
  * @since 0.0.0
  */
 function _getInternal() {
@@ -57,7 +84,7 @@ function _getInternal() {
     <div class="marketing inside">
       <div class="container">
         <div class="inbox">
-          <img src="img/banner.jpg" alt="" />
+          <!-- <img src="img/banner.jpg" alt="" /> -->
         </div>
       </div>
     </div>
@@ -65,48 +92,55 @@ function _getInternal() {
 }
 
 
-// -- Public Function(s) -------------------------------------------------------
+// -- Public -------------------------------------------------------------------
 
-/**
- * Defines the web component.
- *
- * @function ()
- * @public
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
 const Marketing = RView.Component({
 
+  // -- Overwritten Methods ----------------------------------------------------
+
   /**
-   * Adds the marketing structure to the frontpage.
+   * Returns the XMLString of the component.
+   *
+   * @method (arg1, arg2)
+   * @public
+   * @param {Object}        the state properties,
+   * @param {Object}        the optional properties,
+   * @returns {XMLString}   returns the XMLString of the component,
+   * @since 0.0.0
    */
-  setFront() {
-    this.$setState({ mkt: _getFront() });
-    return this;
+  render(state/* , props */) {
+    return `<div>${state.mkt || ''}</div><!-- /.marketing -->`;
   },
+
+
+  // -- Specific Methods -------------------------------------------------------
 
   /**
    * Adds the marketing structure to the internal pages.
+   *
+   * @method ()
+   * @public
+   * @param {}              -,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
    */
-  setInternal() {
-    this.$setState({ mkt: _getInternal() });
+  fillInternal(content) {
+    this.$setState({ mkt: _getInternal(content) });
     return this;
   },
 
   /**
    * Adds the marketing content for the frontpage.
+   *
+   * @method (arg1)
+   * @public
+   * @param {XMLString}     the content of the page,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
    */
-  fillFrontContent(content) {
+  fillFront(content) {
     this.$setState({ mkt: _getFront(content) });
     return this;
-  },
-
-  /**
-   * Renders the web component.
-   */
-  render(state) {
-    return `<div>${state.mkt || ''}</div><!-- /.marketing -->`;
   },
 });
 

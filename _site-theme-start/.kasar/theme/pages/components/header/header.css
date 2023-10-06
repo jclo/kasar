@@ -1,18 +1,12 @@
 /*
- * -- HEADER STYLE --
+ * -- STYLE FOR THE HEADER --
+ *
  */
-header {
+.header {
 }
 
-/*
- * -- LOGO --
- */
-header .logo .pure-menu-heading {
-  padding-left: 0
-}
-
-/*
- * -- NAV BAR --
+/**
+ * NAV BAR
  */
 header .navbar {
   position: relative;
@@ -28,9 +22,100 @@ header .navbar-fixed-top {
   top: 0;
   border-width: 0 0 1px
 }
-header .navbar .top.menu .pure-menu-item.active {
-  border-bottom: 2px solid rgb(81, 94, 113)
-  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px */
+
+/**
+ * LOGO & MENU FLEXBOXES
+ */
+header .container {
+  display: flex;
+  flex-direction: row
 }
+
+header .container > div {
+  flex: initial;
+}
+
+header .container > div:nth-child(3),
+header .container > div:nth-child(4) {
+  margin-left: auto
+}
+
+/**
+ * LOGO STYLING
+ */
+header .container .logo {
+  width: 100px;
+  margin-top: 1em;
+  margin-right: 2em
+}
+
+header .container .logo > a {
+  padding-top: 2em
+}
+
+header .container .logo > a > img {
+  cursor: pointer
+}
+
+header .logo-theme-light,
+header .logo-theme-dark {
+  background-size: contain;
+  background-position: 0;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  line-height: 50px;
+}
+
+header .logo-theme-light:before,
+header .logo-theme-dark:before {
+  content: '\00a0';
+}
+
+header .logo-theme-light {
+  background-image: url('../img/mylogo.svg');
+}
+
+header .logo-theme-dark {
+  background-image: url('../img/mylogo-white.svg');
+}
+
+
+
+/**
+ * FLEXBOXES VISIBILITY
+ */
+header .container .top-left-menu,
+header .container .top-right-menu {
+  display: none
+}
+
+header .container .mobilemenu-button {
+  display: block
+}
+
+@media (min-width:768px) {
+  header .container .top-left-menu,
+  header .container .top-right-menu {
+    display: block
+  }
+  header .container .mobilemenu-button {
+    display: none
+  }
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+header .navbar {
+  background-color: var(--ksr-header-background-color);
+  border-bottom: 1px solid rgba(220, 220, 220, 0)
+}
+
+
 
 /* oOo */

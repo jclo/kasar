@@ -1,0 +1,126 @@
+/*
+ * -- STYLE FOR THE MOBILEMENU --
+ *
+ */
+.mobilemenu .inner {
+  text-align: right
+}
+.mobilemenu .inner .close a {
+  font-size: 3em
+}
+.mobilemenu .inner .close a:hover {
+  text-decoration: none
+}
+.mobilemenu .inner h1 {
+  margin: 0.1em 0
+}
+
+.mobilemenu .menu .pure-menu-link {
+  padding: 2em 1em 0 0
+}
+.mobilemenu .menu .pure-menu-link:hover {
+}
+
+.mobilemenu .menu.pure-menu {
+  height: 80vh;
+  overflow-x: scroll
+}
+
+/**
+ * Animations.
+ */
+.mobilemenu {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -25%;
+  width: 25%;
+  height: 100vh;
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  z-index: 10
+}
+.mobilemenu-open {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0)
+}
+
+.freeze {
+  overflow: hidden
+}
+
+.mobilemenu .menu .pure-menu-item .bar {
+  padding: 1px 0;
+  margin-right: 1em;
+  background: url(../img/underline-red.png) 200% 0 no-repeat;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s
+}
+.mobilemenu .menu .pure-menu-item:hover > .bar {
+  background: url(../img/underline-red.png) 100% 0 no-repeat
+}
+
+.mobilemenu .menu .pure-menu-item.pure-menu-active > .bar {
+  background: url(../img/underline-red.png) 100% 0 no-repeat
+}
+
+/**
+ * LOGO
+ */
+.mobilemenu .inner > div:first-child > a > img,
+.mobilemenu .inner img {
+  width: 100px;
+  padding: 2em 1em 0 0;
+  cursor: pointer
+}
+
+/**
+ * MOBILEMENU VISIBILITY
+ */
+@media (min-width: 320px) {
+  .mobilemenu {
+    left: -60%;
+    width: 60%
+  }
+}
+@media (min-width: 768px) {
+  .mobilemenu {
+    left: -25%;
+    width: 25%
+  }
+}
+@media (min-width: 992px) {
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.mobilemenu {
+  background-color: var(--ksr-mobilemenu-background-color)
+}
+
+.mobilemenu .inner {
+  color: var(--ksr-mobilemenu-background-text-color)
+}
+
+.mobilemenu .inner .close a {
+  color: var(--ksr-mobilemenu-background-text-color)
+}
+
+.mobilemenu .pure-menu-active > .pure-menu-link {
+  background-color: transparent
+}
+
+
+
+/* oOo */

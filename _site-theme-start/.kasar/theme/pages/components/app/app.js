@@ -1,20 +1,55 @@
-// ESLint declarations
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
+/** ****************************************************************************
+ *
+ * Defines the App Page.
+ *
+ * app.js is built upon the Prototypal Instantiation pattern. It
+ * returns an object by calling its constructor. It doesn't use the new
+ * keyword.
+ *
+ * Private Functions:
+ *  . render                      renders in the virtual DOM the body section,
+ *
+ *
+ * Constructor:
+ *  . App                         creates the App that manages the body section,
+ *
+ *
+ * Private Static Methods:
+ *  . none,
+ *
+ *
+ * Public Static Methods:
+ *  . none,
+ *
+ *
+ * Public Methods:
+ *  . configure                   finalyzes the construction of the web page,
+ *  . fillContent                 fills the content section of the web page,
+ *
+ *
+ *
+ * @namespace -
+ * @exports   -
+ * @author    -
+ * @since     0.0.0
+ * @version   -
+ * ************************************************************************** */
+/* global */
+/* eslint-disable one-var, semi-style, no-underscore-dangle,
+  import/no-extraneous-dependencies */
 
 'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview')
-    ;
+const RView = require('@mobilabs/rview');
 
 
 // -- Local modules
-const Header    = require('../header/main')
-    , Marketing = require('../marketing/main')
-    , Content   = require('../content/main')
-    , Footer    = require('../footer/main')
-    , config    = require('../../../../../config')
+const Header     = require('../header/main')
+    , MobileMenu = require('../mobilemenu/main')
+    , Marketing  = require('../marketing/main')
+    , Content    = require('../content/main')
+    , Footer     = require('../footer/main')
     ;
 
 
@@ -25,35 +60,6 @@ const Header    = require('../header/main')
 
 
 // -- Private Function(s) ------------------------------------------------------
-
-/**
- * Minifies the HTML body.
- *
- * Nota:
- * The two most effective operations are the suppression of the comments and
- * the suppression of the leading blank spaces preceeding a tag.
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-/* eslint-disable no-multi-spaces */
-function _minify() {
-  let xml = document.body.innerHTML;
-
-  xml = xml.replace(/<!--(.*?)-->/g, '')    // remove comments
-    .replace(/\n\s+</g, '\n<')              // remove leading spaces before a tag,
-    .replace(/\n<\/div>/g, '</div>')        // remove unwanted `\n`,
-    .replace(/\n<\/ul>/g, '</ul>')          // -
-    .replace(/\n<\/li>/g, '</li>')          // -
-    .replace(/\n<\/a>/g, '</a>')            // -
-  ;
-
-  document.body.innerHTML = xml;
-}
-/* eslint-enable no-multi-spaces */
 
 /**
  * Renders in the virtual DOM the body of the web page.
@@ -69,6 +75,7 @@ function render() {
     el: '#kasarapp',
     children: {
       '<Header />': Header,
+      '<MobileMenu />': MobileMenu,
       '<Marketing />': Marketing,
       '<Content />': Content,
       '<Footer />': Footer,
@@ -76,6 +83,7 @@ function render() {
     template: `
       <div>
         <Header />
+        <MobileMenu />
         <Marketing />
         <Content />
         <Footer />
@@ -102,8 +110,9 @@ function App() {
   const view = render();
   // Attaches all the 'web components' to this object.
   obj.header = view.$getChild('<Header />');
+  obj.mobilemenu = view.$getChild('<MobileMenu />');
   obj.tlmenu = view.$getChild('<TLMenu />');
-  obj.topmenu = view.$getChild('<TRMenu />');
+  obj.trmenu = view.$getChild('<TRMenu />');
   obj.mkt = view.$getChild('<Marketing />');
   obj.content = view.$getChild('<Content />');
   obj.footer = view.$getChild('<Footer />');
@@ -119,28 +128,30 @@ const methods = {
   /**
    * Finalyzes the construction of the web page.
    *
-   * @method (arg1)
+   * @method (arg1, arg2, arg3, arg4, arg5)
    * @public
-   * @param {String}        the name of the web page,
-   * @returns {Object}      returns the object,
+   * @param {Object}        the website object,
+   * @param {Array}         the menu,
+   * @param {String}        the active language,
+   * @param {String}        the active page,
+   * @param {Object}        the company details,
+   * @returns {Object}      returns this object,
    * @since 0.0.0
    */
-  configure(page) {
+  configure(website, menu, lang, page, company) {
     switch (page) {
-      case 'Home':
       case 'home':
-        this.mkt.setFront();
-        this.content.setFront();
+        this.tlmenu.set(website, menu, lang, page);
         break;
 
       default:
-        this.mkt.setInternal();
-        this.content.setInternal();
         break;
     }
-    this.tlmenu.set(config.company.name, config.basepath);
-    this.topmenu.set(`${config.basepath}contact.html`);
-    this.footer.set(config.company.copyright);
+    this.header.set(website[lang].home);
+    this.mobilemenu.set(website, menu, lang, page);
+    this.trmenu.set(website, menu, lang, page);
+    this.botmenu.set(website, menu, lang, page);
+    this.footer.set(company.copyright);
     return this;
   },
 
@@ -156,18 +167,14 @@ const methods = {
    */
   fillContent(page, content) {
     switch (page) {
-      case 'Home':
       case 'home':
-        this.mkt.fillFrontContent(content);
+        this.mkt.fillFront(content);
         break;
 
       default:
         this.content.fill(content);
         break;
     }
-
-    // Minify the body
-    _minify();
 
     return this;
   },

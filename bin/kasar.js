@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2022 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
+ * Copyright (c) 2023 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -39,6 +39,7 @@ const fs           = require('fs')
 
 // -- Local modules
 
+
 // -- Local constants
 const thisscript  = 'kasar'
     , site        = 'site'
@@ -51,7 +52,13 @@ const thisscript  = 'kasar'
       help: [Boolean, false],
       version: [String, null],
       path,
-      name: [String, null],
+      init: [String, null],
+      'build:skeleton': [String, null],
+      'build:project': [String, null],
+      build: [String, null],
+      watch: [String, null],
+      rebuild: [String, null],
+      serve: [String, null],
     }
     , shortOpts = {
       h: ['--help'],
@@ -59,6 +66,7 @@ const thisscript  = 'kasar'
     }
     , parsed = nopt(opts, shortOpts, process.argv, 2)
     ;
+
 
 // -- Local variables
 
@@ -80,7 +88,8 @@ function _help() {
     '',
     'init               creates the repository for the static website',
     'build              builds the static website',
-    'serve              runs the static website inside a browser',
+    'watch              rebuilds if a file in the webpages folder is modified',
+    'serve              starts the http server on port 8080',
     '',
     'Options:',
     '',
@@ -92,7 +101,6 @@ function _help() {
   process.stdout.write(`${message}\n`);
   process.exit(0);
 }
-
 
 /**
  *  Checks if a website already exists.
@@ -187,15 +195,19 @@ function _init(options) {
       theme = defaultTheme;
     }
 
-    // Create and fill'site' and subfolders:
+    // Create and fill 'site' and subfolders:
     process.stdout.write(`creates and fills ${site}/${repo} ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/${repo}`);
     shell.cp('-R', `${basescript}/${theme}/${repo}/*`, `${baseapp}/${site}/${repo}/.`);
 
     process.stdout.write(`creates and fills ${site}/img ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/img`);
-    shell.cp('-R', `${basescript}/${theme}/img/README.md`, `${baseapp}/${site}/img/.`);
-    shell.cp('-R', `${basescript}/${theme}/img/icons`, `${baseapp}/${site}/img/.`);
+    shell.cp('-R', `${basescript}/${theme}/img/*`, `${baseapp}/${site}/img/.`);
+    // shell.cp('-R', `${basescript}/${theme}/img/icons`, `${baseapp}/${site}/img/.`);
+
+    process.stdout.write(`creates and fills ${site}/js ...\n`);
+    shell.mkdir('-p', `${baseapp}/${site}/js`);
+    shell.cp('-R', `${basescript}/${theme}/js/*`, `${baseapp}/${site}/js/.`);
 
     process.stdout.write(`creates and fills ${site}/php ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/php`);
@@ -204,10 +216,6 @@ function _init(options) {
     process.stdout.write(`creates and fills ${site}/styles ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/styles`);
     shell.cp('-R', `${basescript}/${theme}/styles/*`, `${baseapp}/${site}/styles/.`);
-
-    process.stdout.write(`creates and fills ${site}/tasks ...\n`);
-    shell.mkdir('-p', `${baseapp}/${site}/tasks`);
-    shell.cp('-R', `${basescript}/${theme}/tasks/*`, `${baseapp}/${site}/tasks/.`);
 
     process.stdout.write(`creates and fills ${site}/tobuildweb ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/tobuildweb`);
@@ -226,45 +234,78 @@ function _init(options) {
     shell.cp('-R', `${basescript}/${theme}/php/.htaccess`, `${baseapp}/${site}/php/.htaccess`);
     shell.cp('-R', `${basescript}/${theme}/tobuildweb/.htaccess`, `${baseapp}/${site}/tobuildweb/.htaccess`);
 
-    if (theme === orion || theme === code) {
-      // Create 'sw.js':
-      process.stdout.write(`creates ${site}/sw.js ...\n`);
-      shell.cp('-R', `${basescript}/${theme}/sw.js`, `${baseapp}/${site}/sw.js`);
-    }
+    process.stdout.write(`creates ${site}/sw.js ...\n`);
+    shell.cp('-R', `${basescript}/${theme}/sw.js`, `${baseapp}/${site}/sw.js`);
 
-    // Copy Vendor Highlight:
-    if (theme === orion || theme === code) {
-      shell.mkdir('-p', `${baseapp}/${site}/vendor`);
-      shell.cp('-R', `${basescript}/${theme}/vendor/*.md`, `${baseapp}/${site}/vendor/.`);
-    }
-
-    if (theme === code) {
-      shell.mkdir('-p', `${baseapp}/${site}/vendor/highlight/styles`);
-      shell.cp('-R', `${basescript}/${theme}/vendor/highlight/*.js`, `${baseapp}/${site}/vendor/highlight/.`);
-      shell.cp('-R', `${basescript}/${theme}/vendor/highlight/styles/default.css`, `${baseapp}/${site}/vendor/highlight/styles/default.css`);
+    // Copy Vendor:
+    shell.mkdir('-p', `${baseapp}/${site}/vendor/fonts`);
+    shell.cp('-R', `${basescript}/${theme}/vendor/*.md`, `${baseapp}/${site}/vendor/.`);
+    if (theme === defaultTheme) {
+      shell.mkdir('-p', `${baseapp}/${site}/vendor/fonts/montserrat`);
     }
   });
+}
+
+/**
+ * Runs the script.
+ *
+ * @function ()
+ * @private
+ * @param {}           -,
+ * @returns {}         -,
+ * @since 0.0.0
+ */
+function _run() {
+  if (parsed.help) {
+    _help();
+  }
+
+  if (parsed.version) {
+    // console.log('umdlib version: ' + parsed.version);
+    process.stdout.write(`${thisscript} version: ${parsed.version}\n`);
+    return;
+  }
+
+  if (parsed.init) {
+    _init(parsed);
+    return;
+  }
+
+  if (parsed['build:skeleton']) {
+    shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.skeleton.js`);
+    return;
+  }
+
+  if (parsed['build:project']) {
+    shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.project.js`);
+    return;
+  }
+
+  if (parsed.build) {
+    shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.skeleton.js && node ${baseapp}/${site}/.kasar/theme/tasks/build.project.js`);
+    return;
+  }
+
+  if (parsed.watch) {
+    shell.exec(`nodemon -e md,html --watch '${baseapp}/${site}/webpages/**/*' --exec node ${basescript}/bin/kasar.js --rebuild`);
+    return;
+  }
+
+  if (parsed.rebuild) {
+    shell.exec(`node ${site}/.kasar/theme/tasks/build.project.js`);
+    shell.exec(`node ${basescript}/tasks/server.js --reload`);
+    return;
+  }
+
+  if (parsed.serve) {
+    shell.exec(`node ${basescript}/tasks/server.js --start --path ${baseapp}/${site}/_dist --port 8080`);
+    return;
+  }
+
+  _help();
 }
 
 
 // -- Where the script starts --------------------------------------------------
 
-if (parsed.help) {
-  _help();
-}
-
-if (parsed.version) {
-  // console.log('umdlib version: ' + parsed.version);
-  process.stdout.write(`${thisscript} version: ${parsed.version}\n`);
-  process.exit(0);
-}
-
-if (parsed.argv.remain[0] === 'init') {
-  _init(parsed);
-} else if (parsed.argv.remain[0] === 'build') {
-  shell.exec(`gulp -f ${site}/${repo}/gulpfile.js build`);
-} else if (parsed.argv.remain[0] === 'serve') {
-  shell.exec(`gulp -f ${site}/${repo}/gulpfile.js serve`);
-} else {
-  _help();
-}
+_run();

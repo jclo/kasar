@@ -1,56 +1,35 @@
 /*
- * -- CONTENT STYLE --
+ * -- STYLE FOR THE CONTENT SECTION --
+ *
+ */
+.content {
+}
+.content-body {
+  padding-top: 100px
+}
+
+/**
+ * FRONT PAGE
  */
 
- /* --- Links -- */
-.content .plink {
- font-weight: 600;
- color: rgb(173, 31, 35);
- text-decoration: none
+/**
+ * CONTACT PAGE
+ */
+
+/**
+ * LEGAL PAGE
+ */
+.content-body .last-update {
+  font-size: 0.8em
 }
-.content .plink a {
- color: inherit;
- text-decoration: inherit
-}
+
 
 
 /*
- * -- FRONT PAGE CONTENT STYLE --
+ * -- COLOR THEME --
+ *
  */
-.content.front .page {
-  min-height: 700px
-}
 
-.content.front .center {
-  text-align: center
-}
-.content.front h1,  .content.front h2 {
-  font-size: 3.6em;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -1px;
-  padding-top: 0.5em;
-}
-.content.front h3 {
-  font-size: 1.5em;
-}
-.content.front .slogan {
-  font-size: 1.5em;
-  font-weight: 300;
-  text-align: center
-}
-.content.front .statement {
-  font-size: 1.2em
-}
-.content.front .muted {
-  color: rgb(101, 123, 131)
-}
-.content.front .page hr {
-  width: 200px;
-  height: 1px;
-  border: none;
-  margin: 35px auto;
-  background: rgb(173, 31, 35)
-}
+
 
 /* oOo */

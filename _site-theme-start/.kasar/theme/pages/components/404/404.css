@@ -1,24 +1,38 @@
 /*
- * -- 404 PAGE CONTENT STYLE --
+ * -- STYLE FOR 404 PAGE --
+ *
  */
 .oops {
   font-size: 1.2em;
-  color: rgb(101, 123, 131);
   text-align: center
 }
+
 .oops h1 {
   font-weight: 400;
   font-size: 4em;
   margin: 0
 }
+
 .oops p {
 }
+
 .oops hr {
   width: 100px;
   height: 2px;
   border: none;
-  margin: 2em auto;
-  background: rgb(173, 31, 35)
+  margin: 2em auto
 }
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.oops {
+  color: var(--ksr-body-color)
+}
+
+
 
 /* oOo */

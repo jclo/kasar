@@ -1,5 +1,31 @@
-// ESLint declarations
-/* eslint one-var: 0, semi-style: 0, import/no-extraneous-dependencies: 0 */
+/** ****************************************************************************
+ *
+ * Defines the Footer section of the web page.
+ *
+ * main.js extends the RView object. In other words, it creates
+ * an object that inherits from the RView object.
+ *
+ * Private Functions:
+ *  . none,
+ *
+ *
+ * Overwritten Public Methods:
+ *  . render                      returns the XMLString of the component,
+ *
+ *
+ * Specific Public Methods:
+ *  . set                         adds the copyright,
+ *
+ *
+ *
+ * @namespace -
+ * @exports   -
+ * @author    -
+ * @since     0.0.0
+ * @version   -
+ * ************************************************************************** */
+/* global */
+/* eslint-disable one-var, semi-style, import/no-extraneous-dependencies */
 
 'use strict';
 
@@ -12,52 +38,66 @@ const RView = require('@mobilabs/rview')
 const { BOTMenu } = require('../menus/main')
     ;
 
+
 // -- Local constants
 
 
 // -- Local variables
 
 
-// -- Public Function(s) -------------------------------------------------------
+// -- Private Functions --------------------------------------------------------
+// none,
 
-/**
- * Defines the web component.
- *
- * @function ()
- * @public
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
+
+// -- Public -------------------------------------------------------------------
+
 const Footer = RView.Component({
 
-  /**
-   * Adds the copyright.
-   */
-  set(copyright) {
-    this.$setState({ copyright });
-    return this;
-  },
+  // -- Overwritten Methods ----------------------------------------------------
 
   /**
-   * Renders the web component.
+   * Returns the XMLString of the component.
+   *
+   * @method (arg1, arg2)
+   * @public
+   * @param {Object}        the state properties,
+   * @param {Object}        the optional properties,
+   * @returns {XMLString}   returns the XMLString of the component,
+   * @since 0.0.0
    */
-  render(state) {
+  render(state/* , props */) {
     this.children = { '<BOTMenu />': BOTMenu };
 
     return `
       <footer class="container">
         <!-- legal -->
-        <div class="legal pure-g">
-          <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+        <div class="legal ">
+          <div>
             <p class="copyright">${state.copyright || 'unknown copyright'}</p>
           </div>
-          <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-2">
+          <div>
             <BOTMenu />
           </div>
         </div><!-- /.legal -->
       </footer><!-- /.footer -->
     `;
+  },
+
+
+  // -- Specific Methods -------------------------------------------------------
+
+  /**
+   * Adds the copyright.
+   *
+   * @method (arg1)
+   * @public
+   * @param {String}        the copyright,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
+   */
+  set(copyright) {
+    this.$setState({ copyright });
+    return this;
   },
 });
 
