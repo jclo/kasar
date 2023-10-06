@@ -5,7 +5,7 @@
   * Replaced Gulp by npm scripts,
   * Added light/dark option to the start theme,
   * Updated the README.md file,
-  * ...,
+  * Release.
 
 
 ### 1.1.2 (October 28, 2022)
