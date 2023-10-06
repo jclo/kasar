@@ -20,7 +20,7 @@ module.exports = {
   // This is the theme used to build your website:
   theme: {
     name: 'start',
-    version: '2.0.0-beta.2', // built from Kasar v^1.1.1
+    version: '2.0.0', // built from Kasar v^2.0.0
   },
 
   // Where is the root of the project:

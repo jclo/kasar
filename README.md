@@ -24,9 +24,9 @@ Then, you should add the three following scripts in the script section of the fi
 ```javascript
 {
   "scripts": {
-    "kinit": "kasar init",
-    "build": "kasar build",
-    "app": "kasar serve"
+    "kasar:kinit": "kasar --init",
+    "kasar:build": "kasar --build",
+    "kasar:start": "kasar --serve"
   }
 }
 ```
@@ -38,7 +38,7 @@ Then, you should add the three following scripts in the script section of the fi
 You have to run the following command:
 
 ```bash
-npm run kinit
+npm run kasar:init
 ```
 
 The script creates the folder **site** with the following tree:
@@ -47,10 +47,12 @@ The script creates the folder **site** with the following tree:
 site
   |_ .kasar
   |_ img
+  |_ js
   |_ php
   |_ styles
   |_ tasks
   |_ tobuildweb
+  |_ vendor
   |_ webpages
   |_ config.js
 ```
@@ -60,7 +62,7 @@ site
 Just type the following command:
 
 ```bash
-npm run build
+npm run kasar:build
 ```
 
 A new folder **_dist** appears under **site**:
@@ -81,7 +83,7 @@ This folder contains all the files requires to run a website (index.html, css, j
 Just type the following command:
 
 ```bash
-npm run web
+npm run kasar:start
 ```
 
 This command launches a local web server running at the address **http://localhost:8080** that displays the website on your browser.

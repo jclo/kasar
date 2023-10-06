@@ -4,6 +4,7 @@
 
   * Replaced Gulp by npm scripts,
   * Added light/dark option to the start theme,
+  * Updated the README.md file,
   * ...,
 
 
