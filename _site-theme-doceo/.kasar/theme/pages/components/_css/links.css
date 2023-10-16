@@ -1,0 +1,28 @@
+/*
+ * -- GENERIC STYLE FOR THE LINKS --
+ *
+ */
+a {
+  text-decoration: none
+}
+a:hover {
+  text-decoration: none
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+a {
+  color: var(--ksr-body-links)
+}
+a:hover {
+  color: var(--ksr-body-links);
+  text-decoration-color: var(--ksr-body-links)
+}
+
+
+
+/* oOo */

@@ -1,0 +1,98 @@
+/*
+ * -- VARIABLES SHARED BY ALL THE APP --
+ *
+ */
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+/**
+ * LIGHT
+ */
+:root {
+  /**
+   * GENERIC
+   */
+  --ksr-header-height: 55px;
+
+  --ksr-body-hr-separator: red;
+  --ksr-body-border-solid: 1px solid rgb(220, 220, 220);
+
+  --ksr-mobilemenu-background-color: rgb(40, 44, 52);
+  --ksr-mobilemenu-background-text-color: rgb(255, 255, 255);
+  --ksr-mobilemenu-icon-color: rgb(40, 44, 52);
+
+  --ksr-callout-border-left: 3px solid #eee;
+
+  --pps-callout-info-color: rgb(32, 156, 238);
+  --pps-callout-info-border-color: rgb(32, 156, 238);
+  --pps-callout-info-background-color: rgba(32, 156, 238, 0.15);
+
+  --pps-callout-success-color: rgb(72, 199, 116);
+  --pps-callout-success-border-color: rgb(72, 199, 116);
+  --pps-callout-success-background-color: rgba(72, 199, 116, 0.15);
+
+  --pps-callout-warning-color: rgb(240, 173, 78);
+  --pps-callout-warning-border-color: rgb(240, 173, 78);
+  --pps-callout-warning-background-color: rgba(240, 173, 78, 0.15);
+
+  --pps-callout-error-color: rgb(173, 31, 35);
+  --pps-callout-error-border-color: rgb(173, 31, 35);
+  --pps-callout-error-background-color: rgba(173, 31, 35, 0.15);
+
+  --ksr-doc-vertical-border: 1px solid lightgray;
+  --ksr-doc-menu-link-color: #ad1f23;
+
+  --ksr-doc-pagination-border: 1px solid lightgray;
+  --ksr-doc-pagination-border-hover: 1px solid #ad1f23;
+
+  
+  /**
+   * LIGHT THEME
+   */
+  --ksr-body-color: rgb(81, 94, 113);
+  --ksr-body-background-color: rgb(255, 255, 255);
+  --ksr-body-titles: rgb(81, 94, 113);
+  --ksr-body-links: rgb(173, 31, 35);
+
+  --ksr-header-background-color: rgba(255, 255, 255, 0.97);
+
+  --ksr-menu-arrow-border-color-before: #fff;
+  --ksr-menu-arrow-border-color-after: rgba(0, 0, 0, 0.15);
+  --ksr-menu-dropdown-background-color: #fff;
+  --ksr-menu-dropdown-box-shadow: 0 0 10px 0 rgb(26, 46, 69, 0.3);
+
+  --pps-callout-note-color: #eee;
+  --pps-callout-note-border-color: #eee;
+  --pps-callout-note-background-color: #fff;
+}
+
+
+/**
+ * DARK THEME
+ */
+:root[data-theme="dark"] {
+  --ksr-body-color: rgb(227, 227, 227);
+  --ksr-body-background-color: rgb(27, 27, 29);
+  --ksr-body-titles: rgb(227, 227, 227);
+  --ksr-body-links: rgb(173, 31, 35);
+
+  --ksr-header-background-color: rgba(27, 27, 29, 0.99);
+
+  --ksr-menu-arrow-border-color-before: rgb(40, 44, 52);
+  --ksr-menu-arrow-border-color-after: rgba(0, 0, 0, 0.1);
+  --ksr-menu-dropdown-background-color: rgb(40, 44, 52);
+  --ksr-menu-dropdown-box-shadow: 0 0 10px 0 rgb(26, 46, 69, 0.3);
+
+  --pps-callout-note-color: #eee;
+  --pps-callout-note-border-color: #eee;
+  --pps-callout-note-background-color: rgb(40, 44, 52);
+}
+
+
+
+/* oOo */

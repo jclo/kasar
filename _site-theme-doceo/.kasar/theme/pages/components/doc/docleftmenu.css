@@ -1,0 +1,71 @@
+/*
+ * -- STYLE FOR THE DOC MENU --
+ *
+ */
+.doc-content-nav-sidebar-menu > div {
+  height: 90vh;
+  overflow-x: scroll
+}
+
+.doc-content-nav-sidebar-menu > div > .pure-menu-list  {
+  padding: 0 1em;
+}
+
+.doc-content-nav-sidebar-menu > div > .pure-menu-list > .pure-menu-item:not(.pure-menu-has-children)  {
+  padding-top: 1em;
+}
+
+.doc-content-nav-sidebar-menu .pure-menu-has-children > .pure-menu-link {
+  font-size: 1.3em;
+  padding-top: 1em;
+  background: transparent
+}
+
+.doc-content-nav-sidebar-menu .pure-menu-has-children .pure-menu-children {
+  position: relative;
+  left: 0
+}
+
+.doc-content-nav-sidebar-menu .pure-menu-item {
+  padding: 0.25em 0.5em
+}
+
+.doc-content-nav-sidebar-menu .menu .pure-menu-children .pure-menu-item > ul {
+  font-size: 0.95em
+}
+
+.doc-content-nav-sidebar-menu .pure-menu-link:hover {
+  font-weight: 600
+}
+
+.doc-content-nav-sidebar-menu .pure-menu-has-children.pure-menu-active > .pure-menu-link,
+.doc-content-nav-sidebar-menu .pure-menu-has-children.pure-menu-active > .pure-menu-link:after {
+  content: '\25BE';
+  background-color: transparent
+}
+
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-children .pure-menu-active > .pure-menu-link {
+  font-weight: 600
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.doc-content-nav-sidebar-menu .pure-menu-children {
+  background: transparent
+}
+
+.doc-content-nav-sidebar-menu .menu .pure-menu-item.pure-menu-active > .pure-menu-link,
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children.pure-menu-active > .pure-menu-link,
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-children .pure-menu-active > .pure-menu-link {
+  font-weight: 700;
+  color: var(--ksr-doc-menu-link-color);
+  background-color: transparent
+}
+
+
+
+/* oOo */

@@ -1,5 +1,12 @@
 ### HEAD
 
+### 2.1.0 (October 16, 2023)
+
+  * Added the doceo theme (documentation theme),
+  * Updated the start theme based on improvements made to the doceo theme,
+  * ...,
+
+
 ### 2.0.0 (October 6, 2023)
 
   * Replaced Gulp by npm scripts,

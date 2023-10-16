@@ -46,7 +46,7 @@ const RView = require('@mobilabs/rview');
 
 // -- Local modules
 const Header     = require('../header/main')
-    , MobileMenu = require('../mobilemenu/main')
+    , MobileMenu = require('../menu-mobile/main')
     , Marketing  = require('../marketing/main')
     , Content    = require('../content/main')
     , Footer     = require('../footer/main')
@@ -128,52 +128,60 @@ const methods = {
   /**
    * Finalyzes the construction of the web page.
    *
-   * @method (arg1, arg2, arg3, arg4, arg5)
+   * @method (arg1, arg2, arg3, arg4, arg5, [arg6])
    * @public
-   * @param {Object}        the website object,
-   * @param {Array}         the menu,
-   * @param {String}        the active language,
+   * @param {Object}        data on the website,
+   * @param {Object}        data on the docsite,
+   * @param {string}        the active langage,
    * @param {String}        the active page,
-   * @param {Object}        the company details,
-   * @returns {Object}      returns this object,
+   * @param {Object}        params specific to the active page,
+   * @param {Object}        the menu,
+   * @param {Array}         the doc menu,
+   * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  configure(website, menu, lang, page, company) {
-    switch (page) {
-      case 'home':
-        this.tlmenu.set(website, menu, lang, page);
-        break;
+  configure(website, docsite, lang, page, params, menu/* , docmenu */) {
+    if (website && website[lang] && website[lang][page]) {
+      // It means that it is a webpage.
 
-      default:
-        break;
+      if (page === 'home') {
+        this.tlmenu.set(website, menu, lang, page);
+      }
+      this.trmenu.set(website, menu, lang, page);
+      this.mobilemenu.set(website, menu, lang, page);
     }
+
     this.header.set(website[lang].home);
-    this.mobilemenu.set(website, menu, lang, page);
-    this.trmenu.set(website, menu, lang, page);
     this.botmenu.set(website, menu, lang, page);
-    this.footer.set(company.copyright);
+    this.footer.set(params.company.copyright);
     return this;
   },
 
   /**
    * Fills the content section of the web page.
    *
-   * @method (arg1, arg2)
+   * @method (arg1, arg2, arg3, arg4, arg5, [arg6])
    * @public
-   * @param {String}        the name of the web page,
+   * @param {Object}        data on the website,
+   * @param {Object}        data on the docsite,
+   * @param {string}        the active langage,
+   * @param {String}        the active page,
    * @param {String}        the content to insert,
+   * @param {Array}         the documentation menu,
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  fillContent(page, content) {
-    switch (page) {
-      case 'home':
-        this.mkt.fillFront(content);
-        break;
+  fillContent(website, docsite, lang, page, content/* , docmenu */) {
+    if (website && website[lang] && website[lang][page]) {
+      // It means that it is a webpage.
 
-      default:
+      if (website[lang][page] === 'home') {
+        // this.mkt.fillFront(content);
         this.content.fill(content);
-        break;
+        return this;
+      }
+      this.content.fill(content);
+      return this;
     }
 
     return this;

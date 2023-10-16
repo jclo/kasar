@@ -1,0 +1,39 @@
+/*
+ * -- STYLE FOR THE MARKETING SECTION --
+ *
+ */
+.splash {
+  position: relative;
+  text-align: center;
+  padding: 100px 60px 20px 60px;
+  z-index: 2
+}
+.splash h1 {
+  font-size: 3em;
+  font-weight: 400;
+  padding-top: 50px
+}
+.splash hr {
+  width: 100px;
+  height: 2px;
+  border: none;
+  margin: 35px auto
+}
+.splash .slogan {
+  font-size: 1.5em;
+  font-weight: 400
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.splash hr {
+  background: var(--ksr-body-hr-separator)
+}
+
+
+
+/* oOo */

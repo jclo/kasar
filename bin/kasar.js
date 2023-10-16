@@ -52,13 +52,8 @@ const thisscript  = 'kasar'
       help: [Boolean, false],
       version: [String, null],
       path,
-      init: [String, null],
-      'build:skeleton': [String, null],
-      'build:project': [String, null],
-      build: [String, null],
-      watch: [String, null],
-      rebuild: [String, null],
-      serve: [String, null],
+      theme: [String, null],
+      port: [String, null],
     }
     , shortOpts = {
       h: ['--help'],
@@ -95,6 +90,8 @@ function _help() {
     '',
     '-h, --help         output usage information',
     '-v, --version      output the version number',
+    '--theme            the theme to install (currently start or doceo',
+    '--port             the listening port (default 8080)',
     '',
   ].join('\n');
 
@@ -177,8 +174,8 @@ function _checkIfAlreadyExist(dir, cb) {
  */
 function _init(options) {
   const defaultTheme = '_site-theme-start'
-      , orion        = '_site-theme-orion'
-      , code         = '_site-theme-code'
+      , start        = '_site-theme-start'
+      , doceo        = '_site-theme-doceo'
       ;
 
   // Check if 'site' exists?
@@ -187,12 +184,17 @@ function _init(options) {
     // it. We can now create 'site':
 
     let theme;
-    if (options.argv.remain[1] === 'orion') {
-      theme = orion;
-    } else if (options.argv.remain[1] === 'code') {
-      theme = code;
-    } else {
-      theme = defaultTheme;
+    switch (options.theme) {
+      case 'start':
+        theme = start;
+        break;
+
+      case 'doceo':
+        theme = doceo;
+        break;
+
+      default:
+        theme = defaultTheme;
     }
 
     // Create and fill 'site' and subfolders:
@@ -203,7 +205,6 @@ function _init(options) {
     process.stdout.write(`creates and fills ${site}/img ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/img`);
     shell.cp('-R', `${basescript}/${theme}/img/*`, `${baseapp}/${site}/img/.`);
-    // shell.cp('-R', `${basescript}/${theme}/img/icons`, `${baseapp}/${site}/img/.`);
 
     process.stdout.write(`creates and fills ${site}/js ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/js`);
@@ -243,6 +244,16 @@ function _init(options) {
     if (theme === defaultTheme) {
       shell.mkdir('-p', `${baseapp}/${site}/vendor/fonts/montserrat`);
     }
+
+    // Specific to a particular theme:
+    if (options.theme === 'doceo') {
+      process.stdout.write(`creates and fills ${site}/webdocpages ...\n`);
+      shell.mkdir('-p', `${baseapp}/${site}/webdocpages`);
+      shell.cp('-R', `${basescript}/${theme}/webdocpages/*`, `${baseapp}/${site}/webdocpages/.`);
+
+      process.stdout.write(`creates ${site}/docsidemenu.js ...\n`);
+      shell.cp('-R', `${basescript}/${theme}/docsidemenu.js`, `${baseapp}/${site}/docsidemenu.js`);
+    }
   });
 }
 
@@ -261,44 +272,44 @@ function _run() {
   }
 
   if (parsed.version) {
-    // console.log('umdlib version: ' + parsed.version);
     process.stdout.write(`${thisscript} version: ${parsed.version}\n`);
     return;
   }
 
-  if (parsed.init) {
+  if (parsed.argv.original[0] === 'init') {
     _init(parsed);
     return;
   }
 
-  if (parsed['build:skeleton']) {
+  if (parsed.argv.original[0] === 'build:skeleton') {
     shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.skeleton.js`);
     return;
   }
 
-  if (parsed['build:project']) {
+  if (parsed.argv.original[0] === 'build:project') {
     shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.project.js`);
     return;
   }
 
-  if (parsed.build) {
+  if (parsed.argv.original[0] === 'build') {
     shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.skeleton.js && node ${baseapp}/${site}/.kasar/theme/tasks/build.project.js`);
     return;
   }
 
-  if (parsed.watch) {
-    shell.exec(`nodemon -e md,html --watch '${baseapp}/${site}/webpages/**/*' --exec node ${basescript}/bin/kasar.js --rebuild`);
+  if (parsed.argv.original[0] === 'watch') {
+    shell.exec(`nodemon -e md,html --watch '${baseapp}/${site}/webpages/**/*' --watch '${baseapp}/${site}/webdocpages/**/*' --exec node ${basescript}/bin/kasar.js rebuild`);
     return;
   }
 
-  if (parsed.rebuild) {
+  if (parsed.argv.original[0] === 'rebuild') {
     shell.exec(`node ${site}/.kasar/theme/tasks/build.project.js`);
     shell.exec(`node ${basescript}/tasks/server.js --reload`);
     return;
   }
 
-  if (parsed.serve) {
-    shell.exec(`node ${basescript}/tasks/server.js --start --path ${baseapp}/${site}/_dist --port 8080`);
+  if (parsed.argv.original[0] === 'serve') {
+    const port = parsed.port && Number.isInteger(Number(parsed.port)) ? parsed.port : '8080';
+    shell.exec(`node ${basescript}/tasks/server.js --start --path ${baseapp}/${site}/_dist --port ${port}`);
     return;
   }
 

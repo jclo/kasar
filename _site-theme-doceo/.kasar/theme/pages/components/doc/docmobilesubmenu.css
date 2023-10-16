@@ -1,0 +1,44 @@
+/*
+ * -- STYLE FOR DOC SUBMENU OF THE MOBILE MENU --
+ *
+ */
+.doc-mobile-nav-sidebar-menu {
+}
+
+.doc-mobile-nav-sidebar-menu .pure-menu-has-children.pure-menu-active > .pure-menu-link,
+.doc-mobile-nav-sidebar-menu .pure-menu-has-children.pure-menu-active > .pure-menu-link:after {
+  content: '\25BE';
+  background-color: transparent
+}
+
+.doc-mobile-nav-sidebar-menu .pure-menu-has-children .pure-menu-children {
+  font-size: 0.85em;
+  position: relative;
+  left: 0
+}
+
+.doc-mobile-nav-sidebar-menu .pure-menu-children > .pure-menu-item > .pure-menu-link {
+  padding: 2em 1em 0 0
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.doc-mobile-nav-sidebar-menu .pure-menu-children {
+  background: transparent
+}
+
+.doc-mobile-nav-sidebar-menu .pure-menu-has-children > .pure-menu-children .pure-menu-active > .pure-menu-link {
+  background-color: transparent
+}
+
+.doc-mobile-nav-sidebar-menu .pure-menu-has-children.pure-menu-active {
+  background-color: var(--mobilemenu-background-color-active)
+}
+
+
+
+/* oOo */

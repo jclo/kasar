@@ -1,0 +1,19 @@
+/*
+ * -- STYLE FOR THE TOP LEFT MENU --
+ *
+ */
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.top-left-menu .pure-menu-link:hover {
+  font-weight: 600;
+  /* color: var(--ksr-body-links) */
+}
+
+
+
+/* oOo */

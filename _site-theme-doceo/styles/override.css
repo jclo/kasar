@@ -1,0 +1,35 @@
+/*
+ * -- SPECIFIC STYLES --
+ *
+ */
+header .container .logo,
+.mobilemenu .inner > div:first-child > a > img {
+  width: 150px
+}
+
+.frontpage-section-right-img img {
+  padding: 5rem 2rem;
+  max-width: 80%
+}
+
+/**
+ * Flag Icons subset
+ * (https://github.com/lipis/flag-icons)
+ */
+.fi-fr {
+  background-image: url(../img/flags-icons/4x3/fr.svg);
+}
+.fi-gb {
+  background-image: url(../img/flags-icons/4x3/gb.svg);
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+
+
+ /* oOo */

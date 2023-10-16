@@ -10,4 +10,9 @@ _site-theme-start/vendor/*
 !_site-theme-start/vendor/README_FONTS_MONTSERRAT.md
 !_site-theme-start/vendor/README_HIGHLIGHT.md
 
+_site-theme-doceo/_dist
+_site-theme-doceo/vendor/*
+!_site-theme-doceo/vendor/README_FONTS_MONTSERRAT.md
+!_site-theme-doceo/vendor/README_HIGHLIGHT.md
+
 site

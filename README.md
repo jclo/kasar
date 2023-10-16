@@ -4,7 +4,7 @@
 [![GitHub last commit][commit-image]][commit-url]
 [![License][license-image]](LICENSE.md)
 
-Kasar is static site generator. It creates a static website from markdown or HTML pages. It is powered by **Gulp** and **RView**.
+Kasar is static site generator. It creates a static website from markdown or HTML pages. It is powered by **npm scripts** and **RView**.
 
 The advantages of the static websites are their responsiveness, the limited server resources needed and the simplicity of installation.
 
@@ -24,9 +24,9 @@ Then, you should add the three following scripts in the script section of the fi
 ```javascript
 {
   "scripts": {
-    "kasar:kinit": "kasar --init",
-    "kasar:build": "kasar --build",
-    "kasar:start": "kasar --serve"
+    "kasar:init": "kasar init --theme $1",
+    "kasar:build": "kasar build",
+    "kasar:start": "kasar serve --port $1"
   }
 }
 ```
@@ -56,6 +56,11 @@ site
   |_ webpages
   |_ config.js
 ```
+
+### Fill the vendor folder
+
+The `start` theme requires the `Montserrat` fonts and `Highlight.js` as a code syntax highlighter. These packages must be downloaded from their respective websites. The readme file in the vendor folder gives instructions how to proceed.
+
 
 ### How to build your website
 

@@ -1,0 +1,32 @@
+/*
+ * -- STYLE FOR THE BOTTOM MENU --
+ *
+ */
+footer .legal .pure-menu-heading {
+  padding: 0
+}
+footer .legal .pure-menu-item {
+  padding: 0.25em 0.5em
+}
+footer .legal .pure-menu-item:last-child {
+  padding: 0.25em 0 0.25em 0.5em
+}
+footer .legal p {
+  margin: 0;
+  padding: 0.3em 0 0 0
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+footer .legal .pure-menu-link:hover {
+  font-weight: 600;
+  /* color: var(--ksr-body-links) */
+}
+
+
+
+/* oOo */

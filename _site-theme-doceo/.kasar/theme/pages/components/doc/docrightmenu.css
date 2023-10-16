@@ -1,0 +1,34 @@
+/*
+ * -- STYLE FOR THE DOC RIGHT MENU --
+ *
+ */
+.content.doc .rightcol .menu > .pure-menu-list {
+  padding: 0 1em;
+}
+
+.content.doc .rightcol .menu > .pure-menu-list > .pure-menu-item:not(:last-child) {
+  padding: 0 0 1em 0
+}
+
+.content.doc .rightcol .pure-menu-item.h3 > .pure-menu-link {
+  margin-left: 1em;
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.content.doc .rightcol .pure-menu-item.pure-menu-active > .pure-menu-link {
+  background-color: unset;
+  color: var(--ksr-doc-menu-link-color);
+}
+
+.content.doc .rightcol .pure-menu-item > .pure-menu-link:hover {
+  font-weight: 600
+}
+
+
+
+/* oOo */

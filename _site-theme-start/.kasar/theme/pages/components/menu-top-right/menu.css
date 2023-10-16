@@ -1,0 +1,59 @@
+/*
+ * -- STYLE FOR THE TOP MENU --
+ *
+ */
+.top-right-menu .menu .pure-menu-list {
+  float: right
+}
+
+.top-right-menu .menu .pure-menu-children {
+  top: 1em;
+  left: -50px;
+  background: transparent
+}
+
+.top-right-menu .menu .pure-menu-children > div {
+  position: relative;
+  margin-top: 1em
+}
+
+.top-right-menu .menu .pure-menu-children > div > div {
+  padding: 1em 1em;
+  border-radius: 3px
+}
+
+.top-right-menu .menu .pure-menu-children .fi {
+  margin-right: 1em
+}
+
+.top-right-menu .menu .pure-menu-has-children.pure-menu-allow-hover .pure-menu-link:hover {
+    background-color: unset
+}
+.top-right-menu .menu .pure-menu-children .pure-menu-item.pure-menu-disabled .pure-menu-link:hover {
+    color: unset;
+    text-decoration: none
+}
+
+.top-right-menu .menu .pure-menu-children .pure-menu-link {
+  /* padding: 0.5em 0.5em */
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.top-right-menu .pure-menu-link:hover {
+  font-weight: 600;
+  /* color: var(--ksr-body-links) */
+}
+
+.top-right-menu .menu .pure-menu-children > div > div {
+  background-color: var(--ksr-menu-dropdown-background-color);
+  box-shadow: var(--ksr-menu-dropdown-box-shadow)
+}
+
+
+
+/* oOo */

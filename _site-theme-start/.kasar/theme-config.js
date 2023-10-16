@@ -20,7 +20,7 @@ module.exports = {
   // This is the theme used to build your website:
   theme: {
     name: 'start',
-    version: '2.0.0', // built from Kasar v^2.0.0
+    version: '2.1.0', // built from Kasar v^2.1.0
   },
 
   // Where is the root of the project:
@@ -33,7 +33,6 @@ module.exports = {
     `${base}/site/tobuildweb/index.html`,
     `${base}/site/tobuildweb/maintenance.html`,
     `${base}/site/tobuildweb/robot.txt`,
-    `${base}/site/tobuildweb/icon-32x32.png`,
     `${base}/site/tobuildweb/site.webmanifest`,
     `${base}/site/tobuildweb/manifest.json`,
   ],
