@@ -5,6 +5,7 @@
   * Added the doceo theme (documentation theme),
   * Updated the start theme based on improvements made to the doceo theme,
   * Added a few vendors files otherwise the build fails on travis CI,
+  * Release.
 
 
 ### 2.0.0 (October 6, 2023)
