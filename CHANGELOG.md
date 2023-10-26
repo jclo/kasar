@@ -3,7 +3,7 @@
 ### 2.2.0 (October 26, 2023)
 
   * Added appdoceo theme (same theme as doceo but with an SPA),
-  * ...,
+  * Release.
 
 
 ### 2.1.1 (October 26, 2023)
