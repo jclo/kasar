@@ -1,0 +1,88 @@
+/*
+ * -- STYLE OF MENUBUTTON COMPONENT - GENERIC STYLE --
+ *
+ */
+.shared-component-menubutton {
+  position:relative;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 33px;
+  margin-top: 1rem;
+  z-index: 3
+}
+
+.shared-component-menubutton-icon {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 4px;
+  border-radius: 10px;
+  -webkit-transition: background-color 5s;
+  -moz-transition: background-color .5s;
+  transition: background-color .5s
+}
+
+.shared-component-menubutton-icon:after, .shared-component-menubutton-icon:before {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -webkit-transition: -webkit-transform .7s;
+  -moz-transition: -moz-transform .7s;
+  transition: transform .7s
+}
+
+.shared-component-menubutton-icon:before {
+  top: -7px
+}
+
+.shared-component-menubutton-icon:after {
+  top: 7px
+}
+
+.shared-component-menubutton-icon-open:before {
+  top: 0;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg)
+}
+
+.shared-component-menubutton-icon-open:after {
+  top: 0;
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg)
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.shared-component-menubutton {
+  background-color: transparent
+}
+
+.shared-component-menubutton-icon,
+.shared-component-menubutton-icon:after,
+.shared-component-menubutton-icon:before {
+  background-color: var(--ksr-menu-button-icon-background-color);
+}
+
+.shared-component-menubutton-icon-open {
+  background-color: transparent
+}
+
+
+
+/* oOo */

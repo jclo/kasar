@@ -1,0 +1,36 @@
+/*
+ * -- STYLE OF THE BREADCRUMB MENU COMPONENT --
+ *
+ */
+.breadcrumb.menu .pure-menu-item {
+  margin: 0
+}
+
+.breadcrumb-icons {
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 2em;
+  line-height: 0.8em;
+}
+
+.breadcrumb-icons:before {
+content: '\00a0';
+}
+
+.breadcrumb-right-arrow {
+  background-image: var(--ksr-menu-breadcrumb-icons-right-arrow)
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+
+
+ /* oOo */

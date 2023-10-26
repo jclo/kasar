@@ -1,0 +1,81 @@
+/*
+ * -- STYLE FOR THE UTILITY CLESSES SHARED BY ALL THE APP --
+ *
+ */
+
+/**
+ * FONTS
+ */
+.ft-xlg {
+  font-size: 1.5rem
+}
+.ft-lg {
+  font-size: 1.2rem
+}
+.ft-n {
+  font-size: 0.9rem
+}
+.ft-sm {
+  font-size: 0.8rem
+}
+.ft-xsm {
+  font-size: 0.75rem
+}
+.ft-x2sm {
+  font-size: 0.7rem;
+}
+.uppercase {
+  text-transform: uppercase
+}
+.lowercase {
+  text-transform: lowercase
+}
+
+.w-normal {
+  font-weight: 400
+}
+.w-strong {
+  font-weight: 600
+}
+
+/**
+ * TITLES
+ */
+h1 {
+  font-size: 3rem;
+  font-weight: 700
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700
+}
+h3 {
+  font-size: 1rem;
+  font-weight: 700
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+h1, h2, h3, h4 {
+  color: var(--ksr-body-titles)
+}
+
+a {
+  color: var(--ksr-body-links)
+}
+a:hover {
+  color: var(--ksr-body-links);
+  text-decoration-color: var(--main-body-links)
+}
+
+/* .c-black {
+  color: var(--ksr-text-black);
+} */
+
+
+
+/* oOo */

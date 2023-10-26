@@ -1,0 +1,193 @@
+/*
+ * -- STYLE OF THE PUREPLUS-CALLOUT --
+ *
+ */
+.pureplus-callout {
+  margin: 20px 0;
+  padding: 15px;
+}
+
+.pureplus-callout h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.pureplus-callout p:last-child {
+  margin-bottom: 0;
+}
+
+/**
+ * NOTE
+ */
+.pureplus-callout-note > div {
+  position: relative;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  color: inherit;
+  padding-left: 1.5em;
+}
+
+.pureplus-callout-note > div::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  content: '';
+  width: 1.2em;
+  height: 1.2em;
+  background-size: cover;
+  background-image: var(--pps-callout-note-background-image);
+}
+
+/**
+ * INFO
+ */
+.pureplus-callout-info > div {
+  position: relative;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  padding-left: 1.5em;
+}
+
+.pureplus-callout-info > div::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  content: '';
+  width: 1.2em;
+  height: 1.2em;
+  background-size: cover;
+  background-image: url('../img/callout-icons/info.svg');
+}
+
+/**
+ * SUCCESS
+ */
+.pureplus-callout-success > div {
+  position: relative;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  padding-left: 1.5em;
+}
+
+.pureplus-callout-success > div::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  content: '';
+  width: 1.2em;
+  height: 1.2em;
+  background-size: cover;
+  background-image: url('../img/callout-icons/success.svg');
+}
+
+/**
+ * WARNING
+ */
+.pureplus-callout-warning > div {
+  position: relative;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  padding-left: 1.5em;
+}
+
+.pureplus-callout-warning > div::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  content: '';
+  width: 1.2em;
+  height: 1.2em;
+  background-size: cover;
+  background-image: url('../img/callout-icons/warning.svg');
+}
+
+/**
+ * ERROR
+ */
+.pureplus-callout-error > div {
+  position: relative;
+  font-size: 1.2em;
+  font-variant: small-caps;
+  padding-left: 1.5em;
+}
+
+.pureplus-callout-error > div::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  content: '';
+  width: 1.2em;
+  height: 1.2em;
+  background-size: cover;
+  background-image: url('../img/callout-icons/error.svg');
+}
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.pureplus-callout {
+  border-left: 5px solid #eee
+}
+
+/**
+ * NOTE
+ */
+ .pureplus-callout-note {
+  background-color: var(--pps-callout-note-background-color);
+  border-color: var(--pps-callout-note-border-color);
+}
+
+/**
+ * INFO
+ */
+.pureplus-callout-info {
+  background-color: var(--pps-callout-info-background-color);
+  border-color: var(--pps-callout-info-border-color);
+}
+
+.pureplus-callout-info > div {
+  color: var(--pps-callout-info-color);
+}
+
+/**
+ * SUCCESS
+ */
+.pureplus-callout-success {
+  background-color: var(--pps-callout-success-background-color);
+  border-color: var(--pps-callout-success-border-color);
+  ;
+}
+
+.pureplus-callout-success > div {
+  color: var(--pps-callout-success-color);
+}
+
+/**
+ * WARNING
+ */
+.pureplus-callout-warning {
+  background-color: var(--pps-callout-warning-background-color);
+  border-color: var(--pps-callout-warning-border-color);
+}
+
+.pureplus-callout-warning > div {
+  color: var(--pps-callout-warning-color);
+}
+
+/**
+ * ERROR
+ */
+.pureplus-callout-error {
+  background-color: var(--pps-callout-error-background-color);
+  border-color: var(--pps-callout-error-border-color);
+}
+
+.pureplus-callout-error > div {
+  color: var(--pps-callout-error-color);
+}
+
+
+
+/* oOo */

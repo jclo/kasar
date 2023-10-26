@@ -1,0 +1,18 @@
+/*
+ * -- STYLE OF THE TOP RIGHT MENU COMPONENT --
+ *
+ */
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+header .navbar .menu .pure-menu-link .theme-color-icons.theme-icon {
+  background-image: var(--ksr-header-menu-theme-icon)
+}
+
+
+
+/* oOo */

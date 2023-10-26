@@ -90,7 +90,7 @@ function _help() {
     '',
     '-h, --help         output usage information',
     '-v, --version      output the version number',
-    '--theme            the theme to install (currently start or doceo',
+    '--theme            the theme to install (currently start, doceo or appdoceo',
     '--port             the listening port (default 8080)',
     '',
   ].join('\n');
@@ -176,6 +176,7 @@ function _init(options) {
   const defaultTheme = '_site-theme-start'
       , start        = '_site-theme-start'
       , doceo        = '_site-theme-doceo'
+      , appdoceo     = '_site-theme-appdoceo'
       ;
 
   // Check if 'site' exists?
@@ -193,6 +194,10 @@ function _init(options) {
         theme = doceo;
         break;
 
+      case 'appdoceo':
+        theme = appdoceo;
+        break;
+
       default:
         theme = defaultTheme;
     }
@@ -206,9 +211,11 @@ function _init(options) {
     shell.mkdir('-p', `${baseapp}/${site}/img`);
     shell.cp('-R', `${basescript}/${theme}/img/*`, `${baseapp}/${site}/img/.`);
 
-    process.stdout.write(`creates and fills ${site}/js ...\n`);
-    shell.mkdir('-p', `${baseapp}/${site}/js`);
-    shell.cp('-R', `${basescript}/${theme}/js/*`, `${baseapp}/${site}/js/.`);
+    if (theme !== appdoceo) {
+      process.stdout.write(`creates and fills ${site}/js ...\n`);
+      shell.mkdir('-p', `${baseapp}/${site}/js`);
+      shell.cp('-R', `${basescript}/${theme}/js/*`, `${baseapp}/${site}/js/.`);
+    }
 
     process.stdout.write(`creates and fills ${site}/php ...\n`);
     shell.mkdir('-p', `${baseapp}/${site}/php`);
@@ -233,10 +240,14 @@ function _init(options) {
     // Create .htacess files:
     process.stdout.write('creates the .htaccess files ...\n');
     shell.cp('-R', `${basescript}/${theme}/php/.htaccess`, `${baseapp}/${site}/php/.htaccess`);
-    shell.cp('-R', `${basescript}/${theme}/tobuildweb/.htaccess`, `${baseapp}/${site}/tobuildweb/.htaccess`);
+    if (theme !== appdoceo) {
+      shell.cp('-R', `${basescript}/${theme}/tobuildweb/.htaccess`, `${baseapp}/${site}/tobuildweb/.htaccess`);
+    }
 
-    process.stdout.write(`creates ${site}/sw.js ...\n`);
-    shell.cp('-R', `${basescript}/${theme}/sw.js`, `${baseapp}/${site}/sw.js`);
+    if (theme !== appdoceo) {
+      process.stdout.write(`creates ${site}/sw.js ...\n`);
+      shell.cp('-R', `${basescript}/${theme}/sw.js`, `${baseapp}/${site}/sw.js`);
+    }
 
     // Copy Vendor:
     shell.mkdir('-p', `${baseapp}/${site}/vendor/fonts`);

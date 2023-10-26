@@ -1,0 +1,68 @@
+/*
+ * -- STYLE FOR THE PAGE NAVIGATION MENU --
+ *
+ */
+ .nav-pagination {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-pagination > div {
+  flex: 1;
+  border-radius: 3px;
+}
+
+.nav-pagination > div:first-child {
+  margin-right:1em;
+}
+
+.nav-pagination > div:last-child {
+  text-align: right;
+  margin-left:1em;
+}
+
+.nav-pagination > div > a > div {
+  padding: 1em;
+}
+
+.nav-pagination .nav-pagination-hidden {
+  visibility: hidden;
+}
+
+.nav-pagination a > div > div:first-child {
+  font-size: 0.9em;
+}
+
+.nav-pagination a > div > div:last-child {
+  font-weight: 600;
+}
+
+.nav-pagination > div:first-child > a > div > div:last-child::before {
+  content: '« '
+}
+
+.nav-pagination > div:last-child > a > div > div:last-child::after {
+  content: ' »'
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.nav-pagination > div {
+  border: var(--ksr-nav-pagination-border)
+}
+
+.nav-pagination > div:hover {
+  border: var(--ksr-nav-pagination-border-hover)
+}
+
+.nav-pagination a > div > div:first-child {
+  color: var(--ksr-body-color);
+}
+
+
+
+/* oOo */

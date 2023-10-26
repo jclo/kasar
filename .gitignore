@@ -15,4 +15,9 @@ _site-theme-doceo/vendor/*
 !_site-theme-doceo/vendor/README_FONTS_MONTSERRAT.md
 !_site-theme-doceo/vendor/README_HIGHLIGHT.md
 
+_site-theme-appdoceo/_dist
+_site-theme-appdoceo/vendor/*
+!_site-theme-appdoceo/vendor/README_FONTS_MONTSERRAT.md
+!_site-theme-appdoceo/vendor/README_HIGHLIGHT.md
+
 site

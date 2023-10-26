@@ -2,6 +2,7 @@
 
 !_site-theme-start/**/*
 !_site-theme-doceo/**/*
+!_site-theme-appdoceo/**/*
 !bin/**/*
 !tasks/**/*
 !index

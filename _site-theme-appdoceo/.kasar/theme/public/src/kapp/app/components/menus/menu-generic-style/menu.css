@@ -1,0 +1,59 @@
+/*
+ * -- GENERIC STYLE FOR THE MENUS --
+ *
+ */
+.menu .pure-menu-heading {
+  text-transform: none;
+}
+
+.menu a:hover {
+  text-decoration: none
+}
+
+.menu .pure-menu-item:not(.pure-menu-disabled) .pure-menu-link:hover {
+  font-weight: 600;
+}
+
+.pure-menu-horizontal .pure-menu-link {
+  padding: 0;
+}
+
+.pure-menu-horizontal .pure-menu-list > .pure-menu-item {
+  margin-left: 1em;
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.menu .pure-menu-heading,
+.menu .pure-menu-link {
+  color: inherit;
+}
+
+.menu .pure-menu-link:hover {
+  background-color: transparent;
+}
+
+.menu .pure-menu-item.pure-menu-active > .pure-menu-link,
+.menu .pure-menu-has-children.pure-menu-active > .pure-menu-link,
+.content-page-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-children .pure-menu-active > .pure-menu-link,
+.menu .pure-menu-link:hover {
+  color: var(--ksr-content-menu-link-color);
+  background-color: transparent;
+}
+
+.menu .pure-menu-has-children.pure-menu-active > .pure-menu-link:after {
+  content: '\25BE';
+}
+
+.menu .pure-menu-item.pure-menu-disabled .pure-menu-link:hover {
+  color: unset;
+  text-decoration: none;
+}
+
+
+
+/* oOo */

@@ -1,0 +1,50 @@
+/*
+ * -- STYLE OF THE FOOTER COMPONENT --
+ *
+ */
+ footer {
+  font-size: 0.9em;
+  margin-top: 1rem;
+}
+
+/**
+ * MENU FLEXBOXES
+ */
+footer > div {
+  display: flex;
+  flex-direction: row;
+}
+
+footer > div > div {
+  flex: initial;
+}
+
+footer > div > div:first-child {
+  /* - */
+}
+
+footer > div > div:last-child {
+  margin-left: auto;
+}
+
+/**
+ * FLEXBOXES VISIBILITY
+ * (see app-visibility.css for activation)
+ */
+ footer > div > div:last-child {
+  display: none
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+footer {
+  border-top: var(--ksr-footer-border-color)
+}
+
+
+
+/* oOo */

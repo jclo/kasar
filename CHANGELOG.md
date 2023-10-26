@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.2.0 (October 26, 2023)
+
+  * Added appdoceo theme (same theme as doceo but with an SPA),
+  * ...,
+
+
 ### 2.1.1 (October 26, 2023)
 
   * Fixed a issue that prevented to run start theme in a subfolder,

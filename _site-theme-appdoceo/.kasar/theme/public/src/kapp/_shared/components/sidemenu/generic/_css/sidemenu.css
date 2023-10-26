@@ -1,0 +1,24 @@
+/*
+ * -- STYLE OF SIDEMENU COMPONENT - GENERIC STYLE --
+ *
+ */
+.shared-component-sidemenu .pure-menu-has-children .pure-menu-children {
+  position: relative;
+  left: 0;
+  font-size: 0.9em;
+  padding-left: 1em;
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.shared-component-sidemenu .pure-menu-has-children .pure-menu-children {
+  background: transparent;
+}
+
+
+
+/* oOo */

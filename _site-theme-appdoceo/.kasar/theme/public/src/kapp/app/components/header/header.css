@@ -1,0 +1,99 @@
+/*
+ * -- STYLE OF THE HEADER COMPONENT --
+ *
+ */
+ header.navbar-fixed-top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/**
+ * NAV BAR
+ */
+header .navbar {
+  position: relative;
+  font-size: 0.9em;
+  min-height: var(--ksr-header-height);
+  z-index: 5;
+}
+
+header .navbar {
+  border-width: 0 0 1px;
+}
+
+header .navbar .menu .pure-menu-heading {
+  padding: 0;
+}
+
+header .navbar .top-left-menu,
+header .navbar .top-right-menu {
+  padding-top: 1.2em;
+}
+
+/**
+ * MENU FLEXBOXES
+ */
+ header .container {
+  display: flex;
+  flex-direction: row;
+}
+
+header .container > div {
+  flex: initial;
+}
+
+header .container > div:first-child {
+  width: 200px;
+}
+
+header .container > div:nth-child(3),
+header .container > div:nth-child(4) {
+  margin-left: auto;
+}
+
+/**
+ * LOGO STYLING
+ */
+header .header-logo {
+  background-size: contain;
+  background-position: 0;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  line-height: 50px;
+  background-image: var(--ksr-header-menu-logo-icon);
+}
+
+header .header-logo::before {
+  content: '\00a0';
+}
+
+/**
+ * FLEXBOXES VISIBILITY
+ * (see app-visibility.css for activation)
+ */
+header .navbar .container > div:nth-child(2),
+header .navbar .container > div:nth-child(3) {
+  display: none;
+}
+
+header .navbar .container > div:nth-child(4) {
+  display: block;
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+ header .navbar {
+  background-color: var(--ksr-header-background-color);
+  border-bottom: var(--ksr-header-border-color);
+}
+
+
+
+/* oOo */

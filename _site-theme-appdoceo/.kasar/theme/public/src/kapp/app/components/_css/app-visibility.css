@@ -1,0 +1,75 @@
+/*
+ * -- STYLE FOR THE APP - VISIBILITY -- 
+ *
+ */
+
+/**
+ * HEADER - MENU AND MENU BUTTON VISIBILIITY
+ */
+ @media (min-width:768px) {
+  header .navbar .container > div:nth-child(2),
+  header .navbar .container > div:nth-child(3) {
+    display: block
+  }
+
+  header .navbar .container > div:nth-child(4) {
+    display: none
+  }
+}
+
+/**
+ * FOOTER - RIGHT MENU VISIBILIITY
+ */
+@media (min-width:768px) {
+  footer > div > div:last-child {
+    display: block
+  }
+}
+
+/**
+ * CONTENT-PAGE - LEFT AND RIGHT MENU VISIBILITY
+ */
+ @media (min-width:768px) {
+  .contents aside {
+    display: block;
+  }
+
+  .contents main .row .leftcol {
+    max-width: 75%;
+  }
+
+  .contents main .row .rightcol {
+    display: block;
+  }
+}
+
+/**
+ * MOBILEMENU VISIBILITY
+ */
+ @media (min-width: 320px) {
+  .mobilemenu {
+    left: -60%;
+    width: 60%
+  }
+}
+
+@media (min-width: 768px) {
+  .mobilemenu {
+    left: -25%;
+    width: 25%
+  }
+}
+
+@media (min-width: 992px) {
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+
+
+/* oOo */
