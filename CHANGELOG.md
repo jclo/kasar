@@ -4,7 +4,7 @@
 
   * Fixed a issue that prevented to run start theme in a subfolder,
   * Fixed a issue that prevented to run doceo theme in a subfolder,
-  * ...,
+  * Release.
 
 
 ### 2.1.0 (October 16, 2023)
