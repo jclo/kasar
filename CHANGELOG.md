@@ -1,5 +1,12 @@
 ### HEAD
 
+### 2.1.1 (October 26, 2023)
+
+  * Fixed a issue that prevented to run start theme in a subfolder,
+  * Fixed a issue that prevented to run doceo theme in a subfolder,
+  * ...,
+
+
 ### 2.1.0 (October 16, 2023)
 
   * Added the doceo theme (documentation theme),

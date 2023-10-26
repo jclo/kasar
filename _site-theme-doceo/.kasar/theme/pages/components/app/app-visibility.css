@@ -33,6 +33,10 @@
     display: block;
   }
 
+  .contents main .row .leftcol {
+    max-width: 75%;
+  }
+
   .content.doc main .row .rightcol {
     display: block;
   }

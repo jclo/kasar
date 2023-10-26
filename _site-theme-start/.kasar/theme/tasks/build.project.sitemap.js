@@ -283,9 +283,11 @@ function _buildsitemap(website, docsite, done) {
 /**
  * Executes build:project:sitemap.
  *
- * @function (arg1)
+ * @function (arg1, arg2, arg3)
  * @public
- * @param {Function}        to be call at the completion,
+ * @param {Array}           the list of web pages,
+ * @param {Array}           the list of doc pages,
+ * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */

@@ -51,7 +51,7 @@
  * MAIN LEFT COLUMN
  */
 .content.doc main .row .leftcol {
-  max-width: 75%;
+  max-width: unset;
 }
 
 .content.doc main .row .leftcol .breadcrumb {

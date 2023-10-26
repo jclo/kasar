@@ -136,7 +136,11 @@ const MobileMenu = RView.Component({
     return `
       <div class="mobilemenu">
         <div class="inner">
-          <div><a href="${state.home}"><img src="/img/mylogo-white.svg" class="mobilemenu-logo-link"></a></div>
+          <div class="menu pure-menu pure-menu-horizontal">
+            <a class="pure-menu-heading" href="${state.home}">
+              <span class="mobilemenu-logo"></span>
+            </a>
+          </div>
           <div class="menu pure-menu custom-restricted-width">
             <ul class="pure-menu-list">
               ${state.menu || ''}

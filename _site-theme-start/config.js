@@ -157,7 +157,7 @@ module.exports = {
       mobile: [
         { text: 'Home', link: `${basepath}${FR}/index.html` },
         { text: 'Contact', link: `${basepath}${FR}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/Legal.html` },
+        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
         { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
         { icon: '<span class="fi fi-gb"></span>', text: '', link: null, lang: EN },
         { icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-color-icons-light-sun" title="Switch between dark and light mode."></span>', text: '', link: '#switchtheme', lang: null },
@@ -198,7 +198,7 @@ module.exports = {
       mobile: [
         { text: 'Home', link: `${basepath}${EN}/index.html` },
         { text: 'Contact', link: `${basepath}${EN}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/Legal.html` },
+        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
         { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
         { icon: '<span class="fi fi-fr"></span>', text: '', link: null, lang: FR },
         { icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-color-icons-light-moon" title="Switch between dark and light mode.">', text: '', link: '#switchtheme', lang: null },

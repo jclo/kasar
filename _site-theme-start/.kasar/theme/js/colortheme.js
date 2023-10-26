@@ -9,41 +9,19 @@
 (function() {
   'use strict';
 
-  const LOGO_ID          = 'logo-theme-dark-light'
-      , LOGO_THEME_LIGHT = 'logo-theme-light'
-      , LOGO_THEME_DARK  = 'logo-theme-dark'
-      , ICON_TOP_ID      = 'switchthemetopmenu'
-      , ICON_SIDE_ID     = 'switchthemesidemenu'
-      , ICON_LIGHT_SUN   = 'theme-color-icons-light-sun'
-      , ICON_DARK_SUN    = 'theme-color-icons-dark-sun'
-      , ICON_LIGHT_MOON  = 'theme-color-icons-light-moon'
-      , ICON_DARK_MOON   = 'theme-color-icons-dark-moon'
-      , CSS_ID           = '#highlight-color-theme'
-      , CSS_DARK         = 'atom-one-dark.min.css'
-      , CSS_LIGHT        = 'atom-one-light.min.css'
-      , CALLOUT          = '.pureplus-callout-note'
-      , CALLOUT_DARK     = 'pureplus-callout-note-dark'
+  const ICON_TOP_ID     = 'switchthemetopmenu'
+      , ICON_SIDE_ID    = 'switchthemesidemenu'
+      , ICON_LIGHT_SUN  = 'theme-color-icons-light-sun'
+      , ICON_DARK_SUN   = 'theme-color-icons-dark-sun'
+      , ICON_LIGHT_MOON = 'theme-color-icons-light-moon'
+      , ICON_DARK_MOON  = 'theme-color-icons-dark-moon'
+      , CSS_ID          = '#highlight-color-theme'
+      , CSS_DARK        = 'atom-one-dark.min.css'
+      , CSS_LIGHT       = 'atom-one-light.min.css'
       ;
 
 
   // -- Private Functions ------------------------------------------------------
-
-  /**
-   * Sets Callout theme.
-   *
-   */
-  function setThemeCallout() {
-    const callout = document.querySelectorAll(CALLOUT);
-    const dark = localStorage.getItem('theme') === 'dark';
-
-    callout.forEach((item) => {
-      if (dark) {
-        item.classList.add(CALLOUT_DARK);
-        return;
-      }
-      item.classList.remove(CALLOUT_DARK);
-    });
-  }
 
   /**
    * Sets highlight css file.
@@ -63,20 +41,6 @@
         const np = apath.join('/');
         css.setAttribute('href', np);
       }
-    }
-  }
-
-  /**
-   * Sets the logo color for a given theme.
-   *
-   */
-  function setThemeLogo() {
-    const logo = document.querySelector(`#${LOGO_ID}`);
-
-    if (logo) {
-      logo.classList.remove(LOGO_THEME_LIGHT);
-      logo.classList.remove(LOGO_THEME_DARK);
-      logo.classList.add(localStorage.getItem('theme') === 'light' ? LOGO_THEME_LIGHT : LOGO_THEME_DARK);
     }
   }
 
@@ -134,18 +98,14 @@
     const side = document.querySelector(`#${ICON_SIDE_ID}`);
     setThemeIcon(top);
     setThemeIcon(side);
-    setThemeLogo();
     setHighlight();
-    setThemeCallout();
 
     if (top) {
       top.addEventListener('click', (e) => {
         e.preventDefault();
         toogleTheme();
         setThemeIcon(e.target);
-        setThemeLogo();
         setHighlight();
-        setThemeCallout();
       });
     }
 
@@ -154,9 +114,7 @@
         e.preventDefault();
         toogleTheme();
         setThemeIcon(e.target);
-        setThemeLogo();
         setHighlight();
-        setThemeCallout();
       });
     }
   });

@@ -72,7 +72,7 @@
   background-color: transparent
 }
 .mobilemenu-icon, .mobilemenu-icon:after, .mobilemenu-icon:before {
-  background-color: var(--ksr-mobilemenu-icon-color)
+  background-color: var(--ksr-menu-button-icon-background-color)
 }
 .mobilemenu-icon-clicked {
   background-color: transparent

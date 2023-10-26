@@ -240,7 +240,7 @@ function _convertWeb2HTML(webpages, menu) {
       const html = createPage(webpages, lang, page, content, _getNormalize(), params, menu);
 
       if (output) {
-        fse.outputFile(`${basedist}/${output}`, html, (err) => {
+        fse.outputFile(`${dist}/${output}`, html, (err) => {
           if (err) {
             throw new Error(err);
           }

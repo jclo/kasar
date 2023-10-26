@@ -73,9 +73,9 @@ const Header = RView.Component({
       <header class="navbar-fixed-top">
         <div class="navbar">
           <div class="container">
-            <div class="logo">
-              <a href="${state.home}">
-                <span id="logo-theme-dark-light" class="logo-theme-light"></span>
+            <div class="logo menu pure-menu pure-menu-horizontal">
+              <a class="pure-menu-heading" href="${state.home}">
+                <span class="header-logo"></span>
               </a>
             </div>
             <div class="top-left-menu"><TLMenu /></div>
