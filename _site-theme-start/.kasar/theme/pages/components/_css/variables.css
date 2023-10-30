@@ -57,6 +57,7 @@
   --ksr-body-links: rgb(173, 31, 35);
 
   --ksr-header-background-color: rgba(255, 255, 255, 0.97);
+  --ksr-header-menu-theme-icon: url('../img/theme-icons/dark-sun.svg');
   --ksr-header-menu-logo-icon: url('../img/mylogo.svg');
 
   --ksr-menu-arrow-border-color-before: #fff;
@@ -65,6 +66,8 @@
   --ksr-menu-dropdown-box-shadow: 0 0 10px 0 rgb(26, 46, 69, 0.3);
 
   --ksr-menu-button-icon-background-color: rgb(0, 2, 50);
+
+  --ksr-mobile-menu-theme-icon: url('../img/theme-icons/light-sun.svg');
 
   --pps-callout-note-color: #eee;
   --pps-callout-note-border-color: #eee;
@@ -83,6 +86,7 @@
   --ksr-body-links: rgb(173, 31, 35);
 
   --ksr-header-background-color: rgba(27, 27, 29, 0.99);
+  --ksr-header-menu-theme-icon: url('../img/theme-icons/light-moon.svg');
   --ksr-header-menu-logo-icon: url('../img/mylogo-white.svg');
 
   --ksr-menu-arrow-border-color-before: rgb(40, 44, 52);
@@ -91,6 +95,8 @@
   --ksr-menu-dropdown-box-shadow: 0 0 10px 0 rgb(26, 46, 69, 0.3);
 
   --ksr-menu-button-icon-background-color: rgb(238, 238, 238);
+
+  --ksr-mobile-menu-theme-icon: url('../img/theme-icons/light-moon.svg');
 
   --pps-callout-note-color: #eee;
   --pps-callout-note-border-color: #eee;

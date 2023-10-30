@@ -45,8 +45,8 @@ const RView = require('@mobilabs/rview')
 
 
 // -- Local modules
-const Breadcrumb = require('../breadcrumb/main')
-    , BTDMenu    = require('../menu-doc-pagination/main')
+const Breadcrumb = require('../menus/menu-breadcrumb/main')
+    , BTDMenu    = require('../menus/menu-doc-pagination/main')
     ;
 
 

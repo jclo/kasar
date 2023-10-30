@@ -102,8 +102,8 @@ KApp.VERSION = '{{lib:version}}';
 // -- Starts
 const theme = localStorage.getItem('theme');
 // This is an option to reload the active page. If the user forces a page
-// to reload, a script at the begining of the html contents, restarts
-// the app and specify what page to load. For instannce, this is the begining
+// to reload, a script, at the beginning of the html contents, restarts
+// the app and specifies what page to load. For instance, this is the beginning
 // of the "http://<domain>/en/introduction.html" file:
 //   . <script>window.location.href="/?page=en:introduction"</script><h1 id="introduction" ...
 // The script is removed from the contents when the page is

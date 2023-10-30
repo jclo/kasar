@@ -35,7 +35,7 @@ const RView = require('@mobilabs/rview')
 
 
 // -- Local modules
-const BOTMenu = require('../menu-bottom-right/main')
+const BOTMenu = require('../menus/menu-bottom-right/main')
     ;
 
 

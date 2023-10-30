@@ -1,6 +1,6 @@
 ---
 name: 'home'
-title: 'Kasar | We are expert in ...'
+title: 'Kasar start | We are expert in ...'
 description: 'this page ...'
 ---
 

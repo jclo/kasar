@@ -102,7 +102,7 @@ module.exports = {
   website: {
     en: [
       `${base}/site/webpages/${EN}/introduction.md`,
-      `${base}/site/webpages/${EN}/quickstart.html`,
+      `${base}/site/webpages/${EN}/subfolder/quickstart.html`,
       {
         sections: [
           `${base}/site/webpages/${EN}/guides.md`,

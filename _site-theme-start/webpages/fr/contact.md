@@ -1,6 +1,6 @@
 ---
 name: 'contact'
-title: 'Kasardoceo | Contact Page'
+title: 'Kasar start | Contact Page'
 description: 'this page ...'
 ---
 

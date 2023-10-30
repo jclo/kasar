@@ -46,7 +46,7 @@ const RView = require('@mobilabs/rview');
 
 // -- Local modules
 const Header     = require('../header/main')
-    , MobileMenu = require('../menu-mobile/main')
+    , MobileMenu = require('../menus/menu-mobile/main')
     , Marketing  = require('../marketing/main')
     , Content    = require('../content/main')
     , Footer     = require('../footer/main')
@@ -175,7 +175,7 @@ const methods = {
     if (website && website[lang] && website[lang][page]) {
       // It means that it is a webpage.
 
-      if (website[lang][page] === 'home') {
+      if (page === 'home') {
         // this.mkt.fillFront(content);
         this.content.fill(content);
         return this;

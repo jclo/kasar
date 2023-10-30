@@ -22,6 +22,22 @@ header .container .logo,
 .fi-gb {
   background-image: url(../img/flags-icons/4x3/gb.svg);
 }
+.fi-de {
+  background-image: url('../img/flags-icons/4x3/de.svg');
+}
+.fi-it {
+  background-image: url('../img/flags-icons/4x3/it.svg');
+}
+
+/**
+ * LOGO
+ */
+/* header .container .logo {
+  margin-top: 1em;
+}
+header .container .logo > a {
+  padding: 0
+} */
 
 
 
@@ -32,4 +48,4 @@ header .container .logo,
 
 
 
- /* oOo */
+/* oOo */

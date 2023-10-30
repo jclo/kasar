@@ -1,6 +1,6 @@
 ---
 name: 'legal'
-title: 'Kasardoceo | Legal Terms'
+title: 'Kasar start | Legal Terms'
 description: 'this page ...'
 ---
 

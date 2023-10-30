@@ -7,6 +7,7 @@
  *  . render                      customizes Markdown render function,
  *  . _initMarkdown               initializes Markdown renderer,
  *  . _getNormalize               returns the normalize style,
+ *  . _replaceVariables           replaces variables in html or md contents,
  *  . _getContent                 returns the HTML con tent of the requested file,
  *  . _write                      writes html content aand sidemenu to dist,
  *  . _generateWebPage            extracts data from the selected source file,
@@ -160,6 +161,23 @@ function _getNormalize() {
 }
 
 /**
+ * Replaces variables in html or md contents.
+ *
+ * @function (arg1)
+ * @private
+ * @param {String}    the md or html contents,
+ * @returns {String}  return the updated contents,
+ * @since 0.0.0
+ */
+function _replaceVariables(data) {
+  const content = data
+    .replace(/{{base:path}}/g, basepath)
+  ;
+
+  return content;
+}
+
+/**
  * Returns the HTML content of the requested file.
  * (convert it from markdown to html if needed)
  *
@@ -178,8 +196,8 @@ function _getContent(file) {
     if (fs.existsSync(file)) {
       input = fs.readFileSync(file, 'utf8');
       content = file.match(/.md/)
-        ? md.render(input.replace(/---([\s\S]*?)---/, ''))
-        : input.replace(/---([\s\S]*?)---/, '')
+        ? md.render(_replaceVariables(input.replace(/---([\s\S]*?)---/, '')))
+        : _replaceVariables(input.replace(/---([\s\S]*?)---/, ''))
       ;
     }
   }
@@ -192,8 +210,8 @@ function _getContent(file) {
       }
     }
     content = file.sections[0].match(/.md/)
-      ? md.render(input.replace(/---([\s\S]*?)---/, ''))
-      : input.replace(/---([\s\S]*?)---/, '')
+      ? md.render(_replaceVariables(input.replace(/---([\s\S]*?)---/, '')))
+      : _replaceVariables(input.replace(/---([\s\S]*?)---/, ''))
     ;
   }
 

@@ -1,6 +1,6 @@
 ---
 name: 'offline'
-title: 'Kasardoceo | Offline Page'
+title: 'Kasar start | Offline Page'
 description: 'this page ...'
 ---
 

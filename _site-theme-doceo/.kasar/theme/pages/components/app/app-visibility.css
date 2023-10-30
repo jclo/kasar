@@ -33,7 +33,7 @@
     display: block;
   }
 
-  .contents main .row .leftcol {
+  .content.doc main .row .leftcol {
     max-width: 75%;
   }
 

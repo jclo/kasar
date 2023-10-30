@@ -11,28 +11,7 @@
 @import './theme-icons.css';
 @import './pureplus-callout.css';
 
-@import '../app/app.css';
-@import '../header/header.css';
-@import '../marketing/marketing.css';
-@import '../content/content.css';
-@import '../footer/footer.css';
-@import '../404/404.css';
-
-@import '../menu/menu.css';
-@import '../breadcrumb/breadcrumb.css';
-@import '../menu-top-left/menu.css';
-@import '../menu-top-right/menu.css';
-@import '../menu-bottom-right/menu.css';
-@import '../menu-mobile/menu.css';
-@import '../menu-mobile/button.css';
-@import '../menu-doc-pagination/menu.css';
-
-@import '../doc/doc.css';
-@import '../doc/docleftmenu.css';
-@import '../doc/docrightmenu.css';
-@import '../doc/docmobilesubmenu.css';
-
-@import '../app/app-visibility.css';
+@import './app.css';
 
 
 

@@ -11,8 +11,10 @@ const themeconfig = require('./.kasar/theme-config')
 
 
 // -- Local constants
-const FR          = 'fr'
-    , EN          = 'en'
+const EN          = 'en'
+    , FR          = 'fr'
+    , DE          = 'de'
+    , IT          = 'it'
     , { base }    = themeconfig
     // , basepath    = '/'
     ;
@@ -69,6 +71,14 @@ module.exports = {
     fr: [
       `${base}/site/webdocpages/${FR}/introduction.md`,
       `${base}/site/webdocpages/${FR}/quickstart.html`,
+    ],
+    de: [
+      `${base}/site/webdocpages/${DE}/introduction.md`,
+      `${base}/site/webdocpages/${DE}/quickstart.html`,
+    ],
+    it: [
+      `${base}/site/webdocpages/${IT}/introduction.md`,
+      `${base}/site/webdocpages/${DE}/quickstart.html`,
     ],
   },
 };

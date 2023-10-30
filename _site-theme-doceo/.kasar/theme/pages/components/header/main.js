@@ -35,8 +35,8 @@ const RView = require('@mobilabs/rview')
 
 
 // -- Local modules
-const TLMenu = require('../menu-top-left/main')
-    , TRMenu = require('../menu-top-right/main')
+const TLMenu = require('../menus/menu-top-left/main')
+    , TRMenu = require('../menus/menu-top-right/main')
     ;
 
 

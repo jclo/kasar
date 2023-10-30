@@ -15,7 +15,11 @@
   margin: 0.1em 0
 }
 
-.mobilemenu .menu > .pure-menu-list > .pure-menu-item {
+/* .mobilemenu .menu > .pure-menu-list > .pure-menu-item {
+  padding-top: 1rem;
+} */
+
+.mobilemenu .menu .pure-menu-list .pure-menu-item {
   padding-top: 1rem;
 }
 

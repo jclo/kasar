@@ -6,6 +6,7 @@
  * an object that inherits from the RView object.
  *
  * Private Functions:
+ *  . _move2Top                   moves the page to the top when new content is loaded,
  *  . _freezePage                 moves page to top and removes scrolling,
  *  . _setTheme                   sets the DOM HTML data-theme attribute,
  *
@@ -60,6 +61,19 @@ const CSS_ID    = '#highlight-color-theme'
 
 
 // -- Private Functions ----------------------------------------------------
+
+/**
+ * Moves the page to the top when new content is loaded.
+ *
+ * @function ()
+ * @private
+ * @param {}                -,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _move2Top() {
+  window.scrollTo(0, 0);
+}
 
 /**
  * Moves page to top and removes scrolling.
@@ -198,6 +212,7 @@ const App = RView.Component({
     this._comobile.update(lang, name);
     this._coheader.setLang(lang);
     this._cofooter.setLang(lang);
+    _move2Top();
     return this;
   },
 

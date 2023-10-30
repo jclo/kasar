@@ -11,8 +11,10 @@ const themeconfig = require('./.kasar/theme-config')
 
 
 // -- Local constants
-const FR          = 'fr'
-    , EN          = 'en'
+const EN          = 'en'
+    , FR          = 'fr'
+    , DE          = 'de'
+    , IT          = 'it'
     , { base }    = themeconfig
     , { version } = require('../package.json')
     , basepath    = '/'
@@ -98,6 +100,14 @@ module.exports = {
   // with html tags, choose for the extension '.html'. This page won't be
   // processed by the markdown parser.
   website: {
+    en: [
+      `${base}/site/webpages/${EN}/index.md`,
+      `${base}/site/webpages/${EN}/kasar.md`,
+      `${base}/site/webpages/${EN}/contact.md`,
+      `${base}/site/webpages/${EN}/legal.md`,
+      `${base}/site/webpages/${EN}/404.md`,
+      `${base}/site/webpages/${EN}/offline.md`,
+    ],
     fr: [
       `${base}/site/webpages/${FR}/index.md`,
       // `${base}/site/webpages/${FR}/kasar.md`,
@@ -106,13 +116,21 @@ module.exports = {
       `${base}/site/webpages/${FR}/404.md`,
       `${base}/site/webpages/${FR}/offline.md`,
     ],
-    en: [
-      `${base}/site/webpages/${EN}/index.md`,
-      `${base}/site/webpages/${EN}/kasar.md`,
-      `${base}/site/webpages/${EN}/contact.md`,
-      `${base}/site/webpages/${EN}/legal.md`,
-      `${base}/site/webpages/${EN}/404.md`,
-      `${base}/site/webpages/${EN}/offline.md`,
+    de: [
+      `${base}/site/webpages/${DE}/index.md`,
+      // `${base}/site/webpages/${EN}/kasar.md`,
+      // `${base}/site/webpages/${EN}/contact.md`,
+      // `${base}/site/webpages/${EN}/legal.md`,
+      // `${base}/site/webpages/${EN}/404.md`,
+      // `${base}/site/webpages/${EN}/offline.md`,
+    ],
+    it: [
+      `${base}/site/webpages/${IT}/index.md`,
+      // `${base}/site/webpages/${EN}/kasar.md`,
+      // `${base}/site/webpages/${EN}/contact.md`,
+      // `${base}/site/webpages/${EN}/legal.md`,
+      // `${base}/site/webpages/${EN}/404.md`,
+      // `${base}/site/webpages/${EN}/offline.md`,
     ],
   },
 
@@ -123,46 +141,6 @@ module.exports = {
   // replace the default menus (top and bottom) on devices with a small screen.
   /* eslint-disable object-curly-newline */
   menu: {
-    fr: {
-      top: {
-        left: [
-          { text: 'Home', link: '#home' },
-          { text: 'Section 1', link: '#section1' },
-          { text: 'Section 2', link: '#section2' },
-          { text: 'Section 3', link: '#section3' },
-          { text: 'Section 4', link: '#section4' },
-          { text: 'Section 5', link: '#section5' },
-        ],
-        right: [
-          { text: 'Google', link: 'https://www.google.com', target: '_blank' },
-          { text: 'FR',
-            link: null,
-            target: null,
-            lang: FR,
-            children: [
-              { icon: '<span class="fi fi-gb"></span>', text: 'English', link: null, lang: EN },
-              { icon: '<span class="fi fi-fr"></span>', text: 'Français', link: null, lang: FR },
-            ],
-          },
-          { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
-          { icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-color-icons-light-sun" title="Switch between dark and light mode."></span>', text: '', link: '#switchtheme', lang: null },
-        ],
-      },
-      bottom: [
-        { text: 'contact', link: `${basepath}${FR}/contact.html` },
-        { text: 'legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
-        { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
-      ],
-      mobile: [
-        { text: 'Home', link: `${basepath}${FR}/index.html` },
-        { text: 'Contact', link: `${basepath}${FR}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
-        { icon: '<span class="fi fi-gb"></span>', text: '', link: null, lang: EN },
-        { icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-color-icons-light-sun" title="Switch between dark and light mode."></span>', text: '', link: '#switchtheme', lang: null },
-      ],
-    },
     en: {
       top: {
         left: [
@@ -181,12 +159,14 @@ module.exports = {
             target: null,
             lang: EN,
             children: [
-              { icon: '<span class="fi fi-fr"></span>', text: 'Français', link: null, lang: FR },
-              { icon: '<span class="fi fi-gb"></span>', text: 'English', link: null, lang: EN },
+              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
             ],
           },
           { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
-          { icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-color-icons-light-moon" title="Switch between dark and light mode.">', text: '', link: '#switchtheme', lang: null },
+          { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
         ],
       },
       bottom: [
@@ -200,8 +180,185 @@ module.exports = {
         { text: 'Contact', link: `${basepath}${EN}/contact.html` },
         { text: 'Legal', link: `${basepath}${EN}/legal.html` },
         { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
-        { icon: '<span class="fi fi-fr"></span>', text: '', link: null, lang: FR },
-        { icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-color-icons-light-moon" title="Switch between dark and light mode.">', text: '', link: '#switchtheme', lang: null },
+        {
+          text: '',
+          link: '#',
+          target: null,
+          lang: EN,
+          icon: '<span class="fi fi-gb"></span>',
+          tag: 'lang',
+          children: [
+            { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+            { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+            { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+          ],
+        },
+        { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
+      ],
+    },
+
+    fr: {
+      top: {
+        left: [
+          { text: 'Home', link: '#home' },
+          { text: 'Section 1', link: '#section1' },
+          { text: 'Section 2', link: '#section2' },
+          { text: 'Section 3', link: '#section3' },
+          { text: 'Section 4', link: '#section4' },
+          { text: 'Section 5', link: '#section5' },
+        ],
+        right: [
+          { text: 'Google', link: 'https://www.google.com', target: '_blank' },
+          { text: 'FR',
+            link: null,
+            target: null,
+            lang: FR,
+            children: [
+              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+            ],
+          },
+          { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
+          { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
+        ],
+      },
+      bottom: [
+        { text: 'contact', link: `${basepath}${FR}/contact.html` },
+        { text: 'legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
+      ],
+      mobile: [
+        { text: 'Home', link: `${basepath}${FR}/index.html` },
+        { text: 'Contact', link: `${basepath}${FR}/contact.html` },
+        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        {
+          text: '',
+          link: '#',
+          target: null,
+          lang: EN,
+          icon: '<span class="fi fi-fr"></span>',
+          tag: 'lang',
+          children: [
+            { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+            { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+            { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+          ],
+        },
+        { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
+      ],
+    },
+
+    de: {
+      top: {
+        left: [
+          { text: 'Home', link: `${basepath}${DE}` },
+          { text: 'Section 1', link: '#section1' },
+          { text: 'Section 2', link: '#section2' },
+          { text: 'Section 3', link: '#section3' },
+          { text: 'Section 4', link: '#section4' },
+          { text: 'Section 5', link: '#section5' },
+        ],
+        right: [
+          { text: 'Google', link: 'https://www.google.com', target: '_blank' },
+          { text: 'DE',
+            link: '#',
+            target: null,
+            lang: DE,
+            children: [
+              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+            ],
+          },
+          { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
+          { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
+        ],
+      },
+      bottom: [
+        { text: 'contact', link: `${basepath}${EN}/contact.html` },
+        { text: 'legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
+      ],
+      mobile: [
+        { text: 'Home', link: `${basepath}${DE}/index.html` },
+        { text: 'Contact', link: `${basepath}${EN}/contact.html` },
+        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        {
+          text: '',
+          link: '#',
+          target: null,
+          lang: DE,
+          icon: '<span class="fi fi-de"></span>',
+          tag: 'lang',
+          children: [
+            { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+            { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+            { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+          ],
+        },
+        { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
+      ],
+    },
+
+    it: {
+      top: {
+        left: [
+          { text: 'Home', link: `${basepath}${IT}` },
+          { text: 'Section 1', link: '#section1' },
+          { text: 'Section 2', link: '#section2' },
+          { text: 'Section 3', link: '#section3' },
+          { text: 'Section 4', link: '#section4' },
+          { text: 'Section 5', link: '#section5' },
+        ],
+        right: [
+          { text: 'Google', link: 'https://www.google.com', target: '_blank' },
+          { text: 'IT',
+            link: '#',
+            target: null,
+            lang: IT,
+            children: [
+              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+            ],
+          },
+          { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
+          { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemetopmenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
+        ],
+      },
+      bottom: [
+        { text: 'contact', link: `${basepath}${IT}/contact.html` },
+        { text: 'legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
+      ],
+      mobile: [
+        { text: 'Home', link: `${basepath}${IT}/index.html` },
+        { text: 'Contact', link: `${basepath}${EN}/contact.html` },
+        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        {
+          text: '',
+          link: '#',
+          target: null,
+          lang: IT,
+          icon: '<span class="fi fi-it"></span>',
+          tag: 'lang',
+          children: [
+            { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+            { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+            { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+          ],
+        },
+        { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
       ],
     },
   },

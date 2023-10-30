@@ -1,0 +1,139 @@
+/*
+ * -- STYLE OF THE MOBILE SIDE MENU COMPONENT --
+ *
+ */
+.mobilemenu .inner {
+  text-align: right
+}
+.mobilemenu .inner .close a {
+  font-size: 3em
+}
+.mobilemenu .inner .close a:hover {
+  text-decoration: none
+}
+.mobilemenu .inner h1 {
+  margin: 0.1em 0
+}
+
+/* .mobilemenu .menu > .pure-menu-list > .pure-menu-item {
+  padding-top: 1rem;
+} */
+
+/**
+ * ANIMATIONS
+ */
+.mobilemenu {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -25%;
+  width: 25%;
+  height: 100vh;
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  z-index: 10
+}
+.mobilemenu-open {
+  -webkit-transform: translate3d(100%, 0, 0);
+  -moz-transform: translate3d(100%, 0, 0);
+  -ms-transform: translate3d(100%, 0, 0);
+  -o-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0)
+}
+
+.freeze {
+  overflow: hidden
+}
+
+.mobilemenu .menu .pure-menu-item .bar {
+  padding: 1px 0;
+  margin-right: 1em;
+  background: var(--ksr-mobilemenu-icon-underline-200);
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
+}
+.mobilemenu .menu .pure-menu-item:hover > .bar {
+  background: var(--ksr-mobilemenu-icon-underline-100);
+}
+
+.mobilemenu .menu .pure-menu-item.pure-menu-active > .bar {
+  background: var(--ksr-mobilemenu-icon-underline-100);
+}
+
+/**
+ * LOGO
+ */
+.mobilemenu .inner .mobilemenu-logo {
+  background-size: contain;
+  background-position: 0;
+  background-repeat: no-repeat;
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  line-height: 50px;
+  background-image: var(--ksr-mobilemenu-logo-icon);
+}
+
+.mobilemenu .inner .mobilemenu-logo::before {
+  content: '\00a0';
+}
+
+/**
+ * MENU
+ */
+.mobilemenu .menu.pure-menu.custom-restricted-width {
+  height: 85vh;
+  overflow-x: scroll;
+}
+
+.mobilemenu .menu .pure-menu-link.pure-menu-fi > span.fi {
+  margin-left: 1em;
+}
+
+.mobilemenu .menu .pure-menu-list .pure-menu-item {
+  padding-top: 1rem;
+}
+
+.mobilemenu .pure-menu-has-children .pure-menu-children {
+  position: relative;
+  left: 0;
+  font-size: 0.9em;
+  padding-left: 1em;
+}
+
+/**
+ * MOBILEMENU VISIBILITY
+ * (see app-visibility.css for activation)
+ */
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+.mobilemenu {
+  background-color: var(--ksr-mobilemenu-background-color)
+}
+
+.mobilemenu .inner {
+  color: var(--ksr-mobilemenu-background-text-color)
+}
+
+.mobilemenu .inner .close a {
+  color: var(--ksr-mobilemenu-background-text-color)
+}
+
+.mobilemenu .menu .pure-menu-link .theme-color-icons.theme-icon {
+  background-image: var(--ksr-mobile-menu-theme-icon)
+}
+
+.mobilemenu .pure-menu-has-children .pure-menu-children {
+  background: transparent;
+}
+
+/* oOo */

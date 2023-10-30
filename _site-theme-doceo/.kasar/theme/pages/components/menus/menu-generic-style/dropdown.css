@@ -1,0 +1,109 @@
+/*
+ * -- STYLE FOR THE DROPDOWN MENUS --
+ *
+ */
+
+/**
+ * DROPDOWN MENU
+ */
+.pure-menu-has-children.pure-menu-allow-hover .pure-menu-children {
+  top: 1em;
+  left: -50px;
+  background: transparent
+}
+
+
+.pure-menu-has-children.pure-menu-allow-hover .pure-menu-children > div {
+  position: relative;
+  margin-top: 1em
+}
+
+.pure-menu-has-children.pure-menu-allow-hover .pure-menu-children > div > div {
+  padding: 1em 1em;
+  border-radius: 3px
+}
+
+.pure-menu-has-children.pure-menu-allow-hover .pure-menu-children .fi {
+  margin-right: 1em
+}
+
+/**
+ * MENU ARROW
+ */
+.pure-menu-children-orient-up:before,
+.pure-menu-children-orient-up:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 7px solid transparent;
+}
+
+.pure-menu-children-orient-up-left:before {
+  top: -14px;
+  left: 10px;
+  z-index: 2;
+}
+.pure-menu-children-orient-up-left:after {
+  top: -15px;
+  left: 10px;
+  z-index: 1;
+}
+
+.pure-menu-children-orient-up-center:before {
+  top: -14px;
+  left: calc(50% - 7.5px);
+  z-index: 2;
+}
+
+.pure-menu-children-orient-up-center:after {
+  top: -15px;
+  left: calc(50% - 7.5px);
+  z-index: 1;
+}
+
+.pure-menu-children-orient-up-right:before {
+  top: -14px;
+  right: 10px;
+  z-index: 2;
+}
+
+.pure-menu-children-orient-up-right:after {
+  top: -15px;
+  right: 10px;
+  z-index: 1;
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+/**
+ * DROPDOWN MENU
+ */
+.pure-menu-has-children.pure-menu-allow-hover .pure-menu-children > div > div {
+  background-color: var(--ksr-menu-dropdown-background-color);
+  box-shadow: var(--ksr-menu-dropdown-box-shadow)
+}
+
+/**
+ * MENU ARROW
+ */
+.pure-menu-children-orient-up-left:before,
+.pure-menu-children-orient-up-center:before,
+.pure-menu-children-orient-up-right:before {
+  border-bottom-color: var(--ksr-menu-arrow-border-color-before);
+}
+
+.pure-menu-children-orient-up-left:after,
+.pure-menu-children-orient-up-center:after,
+.pure-menu-children-orient-up-right:after {
+  border-bottom-color: var(--ksr-menu-arrow-border-color-after);
+}
+
+
+
+/* oOo */

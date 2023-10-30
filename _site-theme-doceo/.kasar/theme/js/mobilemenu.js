@@ -15,6 +15,17 @@
     // -- Private Function(s) --------------------------------------------------
 
     /**
+     * Toggles language menu.
+     */
+    function _toggleFlagMenu(target) {
+      if (target.classList.contains('pure-menu-active')) {
+        target.classList.remove('pure-menu-active');
+        return;
+      }
+      target.classList.add('pure-menu-active');
+    }
+
+    /**
      * Activates doc submenu.
      */
     function _activateDocMenu(target) {
@@ -110,14 +121,35 @@
     });
 
     /**
-     * Listens for a click on the mobilemenu logo or menu.
+     * Listens for a click on the mobilemenu.
      */
     $('.mobilemenu').on('click', (e) => {
+      // Listens for a click on the docmenu:
       if (e.target.classList.contains('pure-menu-link')
         && e.target.parentNode.classList.contains('pure-menu-has-children')
+        && !e.target.parentNode.classList.contains('pure-menu-flags')
         && e.target.parentNode.parentNode.classList.contains('doc-mobile-nav-sidebar-menu')
       ) {
         _activateDocMenu(e.target);
+        return;
+      }
+
+      // Listens for a click on the language menu (near flag):
+      if (e.target.classList.contains('pure-menu-link')
+        && e.target.parentNode.classList.contains('pure-menu-has-children')
+        && e.target.parentNode.classList.contains('pure-menu-flags')
+      ) {
+        _toggleFlagMenu(e.target.parentNode);
+        return;
+      }
+
+      // Listens for a click on the language menu (on flag):
+      if (e.target.tagName === 'SPAN'
+          && e.target.parentNode.classList.contains('pure-menu-link')
+          && e.target.parentNode.parentNode.classList.contains('pure-menu-has-children')
+          && e.target.parentNode.parentNode.classList.contains('pure-menu-flags')
+      ) {
+        _toggleFlagMenu(e.target.parentNode.parentNode);
         return;
       }
 
