@@ -3,7 +3,7 @@
 ### 2.3.0 (October 30, 2023)
 
   * Updated start, doceo and appdoceo themes by adding multi-languages support,
-  * ...,
+  * Release.
 
 
 ### 2.2.0 (October 26, 2023)
