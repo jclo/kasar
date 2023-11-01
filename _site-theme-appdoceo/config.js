@@ -45,7 +45,9 @@ module.exports = {
     version,
   },
 
-  // These are the parameters that define your company:
+  // These are the parameters that define your app & company:
+  title: '???',
+  description: '???',
   company: {
     name: 'MyCompany',
     description: 'Company slogan ...',

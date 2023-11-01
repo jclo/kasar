@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.3.1 (November 1, 2023)
+
+  * Fixed a few minor issues on _site-theme-appdoceoo theme,
+  * ...,
+
+
 ### 2.3.0 (October 30, 2023)
 
   * Updated start, doceo and appdoceo themes by adding multi-languages support,

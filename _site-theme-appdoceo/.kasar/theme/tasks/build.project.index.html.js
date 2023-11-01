@@ -80,8 +80,8 @@ function _buildO(done) {
     if (err) throw new Error(err);
 
     const index = data
-      .replace(/{{app:title}}/, '???')
-      .replace(/{{app:description}}/, '???')
+      .replace(/{{app:title}}/, config.title)
+      .replace(/{{app:description}}/, config.description)
       .replace(/{{company:name}}/, config.company.name)
       .replace(/{{company:slogan}}/, config.company.description)
       .replace(/{{company:copyright}}/, config.company.copyright)
@@ -109,13 +109,13 @@ function _buildI(done) {
     if (err) throw new Error(err);
 
     const index = data
-      .replace(/{{app:title}}/, '???')
-      .replace(/{{app:description}}/, '???')
+      .replace(/{{app:title}}/, config.title)
+      .replace(/{{app:description}}/, config.description)
       .replace(/{{company:name}}/, config.company.name)
       .replace(/{{company:slogan}}/, config.company.description)
       .replace(/{{company:copyright}}/, config.company.copyright)
       .replace(/{{app:canonical-link}}/, config.company.credits.link)
-      .replace(/{{base:path}}/, config.basepath)
+      .replace(/{{base:path}}/g, config.basepath)
       .replace(/<!-- {{extra:scripts}} -->/, _addScripts())
     ;
 
