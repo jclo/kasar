@@ -1,23 +1,12 @@
 .DS_Store
-__trash
 _old_*
 
+coverage
 node_modules
 
 /_dist_*
 _site-theme-start/_dist
-_site-theme-start/vendor/*
-!_site-theme-start/vendor/README_FONTS_MONTSERRAT.md
-!_site-theme-start/vendor/README_HIGHLIGHT.md
-
 _site-theme-doceo/_dist
-_site-theme-doceo/vendor/*
-!_site-theme-doceo/vendor/README_FONTS_MONTSERRAT.md
-!_site-theme-doceo/vendor/README_HIGHLIGHT.md
-
 _site-theme-appdoceo/_dist
-_site-theme-appdoceo/vendor/*
-!_site-theme-appdoceo/vendor/README_FONTS_MONTSERRAT.md
-!_site-theme-appdoceo/vendor/README_HIGHLIGHT.md
 
 site

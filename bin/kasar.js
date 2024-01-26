@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2023 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
+ * Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,16 +24,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * ************************************************************************** */
-/* eslint one-var: 0,semi-style: 0, no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
-// -- Node modules
-const fs           = require('fs')
-    , readline     = require('readline')
-    , nopt         = require('nopt')
-    , path         = require('path')
-    , shell        = require('shelljs')
+// -- Vendor Modules
+const fs       = require('fs')
+    , readline = require('readline')
+    , nopt     = require('nopt')
+    , path     = require('path')
+    , shell    = require('shelljs')
     ;
 
 
@@ -66,7 +66,7 @@ const thisscript  = 'kasar'
 // -- Local variables
 
 
-// -- Private functions --------------------------------------------------------
+// -- Private Functions --------------------------------------------------------
 
 /**
  * Dispays the help message.
@@ -293,17 +293,17 @@ function _run() {
   }
 
   if (parsed.argv.original[0] === 'build:skeleton') {
-    shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.skeleton.js`);
+    shell.exec(`node ${baseapp}/${site}/.kasar/theme/scripts/build.skeleton.js`);
     return;
   }
 
   if (parsed.argv.original[0] === 'build:project') {
-    shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.project.js`);
+    shell.exec(`node ${baseapp}/${site}/.kasar/theme/scripts/build.project.js`);
     return;
   }
 
   if (parsed.argv.original[0] === 'build') {
-    shell.exec(`node ${baseapp}/${site}/.kasar/theme/tasks/build.skeleton.js && node ${baseapp}/${site}/.kasar/theme/tasks/build.project.js`);
+    shell.exec(`node ${baseapp}/${site}/.kasar/theme/scripts/build.skeleton.js && node ${baseapp}/${site}/.kasar/theme/scripts/build.project.js`);
     return;
   }
 
@@ -313,14 +313,14 @@ function _run() {
   }
 
   if (parsed.argv.original[0] === 'rebuild') {
-    shell.exec(`node ${site}/.kasar/theme/tasks/build.project.js`);
-    shell.exec(`node ${basescript}/tasks/server.js --reload`);
+    shell.exec(`node ${site}/.kasar/theme/scripts/build.project.js`);
+    shell.exec(`node ${basescript}/scripts/server.js --reload`);
     return;
   }
 
   if (parsed.argv.original[0] === 'serve') {
     const port = parsed.port && Number.isInteger(Number(parsed.port)) ? parsed.port : '8080';
-    shell.exec(`node ${basescript}/tasks/server.js --start --path ${baseapp}/${site}/_dist --port ${port}`);
+    shell.exec(`node ${basescript}/scripts/server.js --start --path ${baseapp}/${site}/_dist --port ${port}`);
     return;
   }
 
@@ -331,3 +331,6 @@ function _run() {
 // -- Where the script starts --------------------------------------------------
 
 _run();
+
+
+// -- oOo ---

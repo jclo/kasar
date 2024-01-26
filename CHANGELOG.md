@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.3.x (January 26, 2024)
+
+  * Updated the project with @mobilabs/es6kadoo v2.1 (Github Actions),
+  * ...,
+
+
 ### 2.3.1 (November 1, 2023)
 
   * Fixed a few minor issues on _site-theme-appdoceoo theme,

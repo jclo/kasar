@@ -13,8 +13,8 @@ const nopt        = require('nopt')
 
 
 // -- Local constants
-const VERSION = '0.0.0-alpha.0'
-    , opts = {
+const VERSION   = '0.0.0-alpha.0'
+    , opts      = {
       help: [Boolean, false],
       version: [String, VERSION],
       start: [Boolean, false],
@@ -26,7 +26,7 @@ const VERSION = '0.0.0-alpha.0'
       h: ['--help'],
       v: ['--version', VERSION],
     }
-    , parsed = nopt(opts, shortOpts, process.argv, 2)
+    , parsed    = nopt(opts, shortOpts, process.argv, 2)
     ;
 
 

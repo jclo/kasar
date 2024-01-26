@@ -4,7 +4,7 @@
 'use strict';
 
 // -- Node modules
-const kasar = require('../tasks/libs/kasar')
+const kasar = require('../scripts/libs/kasar')
     ;
 
 
