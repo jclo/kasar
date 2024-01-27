@@ -1,12 +1,16 @@
-<!-- {{app:name}} v{{app:version}} built with Pulsar 1.1.2 and based on HTML5 boilerplate v^8.0.0 -->
+<!-- {{app:name}} v{{app:version}} built with Pulsar 1.1.2 and based on HTML5 boilerplate v^9.0.0 -->
 <!doctype html>
 <html class="no-js" lang="" data-theme="light">
   <head>
     <!-- {{tracker:google}} -->
     <meta charset="utf-8">
-    <title>{{app:title}}</title>
-    <meta name="description" content="{{app:description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{app:title}}</title>
+
+    <link rel="stylesheet" href="./css/wapp.min.css">
+    <link id="highlight-color-theme" rel="stylesheet" href="{{base:path}}css/fake.css">
+
+    <meta name="description" content="{{app:description}}">
     <meta name="{{company:name}}" content="{{company:slogan}}" />
     <meta name="copyright" content="{{company:copyright}}" />
 
@@ -16,15 +20,12 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
-    <!-- Set your canonical link -->
-    <link rel="canonical" href="{{app:canonical-link}}" />
+    <!-- Place favicon (icon-32x32.png) in the root directory -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/icon-32x32.png" />
 
     <!-- PWA manifest, Web manifest -->
     <link rel="manifest" href="manifest.json">
     <link rel="manifest" href="site.webmanifest">
-
-    <!-- Place favicon (icon-32x32.png) in the root directory -->
-    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/icon-32x32.png" />
 
     <!-- iOS support -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,22 +33,12 @@
     <meta name="apple-mobile-web-app-title" content="{{app:title}}">
     <link rel="apple-touch-icon" href="img/icons/icon-152x152.png">
 
-    <link rel="stylesheet" href="./css/wapp.min.css">
-    <link id="highlight-color-theme" rel="stylesheet" href="{{base:path}}css/fake.css">
     <meta name="theme-color" content="#fafafa">
   </head>
 
   <body>
-    <!--[if IE]>
-      <p class="browserupgrade">You are using an <strong>outdated and unsupported</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to benefit of all the features of this web App.</p>
-    <![endif]-->
-
     <!-- Warning message if Javascript isn't enabled -->
-    <noscript>
-      <p style="text-align:center;padding-top:3em;">
-        We are sorry, but this website doesn't work properly without JavaScript enabled!
-      </p>
-    </noscript>
+    <noscript><p style="text-align:center;padding-top:3em;">We are sorry, but this website doesn't work properly without JavaScript enabled!</p></noscript>
 
     <!-- Add your site or application content here -->
     <div id="app"></div>
@@ -55,9 +46,6 @@
     <!-- Add your scripts here -->
     <!-- {{extra:scripts}} -->
     <script src="./js/wapp.min.js"></script>
-    <!-- <script type="module">
-      import KApp from './js/wapp.min.mjs';
-    </script> -->
     <!-- {{tracker:kiwi}} -->
     <!-- {{tracker:axeptio}} -->
   </body>

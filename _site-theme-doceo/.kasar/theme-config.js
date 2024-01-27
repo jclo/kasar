@@ -20,7 +20,7 @@ module.exports = {
   // This is the theme used to build your website:
   theme: {
     name: 'doceo',
-    version: '2.0.2', // built from Kasar v^2.1.0
+    version: '2.1.0', // built from Kasar v2.4.0"
   },
 
   // Where is the root of the project:
@@ -66,10 +66,10 @@ module.exports = {
   ],
 
   // These are the files from 'HTML5 Boilerplate' to include in the project.
-  html5: {
-    modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.11.2.min.js`,
-    normalize: `${base}/node_modules/html5-boilerplate/dist/css/normalize.css`,
-  },
+  // html5: {
+  //   modernizr: `${base}/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.11.2.min.js`,
+  //   normalize: `${base}/node_modules/html5-boilerplate/dist/css/normalize.css`,
+  // },
 
   // These are the fonts to include in your website folder under the
   // directory 'fonts'.

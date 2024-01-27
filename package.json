@@ -9,7 +9,7 @@
   "scripts": {
     "general": " --- GENERAL ---",
 
-    "build:production": " --- BUILD (PRODUCTION) --- ",
+    "build:production": " --- BUILDING (PRODUCTION) --- ",
     "build:skeleton": "node site/.kasar/theme/scripts/build.skeleton.js $1",
     "build:project": "node site/.kasar/theme/scripts/build.project.js $1",
     "build": "npm run build:skeleton && npm run build:project",
@@ -57,7 +57,6 @@
     "browser-sync": "^3.0.2",
     "clean-css": "^5.3.3",
     "fs-extra": "^11.2.0",
-    "html5-boilerplate": "^8.0.0",
     "http-server": "^14.1.1",
     "js-yaml": "^4.1.0",
     "jsdom": "^24.0.0",

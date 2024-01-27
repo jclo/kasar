@@ -381,7 +381,7 @@ module.exports = {
   // These are the scripts to insert at the bottom of the body of the HTML
   // output.
   scripts: [
-    `${basepath}vendor/libs/modernizr-3.11.2.min.js`,
+    // `${basepath}vendor/libs/modernizr-3.11.2.min.js`,
     `${basepath}vendor/libs/highlight.min.js`,
     `${basepath}js/main.min.js`,
   ],

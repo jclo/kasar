@@ -40,7 +40,7 @@ const fs    = require('fs')
 // -- Local Modules
 const themeconfig       = require('../../theme-config')
     , config            = require('../../../config')
-    , buildHTML5        = require('./build.skeleton.html5')
+    // , buildHTML5        = require('./build.skeleton.html5')
     , buildJS           = require('./build.skeleton.js.js')
     , buildCSS          = require('./build.skeleton.css')
     , buildIMG          = require('./build.skeleton.img')
@@ -182,7 +182,7 @@ function _importfiles(done) {
  * @since 0.0.0
  */
 function _build(done) {
-  const PENDING = 10;
+  const PENDING = 9;
 
   /**
    * Wait all processes completed;
@@ -197,7 +197,7 @@ function _build(done) {
 
   _clean(() => {
     _importfiles(next);
-    buildHTML5(next);
+    // buildHTML5(next);
     buildJS(next);
     buildCSS(next);
     buildIMG(next);

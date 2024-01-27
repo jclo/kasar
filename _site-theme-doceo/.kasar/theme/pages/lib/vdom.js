@@ -44,14 +44,19 @@ function _getHTMLTemplate(product, kversion, theme, lang) {
   return `
     <!doctype html>
     <!-- ${product.name} v${product.version} built with Kasar ${kversion} and the theme ${theme.name} v${theme.version} -->
-    <!-- based on HTML5 boilerplate v8.0.0 -->
+    <!-- based on HTML5 boilerplate v9.0.0 -->
     <html class="no-js" lang="${lang || ''}" data-theme="light">
       <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
+
+        <link rel="stylesheet" href="{{path:fonts}}">
+        <link rel="stylesheet" href="${basepath}css/style.css">
+        <link id="highlight-color-theme" rel="stylesheet" href="${basepath}css/fake.css">
+
         <meta name="verify-v1" content="-">
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="${company.name}" content="${company.description}" />
         <meta name="copyright" content="${company.copyright}" />
 
@@ -61,37 +66,19 @@ function _getHTMLTemplate(product, kversion, theme, lang) {
         <meta property="og:url" content="">
         <meta property="og:image" content="">
 
-        <!-- Set your canonical link -->
-        <link rel="canonical" href="${company.url.protocol}://${company.url.domain}" />
+        <!-- Place favicon (icon-32x32.png) in the root directory -->
+        <link rel="icon" type="image/png" sizes="32x32" href="${basepath}img/icons/icon-32x32.png" />
+        <link rel="apple-touch-icon" sizes="192x192" href="${basepath}img/icons/icon-192x192.png">
 
         <!-- PWA manifest, Web manifest -->
         <link rel="manifest" href="${basepath}manifest.json">
         <link rel="manifest" href="${basepath}site.webmanifest">
 
-        <!-- Place favicon (icon-32x32.png) in the root directory -->
-        <link rel="icon" type="image/png" sizes="32x32" href="${basepath}img/icons/icon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="192x192" href="${basepath}img/icons/icon-192x192.png">
-
-        <style type="text/css">
-        /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-        </style>
-        <link rel="stylesheet" href="{{path:fonts}}">
-        <link rel="stylesheet" href="${basepath}css/style.css">
-        <link id="highlight-color-theme" rel="stylesheet" href="${basepath}css/fake.css">
-
         <meta name="theme-color" content="#fafafa">
       </head>
       <body>
-        <!--[if IE]>
-          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
         <!-- Warning message if Javascript isn't enabled -->
-        <noscript>
-          <p style="text-align:center;padding-top:3em;">
-            We are sorry, but this website doesn't work properly without JavaScript enabled!
-          </p>
-        </noscript>
+        <noscript><p style="text-align:center;padding-top:3em;">We are sorry, but this website doesn't work properly without JavaScript enabled!</p></noscript>
 
         <!-- Add your site or application content here -->
         <div id="kasarapp"></div>
@@ -178,18 +165,18 @@ function _appendTopScripts(vdom, scripts) {
  * @returns {}              -,
  * @since 0.0.0
  */
-function _insertNormalize(vdom, norm) {
-  const old = vdom.window.document.querySelector('style')
-      , style = vdom.window.document.createElement('style')
-      ;
+// function _insertNormalize(vdom, norm) {
+//   const old = vdom.window.document.querySelector('style')
+//       , style = vdom.window.document.createElement('style')
+//       ;
 
-  style.setAttribute('type', 'text/css');
-  style.innerHTML = norm;
+//   style.setAttribute('type', 'text/css');
+//   style.innerHTML = norm;
 
-  const parent = old.parentNode;
-  parent.insertBefore(style, old);
-  parent.removeChild(old);
-}
+//   const parent = old.parentNode;
+//   parent.insertBefore(style, old);
+//   parent.removeChild(old);
+// }
 
 /**
  * Sets the url of the server supplying the fonts.
@@ -319,12 +306,12 @@ const methods = {
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  addHead(title, description, norm) {
+  addHead(title, description/* , norm */) {
     _setTitle(this.vdom, title);
     _setGoogleVerify(this.vdom, google);
     _setDescription(this.vdom, description);
     _setFontUrl(this.vdom, fonts.remote);
-    _insertNormalize(this.vdom, norm);
+    // _insertNormalize(this.vdom, norm);
     return this;
   },
 

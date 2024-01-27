@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.5.0 (January 27, 2024)
+
+  * Updated the themes to comply with html5-boilerplate v9,
+  * ...,
+
+
 ### 2.4.0 (January 26, 2024)
 
   * Updated the project with @mobilabs/es6kadoo v2.1 (Github Actions),
