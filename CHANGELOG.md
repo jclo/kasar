@@ -3,7 +3,7 @@
 ### 2.5.1 (February 12, 2024)
 
   * Updated the project with the updated themes (better build scripts),
-  * ...
+  * Release.
 
 
 ### 2.5.0 (January 27, 2024)
