@@ -23,23 +23,23 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const config = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     , source   = './site/.kasar/theme/img'
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

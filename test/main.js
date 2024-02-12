@@ -25,3 +25,6 @@ const libname = 'Kasar';
 describe('Test Kasar:', () => {
   testlib(Kasar, libname, pack.version, 'without new');
 });
+
+
+// - oOo --

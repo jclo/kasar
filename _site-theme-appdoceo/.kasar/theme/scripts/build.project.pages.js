@@ -9,12 +9,12 @@
  *  . _getNormalize               returns the normalize style,
  *  . _replaceVariables           replaces variables in html or md contents,
  *  . _getContent                 returns the HTML con tent of the requested file,
- *  . _write                      writes html content aand sidemenu to dist,
+ *  . _convertWeb2HTML            converts source files to html pages,
  *  . _generateWebPage            extracts data from the selected source file,
  *  . _createWebPages             creates the web pages by parsing 'config.website',
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:project:pages,
  *
  *
@@ -28,8 +28,10 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs        = require('fs')
     , fse       = require('fs-extra')
     , Markdown  = require('markdown-it')
@@ -40,14 +42,14 @@ const fs        = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     , TK          = require('./libs/token')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
@@ -415,7 +417,7 @@ function Build(done) {
     ;
 
   /**
-   * Executes next until completion.
+   * Executes done until completion.
    */
   function next() {
     pending -= 1;

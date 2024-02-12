@@ -20,27 +20,29 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs   = require('fs')
     , path = require('path')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
-const { dist } = config
-    , { php }  = themeconfig
+// -- Local Constants
+const { dist }  = config
+    , { php }   = themeconfig
     , phpfolder = `${dist}/php`
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

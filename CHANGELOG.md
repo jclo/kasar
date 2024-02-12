@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.5.1 (February 12, 2024)
+
+  * Updated the project with the updated themes (better build scripts),
+  * ...
+
+
 ### 2.5.0 (January 27, 2024)
 
   * Updated the themes to comply with html5-boilerplate v9,

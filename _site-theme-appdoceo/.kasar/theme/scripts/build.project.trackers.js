@@ -8,7 +8,7 @@
  *
  *
  * Public Static Methods:
- *  . Build                       executes build:project:trackers,
+ *  . Build                       executes build:project:trackers
  *
  *
  * @namespace    -
@@ -21,19 +21,21 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { GA4 }     = themeconfig
     , { KA }      = themeconfig
     , { Axeptio } = themeconfig
@@ -44,7 +46,7 @@ const { GA4 }     = themeconfig
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

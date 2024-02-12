@@ -23,22 +23,24 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs         = require('fs')
     , Pakket     = require('pakket')
     , { minify } = require('terser')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     , pack        = require('../../../../package.json')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }       = config
     , { ES6GLOB }    = themeconfig
     , { source }     = themeconfig
@@ -49,7 +51,7 @@ const { dist }       = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -74,7 +76,7 @@ function _uglify(data, callback) {
 }
 
 /**
- * Creates the ES6 module from the generic library.
+ * Creates the ES6 module.
  *
  * @function (arg1, arg2)
  * @private
@@ -83,9 +85,9 @@ function _uglify(data, callback) {
  * @returns {}              -,
  * @since 0.0.0
  */
-function _domodule(data, next) {
+function _doES6(data, done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:project:app:do:module\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:project:app:do:es6\x1b[89m\x1b[0m\'...\n');
 
   let exportM = '\n// -- Export\n';
   exportM += `export default ${ES6GLOB}.${exportname};`;
@@ -105,15 +107,15 @@ function _domodule(data, next) {
         if (err1) throw new Error(err1);
 
         const d2 = new Date() - d1;
-        process.stdout.write(`Finished '\x1b[36mbuild:project:app:do:module\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-        next();
+        process.stdout.write(`Finished '\x1b[36mbuild:project:app:do:es6\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+        done();
       });
     });
   });
 }
 
 /**
- * Creates the UMD module from the generic library.
+ * Creates the UMD library.
  *
  * @function (arg1, arg2)
  * @private
@@ -122,9 +124,9 @@ function _domodule(data, next) {
  * @returns {}              -,
  * @since 0.0.0
  */
-function _doumdlib(data, next) {
+function _doUMD(data, done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:project:app:do:umd:lib\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write("Starting '\x1b[36mbuild:project:app:do:umd\x1b[89m\x1b[0m'...\n");
 
   let content = license;
   content += data
@@ -136,86 +138,64 @@ function _doumdlib(data, next) {
   fs.writeFile(`${dist}/js/${bundle}.js`, content, { encoding: 'utf8' }, (err) => {
     if (err) throw new Error(err);
 
-
     _uglify(content, (min) => {
       fs.writeFile(`${dist}/js/${bundle}.min.js`, min.code, { encoding: 'utf8' }, (err1) => {
         if (err1) throw new Error(err1);
 
         const d2 = new Date() - d1;
-        process.stdout.write(`Finished '\x1b[36mbuild:project:app:do:umd:lib\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-        next();
+        process.stdout.write(`Finished '\x1b[36mbuild:project:app:do:umd\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+        done();
       });
     });
   });
 }
 
 /**
- * Creates the generic library.
+ * Creates one UMD/ES6 library.
  *
- * @function (arg1)
+ * @function (arg1, arg2)
  * @private
+ * @param {Array}           the files defining the library,
  * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
-function _dogeneric(callback) {
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:project:app:do:generic\x1b[89m\x1b[0m\'...\n');
+function _doLib(done) {
+  const pakket = Pakket(source, { export: exportname, type: 'generic' });
 
-  return new Promise((resolve) => {
-    const pakket = Pakket(source, { export: exportname, type: 'generic' });
-    pakket.get((data) => {
-      const content = data
-        .replace(/{{lib:name}}/g, bundle)
-        .replace(/{{lib:exportname}}/g, exportname)
-        .replace(/{{lib:version}}/g, version)
-        // Remove extra global.
-        // (keep the first global only)
-        .replace(/\/\* global/, '/* gloobal')
-        .replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */')
-        .replace(/\/\* gloobal/, '/* global')
-        // Remove extra 'use strict'.
-        // (keep the two first only)
-        .replace(/use strict/, 'use_strict')
-        .replace(/use strict/, 'use_strict')
-        .replace(/'use strict';/g, '/* - */')
-        .replace(/use_strict/g, 'use strict')
-      ;
+  pakket.get((data) => {
+    const content = data
+      .replace(/{{lib:name}}/g, bundle)
+      .replace(/{{lib:exportname}}/g, exportname)
+      .replace(/{{lib:version}}/g, version)
+      // Remove extra global.
+      // (keep the first global only)
+      .replace(/\/\* global/, '/* gloobal')
+      .replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */')
+      .replace(/\/\* gloobal/, '/* global')
+      // Remove extra 'use strict'.
+      // (keep the two first only)
+      .replace(/use strict/, 'use_strict')
+      .replace(/use strict/, 'use_strict')
+      .replace(/'use strict';/g, '/* - */')
+      .replace(/use_strict/g, 'use strict')
+    ;
 
-      const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:project:app:do:generic\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-      resolve(content);
-      if (callback) callback(content);
-    });
-  });
-}
+    // For testing purpose:
+    // fs.writeFileSync(`${destination}/${name}-core.js`, src);
 
-/**
- * Builds the app.
- *
- * @function (arg1)
- * @private
- * @param {Function}        the function to call at the completion,
- * @returns {}              -,
- * @since 0.0.0
- */
-function _build(done) {
-  const PENDING = 2;
-
-  /**
-   * Executes next until completion.
-   */
-  let pending = PENDING;
-  function next() {
-    pending -= 1;
-    if (!pending) {
-      done();
+    /**
+     * Waits until completion.
+     */
+    let count = 2;
+    function _next() {
+      count -= 1;
+      if (!count) {
+        done();
+      }
     }
-  }
-
-  _dogeneric((content) => {
-    _doumdlib(content, next);
-    _domodule(content, next);
+    _doUMD(content, _next);
+    _doES6(content, _next);
   });
 }
 
@@ -250,7 +230,7 @@ function Build(done) {
     }
   }
 
-  _build(next);
+  _doLib(next);
 }
 
 

@@ -37,10 +37,10 @@ const fs       = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 
 
-// -- Local constants
+// -- Local Constants
 const thisscript  = 'kasar'
     , site        = 'site'
     , repo        = '.kasar'
@@ -63,7 +63,7 @@ const thisscript  = 'kasar'
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -329,7 +329,6 @@ function _run() {
 
 
 // -- Where the script starts --------------------------------------------------
-
 _run();
 
 

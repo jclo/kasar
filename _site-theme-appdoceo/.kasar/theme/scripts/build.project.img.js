@@ -1,6 +1,6 @@
 /* *****************************************************************************
  *
- * Copiies project images to './site/_dist/img'.
+ * Copies project images to './site/_dist/img'.
  *
  *
  * Private Functions:
@@ -8,7 +8,7 @@
  *  . _copyimg                    copies './site/img' contents to './site/_dist/img',
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:project:img,
  *
  *
@@ -25,24 +25,24 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const config = require('../../../config')
     , P      = require('./libs/parse')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     , source   = './site/webpages'
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -59,7 +59,7 @@ const { dist } = config
  */
 function _copypwebpagesimg(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:project:img:copypwebpagesimg\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:project:img:copy:webpages:img\x1b[89m\x1b[0m\'...\n');
 
   /**
    * checks if the passed in file is inside a 'img' folder.
@@ -75,7 +75,7 @@ function _copypwebpagesimg(done) {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:project:img:copypwebpagesimg\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:project:img:copy:webpages:img\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }
@@ -91,13 +91,13 @@ function _copypwebpagesimg(done) {
  */
 function _copyimg(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:project:img:copyimg\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:project:img:copy:img\x1b[89m\x1b[0m\'...\n');
 
   fs.cp('./site/img/', `${dist}/img`, { recursive: true }, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:project:img:copyimg\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:project:img:copy:img\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }

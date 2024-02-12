@@ -32,19 +32,19 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
-const config      = require('../../../config')
-    , extra       = require('../../../tobuildweb/extraUrls')
-    , expired     = require('../../../tobuildweb/expiredUrls')
+// -- Local Modules
+const config  = require('../../../config')
+    , extra   = require('../../../tobuildweb/extraUrls')
+    , expired = require('../../../tobuildweb/expiredUrls')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }    = config
     , url         = `${config.company.url.protocol}://${config.company.url.domain}`
     // , { website } = config
@@ -52,7 +52,7 @@ const { dist }    = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

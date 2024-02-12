@@ -18,7 +18,7 @@
  *  . _createDocPages             Creates the doc pages by parsing 'docsidemenu.js',
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:project:pages,
  *
  *
@@ -35,7 +35,7 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs        = require('fs')
     , fse       = require('fs-extra')
     , Markdown  = require('markdown-it')
@@ -46,14 +46,14 @@ const fs        = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
-    , config     = require('../../../config')
-    , createPage = require('../pages/main')
+    , config      = require('../../../config')
+    , createPage  = require('../pages/main')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
@@ -546,7 +546,7 @@ function _createDocPages(website, docpages, menu, done) {
  * @since 0.0.0
  */
 function Build(done) {
-  const PENDING = 2;
+  const PENDING = 1;
 
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mbuild:project:pages\x1b[89m\x1b[0m\'...\n');

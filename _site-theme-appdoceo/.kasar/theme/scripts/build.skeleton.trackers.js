@@ -22,27 +22,29 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs   = require('fs')
     , path = require('path')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }    = config
     , { tracker } = themeconfig
     , { google }  = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -119,14 +121,14 @@ function _copykiwitrackerjs(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copykiwitrackerjs\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copy:kiwi:tracker:js\x1b[89m\x1b[0m\'...\n');
 
   const filename = path.basename(tracker.js);
   fs.cp(tracker.js, `${dist}/js/${filename}`, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copykiwitrackerjs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copy:kiwi:tracker:js\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }

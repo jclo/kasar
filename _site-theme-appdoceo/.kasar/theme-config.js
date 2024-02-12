@@ -34,7 +34,7 @@ module.exports = {
   // This is the theme used to build your website:
   theme: {
     name: 'appdoceo',
-    version: '2.2.0', // built from Kasar v2.4.0"
+    version: '2.2.1', // built from Kasar v2.4.0"
   },
 
   // Where is the root of the project:

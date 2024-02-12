@@ -23,26 +23,26 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs   = require('fs')
     , path = require('path')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     , { php }  = themeconfig
     , phpfolder = `${dist}/php`
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

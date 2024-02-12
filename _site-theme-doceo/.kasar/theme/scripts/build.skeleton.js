@@ -53,18 +53,18 @@ const themeconfig       = require('../../theme-config')
 
 
 // -- Local Constants
-const VERSION = '0.0.0-alpha.0'
-    , opts = {
+const VERSION       = '0.0.0-alpha.0'
+    , opts          = {
       help: [Boolean, false],
       version: [String, null],
     }
-    , shortOpts = {
+    , shortOpts     = {
       h: ['--help'],
       v: ['--version', VERSION],
     }
-    , parsed = nopt(opts, shortOpts, process.argv, 2)
-    // , { base } = themeconfig
-    , { dist }     = config
+    , parsed        = nopt(opts, shortOpts, process.argv, 2)
+    // , { base }      = themeconfig
+    , { dist }      = config
     , { files2inc } = themeconfig
     ;
 
@@ -103,35 +103,68 @@ function _help() {
  * Removes the previous production folder.
  * (regenerate a new one with subfolders)
  *
- * @function ()
+ * @function ([arg1])
  * @private
- * @param {}                -,
+ * @param {Function}        the function to call at the completion,
  * @returns {Object}        returns a promise,
  * @since 0.0.0
  */
 function _clean(done) {
+  const PENDING = 6;
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mbuild:skeleton:clean\x1b[89m\x1b[0m\'...\n');
 
-  return new Promise((resolve) => {
-    fs.rm(dist, { force: true, recursive: true }, (err) => {
-      if (err) throw new Error(err);
-
-      // css, fonts, img, js, php, vendor/libs
-      fs.mkdirSync(`${dist}/css`, { recursive: true });
-      fs.writeFileSync(`${dist}/css/fake.css`, '');
-      fs.mkdirSync(`${dist}/fonts`, { recursive: true });
-      fs.mkdirSync(`${dist}/img`, { recursive: true });
-      fs.mkdirSync(`${dist}/js`, { recursive: true });
-      fs.mkdirSync(`${dist}/php`, { recursive: true });
-      fs.mkdirSync(`${dist}/vendor/libs`, { recursive: true });
-
+  /**
+   * Wait all the processes completed;
+   */
+  let pending = PENDING;
+  function _next(resolve) {
+    pending -= 1;
+    if (!pending) {
       const d2 = new Date() - d1;
       process.stdout.write(`Finished '\x1b[36mbuild:skeleton:clean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       resolve();
-      if (done) {
-        done();
-      }
+      if (done) done();
+    }
+  }
+
+  return new Promise((resolve) => {
+    fs.rm(dist, { force: true, recursive: true }, (err1) => {
+      if (err1) throw err1;
+
+      fs.mkdir(`${dist}/css`, { recursive: true }, (err2) => {
+        if (err2) throw err2;
+
+        fs.writeFile(`${dist}/css/fake.css`, '', { encoding: 'utf8' }, (err3) => {
+          if (err3) throw err3;
+          _next(resolve);
+        });
+      });
+
+      fs.mkdir(`${dist}/fonts`, { recursive: true }, (err2) => {
+        if (err2) throw err2;
+        _next(resolve);
+      });
+
+      fs.mkdir(`${dist}/img`, { recursive: true }, (err2) => {
+        if (err2) throw err2;
+        _next(resolve);
+      });
+
+      fs.mkdir(`${dist}/js`, { recursive: true }, (err2) => {
+        if (err2) throw err2;
+        _next(resolve);
+      });
+
+      fs.mkdir(`${dist}/php`, { recursive: true }, (err2) => {
+        if (err2) throw err2;
+        _next(resolve);
+      });
+
+      fs.mkdir(`${dist}//vendor/libs`, { recursive: true }, (err2) => {
+        if (err2) throw err2;
+        _next(resolve);
+      });
     });
   });
 }
@@ -147,7 +180,7 @@ function _clean(done) {
  */
 function _importfiles(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:importfiles\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:import:files\x1b[89m\x1b[0m\'...\n');
 
   /**
    * Wait all processes completed;
@@ -157,7 +190,7 @@ function _importfiles(done) {
     pending -= 1;
     if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:importfiles\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:import:files\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     }
   }
@@ -210,51 +243,54 @@ function _build(done) {
 }
 
 
-// -- Main ---------------------------------------------------------------------
+// -- Public Static Methods ----------------------------------------------------
 
-/**
- * Executes the script.
- *
- * @function ()
- * @public
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-async function run() {
-  const PENDING = 1;
-
-  if (parsed.help) {
-    _help();
-    return;
-  }
-
-  if (parsed.version) {
-    process.stdout.write(`version: ${parsed.version}\n`);
-    return;
-  }
-
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton\x1b[89m\x1b[0m\'...\n');
+const Lib = {
 
   /**
-   * Executes done until completion.
-   */
-  let pending = PENDING;
-  function done() {
-    pending -= 1;
-    if (!pending) {
-      const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:skeleton\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+   * Executes the script.
+   *
+   * @method ()
+   * @public
+   * @param {}                -,
+   * @returns {}              -,
+   * @since 0.0.0
+  */
+  async run() {
+    const PENDING = 1;
+
+    if (parsed.help) {
+      _help();
+      return;
     }
-  }
 
-  _build(done);
-}
+    if (parsed.version) {
+      process.stdout.write(`version: ${parsed.version}\n`);
+      return;
+    }
+
+    const d1 = new Date();
+    process.stdout.write('Starting \'\x1b[36mbuild:skeleton\x1b[89m\x1b[0m\'...\n');
+
+    /**
+     * Executes done until completion.
+     */
+    let pending = PENDING;
+    function done() {
+      pending -= 1;
+      if (!pending) {
+        const d2 = new Date() - d1;
+        process.stdout.write(`Finished '\x1b[36mbuild:skeleton\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      }
+    }
+
+    _build(done);
+  },
+};
 
 
-// Start script.
-run();
+// -- Where the script starts --------------------------------------------------
+Lib.run();
 
 
 // -- oOo --

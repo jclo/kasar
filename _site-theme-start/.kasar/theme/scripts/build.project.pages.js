@@ -14,7 +14,7 @@
  *  . _createWebPages             creates the web pages by parsing 'config.website',
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:project:pages,
  *
  *
@@ -31,7 +31,7 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs        = require('fs')
     , fse       = require('fs-extra')
     , Markdown  = require('markdown-it')
@@ -42,18 +42,18 @@ const fs        = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
-    , config     = require('../../../config')
-    , createPage = require('../pages/main')
+    , config      = require('../../../config')
+    , createPage  = require('../pages/main')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
-    , { basedist } = config
+    // , { basedist } = config
     , md           = new Markdown('commonmark').use(mdAttrs)
     ;
 

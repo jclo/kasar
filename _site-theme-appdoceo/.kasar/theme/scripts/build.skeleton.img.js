@@ -20,24 +20,26 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const config = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     , source   = './site/.kasar/theme/img'
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

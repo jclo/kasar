@@ -2,13 +2,13 @@
  *
  * Does ...
  *
- * build.module.template.js module does ...
+ * build.module.template.js module dooes ...
  *
  * Private Functions:
  *  . _xxx                        does ...
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:module:template,
  *
  *
@@ -22,25 +22,27 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs   = require('fs')
     , path = require('path')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -85,7 +87,7 @@ function Build(done) {
 
   let pending = PENDING;
   /**
-   * Executes next until completion.
+   * Executes done until completion.
    */
   function next() {
     pending -= 1;

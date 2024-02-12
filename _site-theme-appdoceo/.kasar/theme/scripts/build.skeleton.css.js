@@ -66,7 +66,7 @@ function _cphighlightcss(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:css:cphighlightcss\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:css:copy:highlight:css\x1b[89m\x1b[0m\'...\n');
 
   /**
    * Wait all processes completed;
@@ -76,7 +76,7 @@ function _cphighlightcss(done) {
     pending -= 1;
     if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:css:cphighlightcss\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:css:copy:highlight:css\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     }
   }
@@ -107,7 +107,7 @@ function _buildcss(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:css:buildcss\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:css:build:css\x1b[89m\x1b[0m\'...\n');
 
   const options = {
     specialComments: 1,
@@ -133,7 +133,7 @@ function _buildcss(done) {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:css:buildcss\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:css:build:css\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }

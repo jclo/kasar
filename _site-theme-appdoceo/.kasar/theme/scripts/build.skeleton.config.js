@@ -6,7 +6,7 @@
  *  . _xxx                        does ...
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:module:template,
  *
  *
@@ -20,23 +20,25 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const config = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

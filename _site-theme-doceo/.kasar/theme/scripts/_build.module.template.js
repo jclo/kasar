@@ -8,7 +8,7 @@
  *  . _xxx                        does ...
  *
  *
- * Public Static Methods:
+ * Public Functions:
  *  . Build                       executes build:module:template,
  *
  *
@@ -25,24 +25,24 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs   = require('fs')
     , path = require('path')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist } = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------

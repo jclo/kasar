@@ -25,20 +25,20 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs         = require('fs')
     , path       = require('path')
     , { minify } = require('terser')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }    = config
     , { sw }      = themeconfig
     , { pjs }     = themeconfig
@@ -48,7 +48,7 @@ const { dist }    = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -69,7 +69,7 @@ function _buildsw(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:buildsw\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:build:sw\x1b[89m\x1b[0m\'...\n');
 
   fs.readFile(sw, { encoding: 'utf8' }, (err1, data) => {
     if (err1) throw new Error(err1);
@@ -80,7 +80,7 @@ function _buildsw(done) {
           if (err2) throw new Error(err2);
 
           const d2 = new Date() - d1;
-          process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:buildsw\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+          process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:build:sw\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
           done();
         });
       });
@@ -103,7 +103,7 @@ function _buildjs(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:buildjs\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:build:js\x1b[89m\x1b[0m\'...\n');
 
   let bundle = '';
   for (let i = 0; i < pjs.length; i++) {
@@ -120,7 +120,7 @@ function _buildjs(done) {
           if (err2) throw new Error(err2);
 
           const d2 = new Date() - d1;
-          process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:buildjs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+          process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:build:js\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
           done();
         });
       });
@@ -143,7 +143,7 @@ function _copyjs(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:copyjs\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:copy:js\x1b[89m\x1b[0m\'...\n');
 
   /**
    * Wait all processes completed;
@@ -153,7 +153,7 @@ function _copyjs(done) {
     pending -= 1;
     if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:copyjs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:copy:js\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     }
   }
@@ -178,7 +178,7 @@ function _copyjs(done) {
 // -- Public -------------------------------------------------------------------
 
 /**
- * Executes build:js.
+ * Executes build:module:template.
  *
  * @function (arg1)
  * @public

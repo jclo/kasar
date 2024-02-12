@@ -25,26 +25,26 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs   = require('fs')
     , path = require('path')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }    = config
     , { tracker } = themeconfig
     , { google }  = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -65,14 +65,14 @@ function _copygoogleverify(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copygoogleverify\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copy:google:verify:v2\x1b[89m\x1b[0m\'...\n');
 
   const filename = path.basename(google.verify.v2);
   fs.cp(google.verify.v2, `${dist}/${filename}`, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copygoogleverify\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copy:google:verify:v2\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }
@@ -93,14 +93,14 @@ function _copykiwitrackerphp(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copykiwitrackerphp\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copy:kiwi:tracker:php\x1b[89m\x1b[0m\'...\n');
 
   const filename = path.basename(tracker.php);
   fs.cp(tracker.php, `${dist}/php/${filename}`, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copykiwitrackerphp\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copy:kiwi:tracker:php\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }
@@ -121,14 +121,14 @@ function _copykiwitrackerjs(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copykiwitrackerjs\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:trackers:copy:kiwi:tracker:js\x1b[89m\x1b[0m\'...\n');
 
   const filename = path.basename(tracker.js);
   fs.cp(tracker.js, `${dist}/js/${filename}`, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copykiwitrackerjs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:trackers:copy:kiwi:tracker:js\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }

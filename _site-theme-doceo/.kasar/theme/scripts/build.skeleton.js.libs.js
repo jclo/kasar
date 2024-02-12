@@ -24,27 +24,27 @@
 'use strict';
 
 
-// -- Node modules
+// -- Vendor Modules
 const fs         = require('fs')
     , path       = require('path')
     , { minify } = require('terser')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const themeconfig = require('../../theme-config')
     , config      = require('../../../config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }   = config
     , { libs }   = themeconfig
     , libsfolder = `${dist}/vendor/libs`
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -65,7 +65,7 @@ function _buildminilibs(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:libs:buildminilibs\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:libs:build:mini:libs\x1b[89m\x1b[0m\'...\n');
 
   /**
    * Wait all processes completed;
@@ -75,7 +75,7 @@ function _buildminilibs(done) {
     pending -= 1;
     if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:libs:buildminilibs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:libs:build:mini:libs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     }
   }
@@ -113,7 +113,7 @@ function _buildlibs(done) {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:libs:buildlibs\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:js:libs:build:libs\x1b[89m\x1b[0m\'...\n');
 
   /**
    * Wait all processes completed;
@@ -123,7 +123,7 @@ function _buildlibs(done) {
     pending -= 1;
     if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:libs:buildlibs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mbuild:skeleton:js:libs:build:libs\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     }
   }

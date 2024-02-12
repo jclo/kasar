@@ -29,20 +29,22 @@
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
   import/no-extraneous-dependencies: 0 */
 
+'use strict';
 
-// -- Node modules
+
+// -- Vendor Modules
 const fs = require('fs')
     ;
 
 
-// -- Local modules
-const config      = require('../../../config')
-    , extra       = require('../../../tobuildweb/extraUrls')
-    , expired     = require('../../../tobuildweb/expiredUrls')
+// -- Local Modules
+const config  = require('../../../config')
+    , extra   = require('../../../tobuildweb/extraUrls')
+    , expired = require('../../../tobuildweb/expiredUrls')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }    = config
     , url         = `${config.company.url.protocol}://${config.company.url.domain}${config.basepath}`
     // , { website } = config
@@ -50,7 +52,7 @@ const { dist }    = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Private Functions --------------------------------------------------------
@@ -167,7 +169,7 @@ function _appendPages(timestamp, pages) {
   let s = _appendTitle('<!-- Main -->');
 
   for (let i = 0; i < pages.length; i++) {
-    const link = `${url}${pages[i].link}`;
+    const link = `${url}/${pages[i].link}`;
     const priority = pages[i].priority ? pages[i].priority : 0.8;
     s += _appendURL(link, priority, timestamp);
   }
