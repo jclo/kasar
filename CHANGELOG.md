@@ -3,7 +3,7 @@
 ### 2.5.2 (February 18, 2024)
 
   * Updated the themes (fixed a few minor scripts issues),
-  * ...,
+  * Release.
 
 
 ### 2.5.1 (February 12, 2024)
