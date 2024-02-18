@@ -57,7 +57,8 @@ const themeconfig = require('../../theme-config')
 const { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
-    , { basedist } = config
+    , { url }      = config.company
+    // , { basedist } = config
     , md           = new Markdown('commonmark').use(mdAttrs)
     ;
 
@@ -256,6 +257,7 @@ function _convertWeb2HTML(webpages, menu) {
       webpages[lang][page].content = null;
       params = {
         title: webpages[lang][page].title,
+        canonical: webpages[lang][page].canonical,
         description: webpages[lang][page].description,
         company: config.company,
       };
@@ -294,11 +296,20 @@ function _generateWebPage(page, lang) {
 
   const [header, content] = _getContent(page);
 
+  let canonical = null;
+  if (typeof header.canonical === 'string') {
+    canonical = header.canonical.length > 0
+      ? `${url.protocol}://${url.domain}/${lang}/${header.canonical}`
+      : `${url.protocol}://${url.domain}/${lang}`
+    ;
+  }
+
   return {
     type: 'web',
     lang,
     name: header.name,
     title: header.title,
+    canonical,
     description: header.description,
     company: config.company,
     content,
@@ -406,6 +417,7 @@ function _convertDoc2HTML(website, menu, docpages, docmenu) {
       docpages[lang][page].content = null;
       params = {
         title: docpages[lang][page].title,
+        canonical: docpages[lang][page].canonical,
         description: docpages[lang][page].description,
         company: config.company,
       };
@@ -451,11 +463,20 @@ function _generateDocPage(lang, page) {
     [, menuname] = result;
   }
 
+  let canonical = null;
+  if (typeof header.canonical === 'string') {
+    canonical = header.canonical.length > 0
+      ? `${url.protocol}://${url.domain}/${lang}/docs/${header.canonical}`
+      : `${url.protocol}://${url.domain}/${lang}/docs`
+    ;
+  }
+
   return {
     type: 'doc',
     lang,
     name: header.name,
     title: header.title,
+    canonical,
     description: header.description,
     company: config.company,
     menuname,
@@ -524,6 +545,27 @@ function _createDocPages(website, docpages, menu, done) {
             });
           }
           docmenu.push(m);
+        } else if (typeof docpages[lang][i] === 'object' && docpages[lang][i].links) {
+          const m = {
+            lang,
+            text: docpages[lang][i].title,
+            link: '#',
+            onlyExpanded: false,
+            tag: '',
+            children: [],
+          };
+
+          for (let j = 0; j < docpages[lang][i].links.length; j++) {
+            const link = docpages[lang][i].links[j];
+            m.children.push({
+              name: null,
+              text: link.text,
+              link: link.link,
+              target: link.target,
+              tag: '',
+            });
+          }
+          docmenu.push(m);
         }
       }
     }
@@ -546,7 +588,7 @@ function _createDocPages(website, docpages, menu, done) {
  * @since 0.0.0
  */
 function Build(done) {
-  const PENDING = 1;
+  const PENDING = 2;
 
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mbuild:project:pages\x1b[89m\x1b[0m\'...\n');

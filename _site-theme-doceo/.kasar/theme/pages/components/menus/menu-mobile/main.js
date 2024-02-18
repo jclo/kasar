@@ -117,14 +117,15 @@ function _renderMenuOrFlagWithChildren(menu) {
 function _renderSimpleMenu(menu, docmenu) {
   const target = menu.target ? ` target="${menu.target}"` : ''
       , icon   = menu.icon || ''
+      , mclass = menu.class ? `${menu.class} ` : ''
       ;
 
   return `
-    <li class="pure-menu-item">
-      <a class="pure-menu-link" href="${menu.link}" target="_self">${icon}${menu.text}</a>
-      <div class="bar"></div>
-      ${menu.tag === 'doc' && docmenu ? docmenu : ''}
-    </li>
+    <li class="${mclass}pure-menu-item">
+        <a class="pure-menu-link" href="${menu.link || '#'}" target="_self">${icon}${menu.text}</a>
+        <div class="bar"></div>
+        ${menu.tag === 'doc' && docmenu ? docmenu : ''}
+      </li>
   `;
 }
 

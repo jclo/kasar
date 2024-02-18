@@ -67,6 +67,26 @@ module.exports = {
           },
         ],
       },
+      {
+        title: 'Links',
+        links: [
+          {
+            text: 'Google',
+            link: 'https://google.com',
+            target: '_blank',
+          },
+          {
+            text: 'Yahoo',
+            link: 'https://yahoo.com',
+            target: '_blank',
+          },
+          {
+            text: 'Bing',
+            link: 'https://bing.com',
+            target: '_blank',
+          },
+        ],
+      },
     ],
     fr: [
       `${base}/site/webdocpages/${FR}/introduction.md`,

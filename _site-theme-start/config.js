@@ -67,6 +67,7 @@ module.exports = {
       name: 'mycompany',
       link: 'https://www.mycompany.com',
     },
+    coordinates: [0, 0],
   },
 
   // These are the tags to include on your pages to help google to identify
@@ -255,7 +256,7 @@ module.exports = {
     de: {
       top: {
         left: [
-          { text: 'Home', link: `${basepath}${DE}` },
+          { text: 'Home', link: '#home' },
           { text: 'Section 1', link: '#section1' },
           { text: 'Section 2', link: '#section2' },
           { text: 'Section 3', link: '#section3' },
@@ -310,7 +311,7 @@ module.exports = {
     it: {
       top: {
         left: [
-          { text: 'Home', link: `${basepath}${IT}` },
+          { text: 'Home', link: '#home' },
           { text: 'Section 1', link: '#section1' },
           { text: 'Section 2', link: '#section2' },
           { text: 'Section 3', link: '#section3' },

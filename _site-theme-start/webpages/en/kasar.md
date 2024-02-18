@@ -2,6 +2,7 @@
 name: 'kasar'
 title: 'Kasar start |  Kasar Tutorial'
 description: 'this page explains how to ...'
+canonical: 'kasar.html'
 ---
 
 <!-- Kasar Contents -->

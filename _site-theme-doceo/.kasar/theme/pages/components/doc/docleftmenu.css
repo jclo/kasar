@@ -11,7 +11,7 @@
   padding: 0 1em;
 }
 
-.doc-content-nav-sidebar-menu > div > .pure-menu-list > .pure-menu-item:not(.pure-menu-has-children)  {
+.doc-content-nav-sidebar-menu > div > .pure-menu-list > .pure-menu-item:not(.pure-menu-has-children):first-child  {
   padding-top: 1em;
 }
 
@@ -34,7 +34,7 @@
   font-size: 0.95em
 }
 
-.doc-content-nav-sidebar-menu .pure-menu-link:hover {
+.doc-content-nav-sidebar-menu .menu .pure-menu-item:not(.pure-menu-has-children) > .pure-menu-link:hover {
   font-weight: 600
 }
 
@@ -48,6 +48,19 @@
   font-weight: 600
 }
 
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-link,
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-link:hover,
+.doc-content-nav-sidebar-menu .menu .pure-menu-item.pure-menu-active > .pure-menu-link {
+  font-weight: 700;
+}
+
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-children {
+  font-size: 0.9em;
+}
+.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-children > .pure-menu-item > .pure-menu-link {
+  padding: 0.1em 1.52em;
+}
+
 
 
 /*
@@ -58,10 +71,7 @@
   background: transparent
 }
 
-.doc-content-nav-sidebar-menu .menu .pure-menu-item.pure-menu-active > .pure-menu-link,
-.doc-content-nav-sidebar-menu .menu .pure-menu-has-children.pure-menu-active > .pure-menu-link,
-.doc-content-nav-sidebar-menu .menu .pure-menu-has-children > .pure-menu-children .pure-menu-active > .pure-menu-link {
-  font-weight: 700;
+.doc-content-nav-sidebar-menu .menu .pure-menu-item:not(.pure-menu-has-children).pure-menu-active > .pure-menu-link {
   color: var(--ksr-doc-menu-link-color);
   background-color: transparent
 }

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.5.2 (February 18, 2024)
+
+  * Updated the themes (fixed a few minor scripts issues),
+  * ...,
+
+
 ### 2.5.1 (February 12, 2024)
 
   * Updated the project with the updated themes (better build scripts),

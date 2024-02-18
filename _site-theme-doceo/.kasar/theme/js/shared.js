@@ -13,29 +13,17 @@ const GLOBAL_OFFSET   = 80
     , GLOBAL_DELAY    = 10
     ;
 
-
 /**
- * Defines the easeInOutExpo easing method.
- *
- * @function (arg1, arg2, arg3, arg4)
- * @private
- * @param {Number}      the current lapse time,
- * @param {Number}      the initial CSS property value,
- * @param {Number}      the difference between the final and the initial value,
- * @param {Number}      the animation duration,
- * @returns {Number}    returns the value at the current lapse time,
- * @since 0.0.0
+ * Robert Penner's easing equations.
  */
-/* eslint-disable prefer-exponentiation-operator, no-restricted-properties,
-  no-cond-assign, no-param-reassign, no-plusplus */
 function _easeInOutExpo(t, b, c, d) {
   if (t === 0) return b;
   if (t === d) return b + c;
+  /* eslint-disable-next-line */
   if ((t /= (d / 2)) < 1) return (c / 2) * Math.pow(2, 10 * (t - 1)) + b;
+  /* eslint-disable-next-line */
   return (c / 2) * (-Math.pow(2, -10 * --t) + 2) + b;
 }
-/* eslint-enable prefer-exponentiation-operator, no-restricted-properties,
-  no-cond-assign, no-param-reassign, no-plusplus */
 
 /**
  * Smoothly move to the new scroll position.

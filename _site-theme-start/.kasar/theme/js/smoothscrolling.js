@@ -17,9 +17,9 @@
     /**
      * Listens for a click on the navigation bar.
      */
-    $('.navbar').on('click', (e) => {
+    $('.navbar .top-left-menu').on('click', (e) => {
       const href = e.target.getAttribute('href');
-      if (href) {
+      if (href && href.startsWith('#')) {
         const el = $(href)[0];
         if (el) {
           e.preventDefault();

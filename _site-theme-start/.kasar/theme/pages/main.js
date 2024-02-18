@@ -57,7 +57,7 @@ const { product }    = config
 function createPage(website, lang, page, content, norm, params, menu, docsite, docmenu) {
   // Creates the DOM & adds the DOM head.
   const vdom = VDOM(product, kversion, theme, lang);
-  vdom.addHead(params.title, params.description, norm);
+  vdom.addHead(params.title, params.canonical, params.description, norm);
 
   // Creates an App linked with this virtual DOM and fills the body.
   // (the virtual dom is attached to Node.js global window and document variables.
@@ -65,7 +65,7 @@ function createPage(website, lang, page, content, norm, params, menu, docsite, d
   // link is createVDOM in './lib/vdom.js')
   const app = App();
   app.configure(website, docsite, lang, page, params, menu, docmenu);
-  app.fillContent(website, docsite, lang, page, content, docmenu);
+  app.fillContent(website, docsite, lang, page, params, content, docmenu);
 
   // Completes the DOM with the scripts.
   vdom.appendScripts(scripts);

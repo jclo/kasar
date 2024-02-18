@@ -53,6 +53,7 @@ const themeconfig = require('../../theme-config')
 const { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
+    , { url }      = config.company
     // , { basedist } = config
     , md           = new Markdown('commonmark').use(mdAttrs)
     ;
@@ -252,6 +253,7 @@ function _convertWeb2HTML(webpages, menu) {
       webpages[lang][page].content = null;
       params = {
         title: webpages[lang][page].title,
+        canonical: webpages[lang][page].canonical,
         description: webpages[lang][page].description,
         company: config.company,
       };
@@ -290,11 +292,20 @@ function _generateWebPage(page, lang) {
 
   const [header, content] = _getContent(page);
 
+  let canonical = null;
+  if (typeof header.canonical === 'string') {
+    canonical = header.canonical.length > 0
+      ? `${url.protocol}://${url.domain}/${lang}/${header.canonical}`
+      : `${url.protocol}://${url.domain}/${lang}`
+    ;
+  }
+
   return {
     type: 'web',
     lang,
     name: header.name,
     title: header.title,
+    canonical,
     description: header.description,
     company: config.company,
     content,

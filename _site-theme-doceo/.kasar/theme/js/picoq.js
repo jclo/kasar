@@ -8,7 +8,7 @@
  * keyword.
  *
  * Private Functions:
- *  . none,
+ * . none,
  *
  *
  * Constructor:
@@ -16,11 +16,11 @@
  *
  *
  * Private Static Methods:
- *  . none,
+ *  . _swing                      defines the the swing easing method,
  *
  *
  * Public Static Methods:
- *  . none,
+ *  . fetch                       fetches data from the server,
  *
  *
  * Public Variables:
@@ -34,6 +34,7 @@
  *  . selectAll                   selects a node list,
  *
  *  . append                      appends and selects a node, defined by an HTML tag,
+ *  . empty                       empties a node element,
  *
  *  . text                        gets/sets the text contents of the element,
  *
@@ -52,6 +53,9 @@
  *  . on                          attachs an event listener to the current node,
  *  . off                         removes an event listener from the current node,
  *
+ *  . fadeIn                      displays the matched elements by fading them to opaque,
+ *  . fadeOut                     displays the matched elements by fading them to transparent,
+ *
  *
  *
  * @namespace    -
@@ -61,8 +65,8 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* global */
-/* eslint-disable strict, no-underscore-dangle */
+/* global GLOBAL_DELAY */
+/* eslint-disable strict, one-var, semi-style, no-underscore-dangle */
 
 
 // -- Vendor Modules
@@ -76,6 +80,9 @@
 
 // -- Local Variables
 let methods;
+
+// -- Private Functions --------------------------------------------------------
+// none,
 
 
 // -- Public -------------------------------------------------------------------
@@ -112,11 +119,55 @@ PicoQ.VERSION = '{{lib:version}}';
 
 
 // -- Private Static Methods ---------------------------------------------------
-// none,
+
+/**
+ * Defines the the swing easing method.
+ * (Robert Penner's easing equations)
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {Number}      the current lapse time,
+ * @param {Number}      the initial CSS property value,
+ * @param {Number}      the difference between the final and the initial value,
+ * @param {Number}      the animation duration,
+ * @returns {Number}    returns the value at the current lapse time,
+ * @since 0.0.0
+ */
+PicoQ._swing = function(t, b, c, d) {
+  /* eslint-disable-next-line */
+  return c * (0.5 - Math.cos(t / d * Math.PI) / 2) + b;
+};
 
 
 // -- Public Static Methods ----------------------------------------------------
-// none,
+
+/**
+ * Fetches data from the server.
+ *
+ * @function (arg1, arg2, arg3)
+ * @public
+ * @param {String}        the server url,
+ * @param {Object}        the parameters to define the operation (GET, POST, etc.),
+ * @param {Function}      the function to call at the completion,
+ * @returns {Object}      returns this,
+ * @since 0.0.0
+ */
+PicoQ.fetch = (url, options, callback) => {
+  fetch(url, options)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(response);
+    })
+    .then((data) => {
+      callback(null, data);
+    })
+    .catch((error) => {
+      callback(error);
+    })
+  ;
+};
 
 
 // -- Public Methods -----------------------------------------------------------
@@ -179,7 +230,7 @@ methods = {
     return this;
   },
 
-  // -- Append -----------------------------------------------------------------
+  // -- Append / Empty ---------------------------------------------------------
   /**
    * Appends and selects a node, defined by an HTML tag.
    *
@@ -196,6 +247,23 @@ methods = {
     }
     return this;
   },
+
+  /**
+   * Empties a node element.
+   *
+   * @method ()
+   * @public
+   * @param {}              -,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
+   */
+  empty() {
+    if (this[0]) {
+      this[0].innerHTML = '';
+    }
+    return this;
+  },
+
 
   // -- Text -------------------------------------------------------------------
   /**
@@ -423,10 +491,89 @@ methods = {
     }
     return this;
   },
+
+
+  // -- Fade -------------------------------------------------------------------
+
+  /**
+   * Displays the matched elements by fading them to opaque.
+   *
+   * @method (arg1, arg2, arg3)
+   * @public
+   * @param {Number}        the duration,
+   * @param {String}        the easing method,
+   * @param {Function}      the function to call on completion,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
+   */
+  fadeIn(time, easing, done) {
+    const delay    = GLOBAL_DELAY
+        , duration = time || 400
+        , initial  = 0
+        , final    = 1
+        , change   = final - initial
+        , fneasing = easing || PicoQ._swing
+        ;
+
+    let lapsOfTime = 0
+      , value
+      ;
+
+    const timer = setInterval(() => {
+      value = fneasing(lapsOfTime, initial, change, duration);
+      this[0].style.opacity = value;
+
+      lapsOfTime += delay;
+      if (lapsOfTime > duration) {
+        clearInterval(timer);
+        if (done) done();
+      }
+    }, delay);
+
+    return this;
+  },
+
+  /**
+   * Display the matched elements by fading them to transparent.
+   *
+   * @method (arg1, arg2, arg3)
+   * @public
+   * @param {Number}        the duration,
+   * @param {String}        the easing method,
+   * @param {Function}      the function to call on completion,
+   * @returns {Object}      returns this,
+   * @since 0.0.0
+   */
+  fadeOut(time, easing, done) {
+    const delay    = GLOBAL_DELAY
+        , duration = time || 400
+        , initial  = 1
+        , final    = 0
+        , change   = final - initial
+        , fneasing = easing || PicoQ._swing
+        ;
+
+    let lapsOfTime = 0
+      , value
+      ;
+
+    const timer = setInterval(() => {
+      value = fneasing(lapsOfTime, initial, change, duration);
+      this[0].style.opacity = value;
+
+      lapsOfTime += delay;
+      if (lapsOfTime > duration) {
+        clearInterval(timer);
+        done();
+      }
+    }, delay);
+
+    return this;
+  },
 };
 
 
 // -- Export
 // none,
 
-/* eslint-enable strict, no-underscore-dangle */
+/* eslint-enable strict, one-var, semi-style, no-underscore-dangle */

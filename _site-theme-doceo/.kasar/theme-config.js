@@ -20,7 +20,7 @@ module.exports = {
   // This is the theme used to build your website:
   theme: {
     name: 'doceo',
-    version: '2.1.1', // built from Kasar v2.4.0"
+    version: '2.1.2', // built from Kasar v2.5.1"
   },
 
   // Where is the root of the project:
@@ -95,6 +95,7 @@ module.exports = {
     `${base}/site/.kasar/theme/js/docmenu.js`,
     `${base}/site/.kasar/theme/js/header.js`,
     `${base}/site/.kasar/theme/js/mobilemenu.js`,
+    `${base}/site/.kasar/theme/js/onepagemenu.js`,
     `${base}/site/.kasar/theme/js/smoothscrolling.js`,
     `${base}/site/js/extra.js`,
     `${base}/site/.kasar/theme/js/main.js`,

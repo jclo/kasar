@@ -169,18 +169,19 @@ const methods = {
   /**
    * Fills the content section of the web page.
    *
-   * @method (arg1, arg2, arg3, arg4, arg5, arg6)
+   * @method (arg1, arg2, arg3, arg4, arg5, arg6, [arg7])
    * @public
    * @param {Object}        data on the website,
    * @param {Object}        data on the docsite,
    * @param {string}        the active langage,
    * @param {String}        the active page,
+   * @param {Object}        params specific to the active page,
    * @param {String}        the content to insert,
    * @param {Array}         the documentation menu,
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  fillContent(website, docsite, lang, page, content, docmenu) {
+  fillContent(website, docsite, lang, page, params, content, docmenu) {
     if (website && website[lang] && website[lang][page]) {
       // It means that it is a webpage.
 

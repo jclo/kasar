@@ -2,6 +2,7 @@
 name: 'home'
 title: 'Kasar start | We are expert in ...'
 description: 'this page ...'
+canonical: ''
 ---
 
 <!-- marketing contents -->

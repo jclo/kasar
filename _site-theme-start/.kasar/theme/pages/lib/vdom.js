@@ -51,6 +51,7 @@ function _getHTMLTemplate(product, kversion, theme, lang) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
 
+        <link rel="canonical" href="">
         <link rel="stylesheet" href="{{path:fonts}}">
         <link rel="stylesheet" href="${basepath}css/style.css">
         <link id="highlight-color-theme" rel="stylesheet" href="${basepath}css/fake.css">
@@ -230,6 +231,25 @@ function _setGoogleVerify(vdom, g) {
 }
 
 /**
+ * Adds or removes canonical link.
+ *
+ * @function (arg1, arg2)
+ * @private
+ * @param {Object}          the VDOM object,
+ * @param {String/Null}     the canonical link or null,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _setCanonical(vdom, canonical) {
+  const el = vdom.window.document.querySelector('link[rel="canonical"]');
+  if (canonical) {
+    el.setAttribute('href', canonical);
+    return;
+  }
+  el.remove();
+}
+
+/**
  * Sets the page title.
  *
  * @function (arg1, arg2)
@@ -298,16 +318,18 @@ const methods = {
   /**
    * Creates and fills the DOM head.
    *
-   * @method (arg1, arg2, arg3)
+   * @method (arg1, arg2, arg3, arg4)
    * @public
    * @param {String}        the title of the page,
+   * @param {String/Null}   the canonical link or null,
    * @param {String}        the description of the page,
    * @param {String}        the normalize css style,
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  addHead(title, description/* , norm */) {
+  addHead(title, canonical, description/* , norm */) {
     _setTitle(this.vdom, title);
+    _setCanonical(this.vdom, canonical);
     _setGoogleVerify(this.vdom, google);
     _setDescription(this.vdom, description);
     _setFontUrl(this.vdom, fonts.remote);

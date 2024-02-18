@@ -190,15 +190,17 @@ function _getMenuWithChildren(menu) {
   let li = ''
     , child
     , cactive
+    , target
     ;
 
   for (let i = 0; i < menu.children.length; i++) {
     child = menu.children[i];
     cactive = child.tag === 'youarehere' ? ' pure-menu-active' : '';
+    target = child.target && child.target === '_blank' ? '_blank' : '_self';
 
     li += `
       <li class="pure-menu-item${cactive}">
-        <a class="pure-menu-link" href="${child.link}">${child.text}</a>
+        <a class="pure-menu-link" href="${child.link}" target="${target}">${child.text}</a>
         <div class="bar"></div>
       </li>
     `;
