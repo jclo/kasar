@@ -33,25 +33,22 @@
  * @author    -
  * @since     0.0.0
  * @version   -
- * ************************************************************************** */
+* ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle,
-  import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview');
+import RView from '@mobilabs/rview';
 
 
 // -- Local modules
-const Header     = require('../header/main')
-    , MobileMenu = require('../menus/menu-mobile/main')
-    , Marketing  = require('../marketing/main')
-    , Content    = require('../content/main')
-    , Doc        = require('../doc/main')
-    , Footer     = require('../footer/main')
-    ;
+import Header from '../header/main.js';
+import MobileMenu from '../menus/menu-mobile/main.js';
+import Marketing from '../marketing/main.js';
+import Content from '../content/main.js';
+import Doc from '../doc/main.js';
+import Footer from '../footer/main.js';
 
 
 // -- Local constants
@@ -107,7 +104,6 @@ function render() {
  * @since 0.0.0
  */
 function App() {
-  /* eslint-disable-next-line no-use-before-define */
   const obj = Object.create(methods);
   const view = render();
   // Attaches all the 'web components' to this object.
@@ -205,4 +201,4 @@ const methods = {
 
 
 // -- Export
-module.exports = App;
+export default App;

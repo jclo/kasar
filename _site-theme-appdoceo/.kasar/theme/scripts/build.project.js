@@ -22,24 +22,21 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
+/* global */
+/* - */
 
-'use strict';
 
 // -- Vendor Modules
-const nopt = require('nopt')
-    ;
+import nopt from 'nopt';
 
 
 // -- Local Modules
-const buildHTML    = require('./build.project.index.html')
-    , addTrackers  = require('./build.project.trackers')
-    , buildApp     = require('./build.project.app')
-    , buildPages   = require('./build.project.pages')
-    , buildSitemap = require('./build.project.sitemap')
-    , collectIMG   = require('./build.project.img')
-    ;
+import buildHTML from './build.project.index.html.js';
+import addTrackers from './build.project.trackers.js';
+import buildApp from './build.project.app.js';
+import buildPages from './build.project.pages.js';
+import buildSitemap from './build.project.sitemap.js';
+import collectIMG from './build.project.img.js';
 
 
 // -- Local Constants

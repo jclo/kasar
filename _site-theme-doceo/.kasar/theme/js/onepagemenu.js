@@ -4,8 +4,8 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global PicoQ */
-/* eslint-disable strict, one-var, semi-style, no-underscore-dangle */
+/* global PicoQ, window */
+/* - */
 (function($) {
   const kids      = []
       , elScroll  = []
@@ -87,4 +87,4 @@
   });
 }(PicoQ));
 
-/* eslint-enable strict, one-var, semi-style, no-underscore-dangle */
+/* - */

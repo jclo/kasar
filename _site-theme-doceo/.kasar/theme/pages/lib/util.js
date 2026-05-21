@@ -22,9 +22,8 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
-'use strict';
 
 // -- Vendor Modules
 
@@ -88,6 +87,6 @@ const Util = {
 
 
 // -- Export
-module.exports = Util;
+export default Util;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

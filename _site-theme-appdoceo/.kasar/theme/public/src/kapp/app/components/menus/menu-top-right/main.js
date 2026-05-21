@@ -28,7 +28,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -37,8 +37,8 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../../config';
-import U from '../menu-utils/util1';
+import config from '../../../../config.js';
+import U from '../menu-utils/util1.js';
 
 
 // -- Local Constants
@@ -148,7 +148,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('menu component created!');
     this.state.lang = 'en';
     return this;
@@ -164,7 +164,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  listenDOM() {
     _listen(this);
     return this;
   },
@@ -179,8 +179,7 @@ const Menu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  /* eslint-disable no-param-reassign */
-  render(state, props) {
+  $render(state, props) {
     const menu = _extractMenu(state, props);
 
     return `
@@ -191,7 +190,6 @@ const Menu = RView.Component({
       </div><!-- /.top right menu -->
     `;
   },
-  /* eslint-enable no-param-reassign */
 
 
   // -- Specific Methods ---------------------------------------------------
@@ -216,4 +214,4 @@ const Menu = RView.Component({
 // Exports:
 export default Menu;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

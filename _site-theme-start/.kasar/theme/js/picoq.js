@@ -65,8 +65,8 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* global GLOBAL_DELAY */
-/* eslint-disable strict, one-var, semi-style, no-underscore-dangle */
+/* global GLOBAL_DELAY, document */
+/* - */
 
 
 // -- Vendor Modules
@@ -79,7 +79,7 @@
 
 
 // -- Local Variables
-let methods;
+
 
 // -- Private Functions --------------------------------------------------------
 // none,
@@ -134,7 +134,6 @@ PicoQ.VERSION = '{{lib:version}}';
  * @since 0.0.0
  */
 PicoQ._swing = function(t, b, c, d) {
-  /* eslint-disable-next-line */
   return c * (0.5 - Math.cos(t / d * Math.PI) / 2) + b;
 };
 
@@ -172,7 +171,7 @@ PicoQ.fetch = (url, options, callback) => {
 
 // -- Public Methods -----------------------------------------------------------
 
-methods = {
+const methods = {
 
   /**
    * Waits for the DOM loaded.
@@ -526,7 +525,9 @@ methods = {
       lapsOfTime += delay;
       if (lapsOfTime > duration) {
         clearInterval(timer);
-        if (done) done();
+        if (done) {
+          done();
+        }
       }
     }, delay);
 
@@ -576,4 +577,4 @@ methods = {
 // -- Export
 // none,
 
-/* eslint-enable strict, one-var, semi-style, no-underscore-dangle */
+/* - */

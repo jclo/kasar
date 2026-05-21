@@ -1,10 +1,9 @@
 /* *****************************************************************************
  * Service Worker
  * ************************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-restricted-globals, arrow-body-style */
+/* global caches, self */
+/* - */
 
-'use strict';
 
 // -- Local constants
 const MAXCACHESIZE = 15

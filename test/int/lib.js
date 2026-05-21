@@ -1,12 +1,10 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint no-unused-vars: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const { expect } = require('chai')
-    ;
+import { expect } from 'chai';
 
 
 // -- Local Modules
@@ -15,7 +13,7 @@ const { expect } = require('chai')
 // -- Local Constants
 // Number of properties added by your library.
 const OWNPROPS = 1
-    // , TESTMODE = 0
+    , TESTMODE = 0
     ;
 
 
@@ -23,7 +21,7 @@ const OWNPROPS = 1
 
 
 // -- Main
-module.exports = function(Kasar, libname, version) {
+export default function(Kasar, libname, version) {
   describe('Kasar introspection:', () => {
     describe('Test the nature of Kasar:', () => {
       it('Expects Kasar to be an object.', () => {

@@ -3,8 +3,8 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global PicoQ */
-/* eslint-disable strict, no-console, no-underscore-dangle */
+/* global PicoQ, navigator */
+/* eslint-disable no-console */
 (function($) {
   //
   // -- Service Worker Script:
@@ -49,4 +49,4 @@
   });
 }(PicoQ));
 
-/* eslint-disable strict, no-console, no-underscore-dangle */
+/* eslint-enable no-console */

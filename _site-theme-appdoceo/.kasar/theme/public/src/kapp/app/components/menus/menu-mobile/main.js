@@ -30,7 +30,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* eslint-disable curly */
 
 
 // -- Vendor Modules
@@ -39,9 +39,9 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../../config';
-import SideMenu from '../../../../_shared/components/sidemenu/main';
-import L from './listen';
+import config from '../../../../config.js';
+import SideMenu from '../../../../_shared/components/sidemenu/main.js';
+import L from './listen.js';
 
 
 // -- Local Constants
@@ -67,7 +67,6 @@ const SWITCH_THEME = '#switchtheme'
  * @returns {Object}        returns the mobile menu,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _createMenu(state, props) {
   const menu = {}
       ;
@@ -100,7 +99,6 @@ function _createMenu(state, props) {
 
   return menu;
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 
 // -- Public ---------------------------------------------------------------
@@ -119,7 +117,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('menu component created!');
     this.state.theme = 'light';
     this.state.lang = 'en';
@@ -139,7 +137,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     this._cosidemenu = this.$getChild('<SideMenu />');
     L.listen(this);
     return this;
@@ -155,8 +153,7 @@ const Menu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  /* eslint-disable no-param-reassign */
-  render(state, props) {
+  $render(state, props) {
     const open = state.open ? ' mobilemenu-open' : '';
 
     this.children = {
@@ -176,7 +173,6 @@ const Menu = RView.Component({
       </div><!-- /.mobilemenu -->
     `;
   },
-  /* eslint-enable no-param-reassign */
 
 
   // -- Specific Methods ---------------------------------------------------
@@ -246,4 +242,4 @@ const Menu = RView.Component({
 // Exports:
 export default Menu;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* eslint-enable curly */

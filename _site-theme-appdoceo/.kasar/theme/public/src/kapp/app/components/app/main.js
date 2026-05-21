@@ -31,8 +31,8 @@
  * @since     0.0.0
  * @version   -
  * ********************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* global window, document, localStorage */
+/* - */
 
 
 // -- Vendor Modules
@@ -41,11 +41,11 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../config';
-import Header from '../header/main';
-import MobileMenu from '../menus/menu-mobile/main';
-import Contents from '../contents/main';
-import Footer from '../footer/main';
+import config from '../../../config.js';
+import Header from '../header/main.js';
+import MobileMenu from '../menus/menu-mobile/main.js';
+import Contents from '../contents/main.js';
+import Footer from '../footer/main.js';
 
 
 // -- Local Constants
@@ -141,7 +141,7 @@ const App = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('app component created!');
     this.props.hello = '(with {{lib:name}} v{{lib:version}})';
     return this;
@@ -157,7 +157,7 @@ const App = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     this._coheader = this.$getChild('<Header />');
     this._comobile = this.$getChild('<MobileMenu />');
     this._cocontents = this.$getChild('<Contents />');
@@ -175,7 +175,7 @@ const App = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state, props) {
+  $render(state, props) {
     this.children = {
       '<Header />': { fn: Header, props: { config: props.config } },
       '<MobileMenu />': { fn: MobileMenu, props: { config: props.config, sidemenu: props.sidemenu } },
@@ -269,4 +269,4 @@ const App = RView.Component({
 // Exports:
 export default App;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

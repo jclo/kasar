@@ -26,13 +26,11 @@
  * @version   -
  * ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle,
-  import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
-// -- Vendor Modules
-const RView = require('@mobilabs/rview');
+// -- Node modules
+import RView from '@mobilabs/rview';
 
 
 // -- Local Modules
@@ -101,7 +99,7 @@ const TLMenu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     this.state.previoushide = false;
     this.state.previouslink = '#';
     this.state.previoustext = '???';
@@ -121,7 +119,7 @@ const TLMenu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     const previoushide = state.previoushide ? ' nav-pagination-hidden' : ''
         , nexthide = state.nexthide ? ' nav-pagination-hidden' : ''
         ;
@@ -180,4 +178,4 @@ const TLMenu = RView.Component({
 
 
 // Exports:
-module.exports = TLMenu;
+export default TLMenu;

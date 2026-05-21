@@ -3,8 +3,8 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global PicoQ */
-/* eslint-disable strict */
+/* global PicoQ, window */
+/* - */
 (function($) {
   $().DOMready(() => {
     const TOP = 100;
@@ -34,4 +34,4 @@
   });
 }(PicoQ));
 
-/* eslint-enable strict */
+/* - */

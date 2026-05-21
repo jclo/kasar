@@ -29,7 +29,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -38,10 +38,10 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../config';
-import TLMenu from '../menus/menu-top-left/main';
-import TRMenu from '../menus/menu-top-right/main';
-import MenuButton from '../../../_shared/components/menubutton/main';
+import config from '../../../config.js';
+import TLMenu from '../menus/menu-top-left/main.js';
+import TRMenu from '../menus/menu-top-right/main.js';
+import MenuButton from '../../../_shared/components/menubutton/main.js';
 
 
 // -- Local Constants
@@ -91,7 +91,7 @@ const Header = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('header component created!');
     this.props.title = '{{lib:name}}';
     return this;
@@ -107,7 +107,7 @@ const Header = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     this._cotlmenu = this.$getChild('<TLMenu />');
     this._cotrmenu = this.$getChild('<TRMenu />');
     this._comenubutton = this.$getChild('<MenuButton />');
@@ -125,7 +125,7 @@ const Header = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state, props) {
+  $render(state, props) {
     this.children = {
       '<TLMenu />': { fn: TLMenu, props: { config: props.config } },
       '<TRMenu />': { fn: TRMenu, props: { config: props.config } },
@@ -204,4 +204,4 @@ const Header = RView.Component({
 // Exports:
 export default Header;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

@@ -28,7 +28,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -37,7 +37,7 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../../config';
+import config from '../../../../config.js';
 
 
 // -- Local Constants
@@ -153,7 +153,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('menu component created!');
     this.state.previous = false;
     this.state.next = false;
@@ -170,7 +170,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $listenDOM() {
     _listen(this);
     return this;
   },
@@ -185,7 +185,7 @@ const Menu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     const previoushide = !state.previous ? ' nav-pagination-hidden' : ''
         , previouslink = state.previous ? state.previous.link : '#'
         , previoustext = state.previous ? state.previous.text : '???'
@@ -241,4 +241,4 @@ const Menu = RView.Component({
 // Exports:
 export default Menu;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

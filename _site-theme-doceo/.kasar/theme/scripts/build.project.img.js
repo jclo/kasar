@@ -19,21 +19,17 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint curly: 0 */
 
 
 // -- Vendor Modules
-const fs = require('fs')
-    ;
+import fs from 'fs';
 
 
 // -- Local Modules
-const config = require('../../../config')
-    , P      = require('./libs/parse')
-    ;
+import config from '../../../config.js';
+import P from './libs/parse.js';
 
 
 // -- Local Constants
@@ -139,4 +135,4 @@ function Build(done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

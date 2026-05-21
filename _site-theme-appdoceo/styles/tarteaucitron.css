@@ -1,0 +1,23 @@
+/*
+ * -- SPECIFIC STYLES --
+ *
+ */
+body #tarteaucitronRoot div#tarteaucitronAlertBig {
+  border-radius: 2px;
+  background: rgba(55, 54, 54, 0.8);
+}
+
+div#tarteaucitronAlertBig:before {
+  content: '';
+}
+
+
+
+/*
+ * -- COLOR THEME --
+ *
+ */
+
+
+
+/* oOo */

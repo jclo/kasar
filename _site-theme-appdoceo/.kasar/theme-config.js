@@ -1,9 +1,10 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0 */
+/* global */
+/* - */
 
 
 // -- Node modules
-const pack = require('../../package.json');
+import pack from '../../package.json' with { type: 'json' };
 
 
 // -- Local modules
@@ -22,7 +23,7 @@ const base       = '.'
 
 // -- Main
 
-module.exports = {
+export default {
   libname,
 
   // This is the entry javascript file for your library.
@@ -34,7 +35,7 @@ module.exports = {
   // This is the theme used to build your website:
   theme: {
     name: 'appdoceo',
-    version: '2.2.1', // built from Kasar v2.4.0"
+    version: '3.0.0-beta.1.0', // built from Kasar v{{kasar:version}}
   },
 
   // Where is the root of the project:
@@ -66,6 +67,7 @@ module.exports = {
     ],
     tominify: [
       // '',
+      `${base}/site/vendor/tarteaucitron/tarteaucitron.init.js`,
     ],
   },
 
@@ -156,18 +158,7 @@ module.exports = {
   },
 
   KA: {
-    xmlString: `
-      <!-- Kiwi Analytics -->
-      <script>
-        // Kiwi Tracker
-        (function(e,a,t,i,n,c,s){e.KiwiAnalyticsObject=n,e[n]=e[n]||function(){
-        (e[n].q=e[n].q||[]).push(arguments)},e[n].l=new Date,c=a.createElement(t),
-        s=a.getElementsByTagName(t)[0],c.async=1,c.src=i,s.parentNode.insertBefore(c,s)}
-        (window,document,'script','/js/kiwianalytics.min.js','ma'));
-        ma('create', '{{tracker:siteid}}');
-        ma('send', 'pageview');
-      </script>
-    `,
+    xmlString: '',
   },
 
   Axeptio: {

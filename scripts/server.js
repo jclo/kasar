@@ -1,15 +1,14 @@
 // ESLint declarations
 /* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
 
-'use strict';
 
 // -- Node modules
-const nopt        = require('nopt')
-    , browserSync = require('browser-sync').create()
-    ;
+import nopt from 'nopt';
+import BS from 'browser-sync';
 
 
 // -- Local modules
+const browserSync = BS.create();
 
 
 // -- Local constants

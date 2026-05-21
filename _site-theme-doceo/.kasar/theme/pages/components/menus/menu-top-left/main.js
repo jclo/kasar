@@ -25,17 +25,15 @@
  * @version   -
  * ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle,
-  import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
-// -- Vendor Modules
-const RView = require('@mobilabs/rview');
+// -- Node modules
+import RView from '@mobilabs/rview';
 
 
 // -- Local Modules
-const Util = require('../menu-utils/util1');
+import Util from '../menu-utils/util1.js';
 
 
 // -- Local Constants
@@ -64,7 +62,7 @@ const TLMenu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     return `
       <div class="top left menu pure-menu pure-menu-horizontal">
         <ul class="pure-menu-list">
@@ -100,4 +98,4 @@ const TLMenu = RView.Component({
 
 
 // Exports:
-module.exports = TLMenu;
+export default TLMenu;

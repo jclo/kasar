@@ -33,7 +33,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -42,7 +42,7 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../config';
+import config from '../../../config.js';
 
 
 // -- Local Constants
@@ -75,7 +75,7 @@ const MButton = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('shared menubutton component created!');
     this.state.open = false;
     return this;
@@ -91,7 +91,7 @@ const MButton = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     this.$().on('click', (/* e */) => {
       this.$emit(`_shared:from:menubutton:to:${this.props.owner}:views:toggle`, {
         open: !this.state.open,
@@ -113,7 +113,7 @@ const MButton = RView.Component({
    * @returns {XMLString}   returns the rendered component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     const open = state.open ? ' shared-component-menubutton-icon-open' : '';
 
     return `
@@ -180,4 +180,4 @@ const MButton = RView.Component({
 // Exports:
 export default MButton;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

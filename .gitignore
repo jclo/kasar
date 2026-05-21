@@ -10,3 +10,5 @@ _site-theme-doceo/_dist
 _site-theme-appdoceo/_dist
 
 site
+.npmrc
+package.publish.json

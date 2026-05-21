@@ -1,11 +1,13 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0 */
+/* global */
+/* - */
 
-'use strict';
 
 // -- Node modules
 
+
 // -- Local modules
+
 
 // -- Local constants
 const base = '.';
@@ -15,12 +17,12 @@ const base = '.';
 
 // -- Main
 
-module.exports = {
+export default {
 
   // This is the theme used to build your website:
   theme: {
     name: 'doceo',
-    version: '2.1.2', // built from Kasar v2.5.1"
+    version: '3.0.0-beta.1.0', // built from Kasar v{{kasar:version}}
   },
 
   // Where is the root of the project:

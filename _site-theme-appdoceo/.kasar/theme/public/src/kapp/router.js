@@ -126,7 +126,7 @@ const Router = Spine.Router({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  initialize(...args) {
+  $initialize(...args) {
     const [me, i18n, conf, sidemenu, lang, page, theme] = args;
     log.trace('starting to initialize the router ...');
     Spine.History.start();
@@ -144,7 +144,7 @@ const Router = Spine.Router({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  listen() {
+  $listen() {
     /**
      * Listens messages coming from ...
      *

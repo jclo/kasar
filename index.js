@@ -1,14 +1,12 @@
 /* eslint-env node */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* - */
 
-'use strict';
 
 // -- Node modules
 
 
 // -- Local modules
-const { version } = require('./package.json')
-    ;
+import pack from './package.json' with { type: 'json' };
 
 
 // -- Local constants
@@ -18,6 +16,9 @@ const { version } = require('./package.json')
 
 
 // -- Main
-module.exports = {
-  VERSION: version,
+export default {
+  VERSION: pack.version,
 };
+
+
+// - oOo --

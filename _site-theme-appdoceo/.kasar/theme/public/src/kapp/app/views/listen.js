@@ -28,8 +28,8 @@
  * @since        0.0.0
  * @version      -
  * ********************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* global window, document */
+/* eslint-disable curly */
 
 
 // -- Vendor Modules
@@ -38,7 +38,7 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../config';
+import config from '../../config.js';
 
 
 // -- Local Constants
@@ -65,6 +65,19 @@ function _updateHTMLPage(page) {
   window.history.pushState('xxx', 'yyy', page.link);
   document.head.querySelector('title').textContent = page.title;
   document.head.querySelector('meta[name="description"]').content = page.description;
+
+  const cano = document.head.querySelector('link[rel="canonical"]');
+  if (cano && page.canonical) {
+    cano.setAttribute('href', page.canonical);
+  } else if (page.canonical) {
+    const el = document.head.querySelector('title');
+    const ncan = document.createElement('link');
+    ncan.setAttribute('rel', 'canonical');
+    ncan.setAttribute('href', page.canonical);
+    el.parentNode.insertBefore(ncan, el.nextSibling);
+  } else if (cano) {
+    cano.remove();
+  }
 }
 
 /**
@@ -112,7 +125,6 @@ function _listenContents(that) {
    * Then load the requested page.
    *
    */
-  /* eslint-disable no-param-reassign */
   that._app.$listen('kapp:from:_shared:components:sidemenu:to:app:contents:views:load:page', (payload) => {
     const [lang, name] = payload.menu ? payload.menu.split(':') : [null, null];
 
@@ -158,7 +170,6 @@ function _listenContents(that) {
       });
     }
   });
-  /* eslint-enable no-param-reassign */
 
   /**
    * Listens a message coming from the nav page menu.
@@ -381,4 +392,4 @@ const Listen = {
 // -- Export
 export default Listen;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* eslint-enable curly */

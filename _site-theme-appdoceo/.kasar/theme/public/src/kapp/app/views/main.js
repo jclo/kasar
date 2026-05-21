@@ -31,7 +31,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -41,9 +41,9 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../config';
-import App from '../components/app/main';
-import L from './listen';
+import config from '../../config.js';
+import App from '../components/app/main.js';
+import L from './listen.js';
 
 
 // -- Local Constants
@@ -69,7 +69,6 @@ const { level }  = config.logger
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-param-reassign */
 function _loadFirstPage(that) {
   if (that._sidemenu && that._sidemenu[that._lang]) {
     let menu;
@@ -89,7 +88,6 @@ function _loadFirstPage(that) {
     });
   }
 }
-/* eslint-enable no-param-reassign */
 
 
 // -- Public ---------------------------------------------------------------
@@ -114,7 +112,7 @@ const View = Spine.View({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  initialize(whoiam, i18n, conf, sidemenu, lang, page, theme) {
+  $initialize(whoiam, i18n, conf, sidemenu, lang, page, theme) {
     log.trace('created the App into the DOM!');
     this._whoiam = whoiam;
     this._i18n = i18n;
@@ -140,7 +138,7 @@ const View = Spine.View({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  listen() {
+  $listen() {
     L.start(this);
     _loadFirstPage(this);
     return this;
@@ -220,4 +218,4 @@ const View = Spine.View({
 // Exports:
 export default View;
 
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */

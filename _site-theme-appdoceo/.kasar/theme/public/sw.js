@@ -1,8 +1,8 @@
 /* *****************************************************************************
  * Service Worker
  * ************************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-restricted-globals, arrow-body-style */
+/* global caches, self */
+/* eslint no-unused-vars: 0 */
 
 
 // -- Local constants

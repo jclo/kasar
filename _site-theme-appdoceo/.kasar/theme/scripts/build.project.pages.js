@@ -25,34 +25,31 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint no-unused-vars: 0, curly: 0 */
 
 
 // -- Vendor Modules
-const fs        = require('fs')
-    , fse       = require('fs-extra')
-    , Markdown  = require('markdown-it')
-    , mdAttrs   = require('markdown-it-attrs')
-    , MDCont    = require('markdown-it-container')
-    , MDAnchors = require('markdown-it-anchor')
-    , yaml      = require('js-yaml')
-    ;
+import fs from 'fs';
+import fse from 'fs-extra';
+import Markdown from 'markdown-it';
+import mdAttrs from 'markdown-it-attrs';
+import MDCont from 'markdown-it-container';
+import MDAnchors from 'markdown-it-anchor';
+import yaml from 'js-yaml';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    , TK          = require('./libs/token')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+import TK from './libs/token.js';
 
 
 // -- Local Constants
 const { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
+    , { url }      = config.company
     , { basedist } = config
     , md           = new Markdown('commonmark').use(mdAttrs)
     ;
@@ -239,7 +236,6 @@ function _getContent(file) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 function _write(webpages, sidemenu, total, done) {
   /**
    * Executes done at the completion.
@@ -267,7 +263,6 @@ function _write(webpages, sidemenu, total, done) {
     }
   }
 }
-/* eslint-enable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 
 /**
  * Extracts data from the selected source file.
@@ -300,12 +295,22 @@ function _generateWebPage(page, lang) {
   let contentplus = `<script>window.location.href="${basepath}?page=${lang}:${header.name}"</script>`;
   contentplus += content;
 
+  let canonical = null;
+  if (typeof header.canonical === 'string') {
+    canonical = header.canonical.length > 0
+      ? `${url.domain}/${basepath}/${lang}/${header.canonical}`
+      : `${url.domain}/${basepath}/${lang}`
+    ;
+    canonical = `${url.protocol}://${canonical.replace(/(\/\/\/)|(\/\/)/, '/')}`;
+  }
+
   return {
     type: 'web',
     lang,
     name: header.name,
     token: TK.get(8),
     title: header.title,
+    canonical,
     description: header.description,
     company: config.company,
     menuname,
@@ -326,7 +331,6 @@ function _generateWebPage(page, lang) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _createWebPages(webpages, menu, done) {
   const web      = {}
       , sidemenu = {}
@@ -350,6 +354,7 @@ function _createWebPages(webpages, menu, done) {
           name: page.name,
           token: page.token,
           title: page.title,
+          canonical: page.canonical,
           description: page.description,
           lang: page.lang,
           text: page.menuname,
@@ -368,6 +373,7 @@ function _createWebPages(webpages, menu, done) {
             name: page.name,
             token: page.token,
             title: page.title,
+            canonical: page.canonical,
             description: page.description,
             lang: page.lang,
             text: page.menuname,
@@ -386,13 +392,33 @@ function _createWebPages(webpages, menu, done) {
           vlink: `#sidemenu:${lang}:${name}`,
           children: sidechildren,
         });
+      } else if (typeof webpages[lang][i] === 'object' && webpages[lang][i].links) {
+        sidechildren = [];
+
+        for (let j = 0; j < webpages[lang][i].links.length; j++) {
+          sidechildren.push({
+            name: 'externallink',
+            lang,
+            text: webpages[lang][i].links[j].text,
+            link: webpages[lang][i].links[j].link,
+            target: webpages[lang][i].links[j].target,
+          });
+        }
+
+        sidemenu[lang].push({
+          name: 'Links',
+          token: TK.get(8),
+          lang,
+          text: webpages[lang][i].title,
+          vlink: '#',
+          children: sidechildren,
+        });
       }
     }
   }
 
   _write(web, sidemenu, count, done);
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 
 // -- Public -------------------------------------------------------------------
@@ -437,4 +463,4 @@ function Build(done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

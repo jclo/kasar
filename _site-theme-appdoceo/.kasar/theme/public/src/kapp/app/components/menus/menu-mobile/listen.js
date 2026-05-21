@@ -25,7 +25,7 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -183,4 +183,4 @@ const Listen = {
 // -- Export
 export default Listen;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

@@ -1,23 +1,28 @@
 // ESLint declarations
 /* eslint one-var: 0, semi-style: 0 */
 
-'use strict';
 
 // -- Node modules
 
+
 // -- Local modules
-const themeconfig = require('./.kasar/theme-config')
-    ;
+import themeconfig from './.kasar/theme-config.js';
+import pack from '../package.json' with { type: 'json' };
 
 
 // -- Local constants
-const EN          = 'en'
-    , FR          = 'fr'
-    , DE          = 'de'
-    , IT          = 'it'
-    , { base }    = themeconfig
-    , { version } = require('../package.json')
-    , basepath    = '/'
+const MULTILINGUAL = true
+    , EN           = 'en'
+    , FR           = 'fr'
+    , DE           = 'de'
+    , IT           = 'it'
+    , EN_O         = MULTILINGUAL ? 'en/' : ''
+    , FR_O         = MULTILINGUAL ? 'fr/' : ''
+    , DE_O         = MULTILINGUAL ? 'de/' : ''
+    , IT_O         = MULTILINGUAL ? 'it/' : ''
+    , { base }     = themeconfig
+    , { version }  = pack
+    , basepath     = '/'
     ;
 
 
@@ -26,7 +31,7 @@ const EN          = 'en'
 
 // -- Main
 
-module.exports = {
+export default {
 
   // This is where is stored the static web site:
   basedist: `${base}/site/_dist`,
@@ -44,6 +49,9 @@ module.exports = {
     name: 'xyz',
     version,
   },
+
+  // Sets false if ou want an url without /{lang}/
+  multilingual: MULTILINGUAL,
 
   // These are the parameters that define your company:
   company: {
@@ -91,6 +99,12 @@ module.exports = {
 
   axeptio: {
     siteid: null,
+  },
+
+  // You must copy the same value to js/extra.js otherwise tarteaucitron
+  // remains inactive.
+  tarteaucitron: {
+    sitega4id: null, // replace null by G4ID. It looks like G-XXXXXXXXX
   },
 
   // These are the pages to build. Google doesn't like that the title and the
@@ -160,10 +174,10 @@ module.exports = {
             target: null,
             lang: EN,
             children: [
-              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
-              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+              { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
             ],
           },
           { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
@@ -171,16 +185,16 @@ module.exports = {
         ],
       },
       bottom: [
-        { text: 'contact', link: `${basepath}${EN}/contact.html` },
-        { text: 'legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'contact', link: `${basepath}${EN_O}contact.html` },
+        { text: 'legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         { text: 'designed with &#10084;&#65039; by ourselves and Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
       ],
       mobile: [
-        { text: 'Home', link: `${basepath}${EN}/index.html` },
-        { text: 'Contact', link: `${basepath}${EN}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'Home', link: `${basepath}${EN_O}index.html` },
+        { text: 'Contact', link: `${basepath}${EN_O}contact.html` },
+        { text: 'Legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         {
           text: '',
           link: '#',
@@ -189,9 +203,9 @@ module.exports = {
           icon: '<span class="fi fi-gb"></span>',
           tag: 'lang',
           children: [
-            { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-            { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
-            { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+            { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+            { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+            { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
           ],
         },
         { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
@@ -215,10 +229,10 @@ module.exports = {
             target: null,
             lang: FR,
             children: [
-              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
-              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+              { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
             ],
           },
           { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
@@ -226,16 +240,16 @@ module.exports = {
         ],
       },
       bottom: [
-        { text: 'contact', link: `${basepath}${FR}/contact.html` },
-        { text: 'legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'contact', link: `${basepath}${FR_O}contact.html` },
+        { text: 'legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
       ],
       mobile: [
-        { text: 'Home', link: `${basepath}${FR}/index.html` },
-        { text: 'Contact', link: `${basepath}${FR}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'Home', link: `${basepath}${FR_O}index.html` },
+        { text: 'Contact', link: `${basepath}${FR_O}contact.html` },
+        { text: 'Legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         {
           text: '',
           link: '#',
@@ -244,9 +258,9 @@ module.exports = {
           icon: '<span class="fi fi-fr"></span>',
           tag: 'lang',
           children: [
-            { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-            { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
-            { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+            { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+            { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+            { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
           ],
         },
         { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
@@ -270,10 +284,10 @@ module.exports = {
             target: null,
             lang: DE,
             children: [
-              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
-              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+              { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
             ],
           },
           { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
@@ -281,16 +295,16 @@ module.exports = {
         ],
       },
       bottom: [
-        { text: 'contact', link: `${basepath}${EN}/contact.html` },
-        { text: 'legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'contact', link: `${basepath}${EN_O}contact.html` },
+        { text: 'legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
       ],
       mobile: [
-        { text: 'Home', link: `${basepath}${DE}/index.html` },
-        { text: 'Contact', link: `${basepath}${EN}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'Home', link: `${basepath}${DE_O}index.html` },
+        { text: 'Contact', link: `${basepath}${EN_O}contact.html` },
+        { text: 'Legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         {
           text: '',
           link: '#',
@@ -299,9 +313,9 @@ module.exports = {
           icon: '<span class="fi fi-de"></span>',
           tag: 'lang',
           children: [
-            { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-            { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-            { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+            { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+            { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+            { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
           ],
         },
         { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
@@ -325,10 +339,10 @@ module.exports = {
             target: null,
             lang: IT,
             children: [
-              { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-              { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-              { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
-              { text: 'Italiano', link: `${basepath}${IT}/#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
+              { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+              { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+              { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+              { text: 'Italiano', link: `${basepath}${IT_O}#`, lang: IT, icon: '<span class="fi fi-it"></span>' },
             ],
           },
           { text: 'Yahoo', link: 'https://www.yahoo.com', target: '_blank' },
@@ -336,16 +350,16 @@ module.exports = {
         ],
       },
       bottom: [
-        { text: 'contact', link: `${basepath}${IT}/contact.html` },
-        { text: 'legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'contact', link: `${basepath}${IT_O}contact.html` },
+        { text: 'legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         { text: 'conçu avec &#10084;&#65039; par nous-mêmes et Kasar!', link: 'https://www.npmjs.com/package/@mobilabs/kasar', target: '_blank' },
       ],
       mobile: [
-        { text: 'Home', link: `${basepath}${IT}/index.html` },
-        { text: 'Contact', link: `${basepath}${EN}/contact.html` },
-        { text: 'Legal', link: `${basepath}${EN}/legal.html` },
-        { text: 'Kasar', link: `${basepath}${EN}/kasar.html` },
+        { text: 'Home', link: `${basepath}${IT_O}index.html` },
+        { text: 'Contact', link: `${basepath}${EN_O}contact.html` },
+        { text: 'Legal', link: `${basepath}${EN_O}legal.html` },
+        { text: 'Kasar', link: `${basepath}${EN_O}kasar.html` },
         {
           text: '',
           link: '#',
@@ -354,9 +368,9 @@ module.exports = {
           icon: '<span class="fi fi-it"></span>',
           tag: 'lang',
           children: [
-            { text: 'Français', link: `${basepath}${FR}/#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
-            { text: 'English', link: `${basepath}${EN}/#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
-            { text: 'Deutsch', link: `${basepath}${DE}/#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
+            { text: 'Français', link: `${basepath}${FR_O}#`, lang: FR, icon: '<span class="fi fi-fr"></span>' },
+            { text: 'English', link: `${basepath}${EN_O}#`, lang: EN, icon: '<span class="fi fi-gb"></span>' },
+            { text: 'Deutsch', link: `${basepath}${DE_O}#`, lang: DE, icon: '<span class="fi fi-de"></span>' },
           ],
         },
         { text: '', link: '#switchtheme', lang: null, icon: '<span id="switchthemesidemenu" class="theme-color-icons theme-icon" title="Switch between dark and light mode."></span>' },
@@ -375,6 +389,7 @@ module.exports = {
   scripts: [
     // `${basepath}vendor/libs/modernizr-3.11.2.min.js`,
     `${basepath}vendor/libs/highlight.min.js`,
+    // `${basepath}vendor/tarteaucitron/tarteaucitron.min.js`,
     `${basepath}js/main.min.js`,
   ],
 };

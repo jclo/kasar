@@ -19,8 +19,8 @@
  * @since        0.0.0
  * @version      -
  * ********************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle, no-console */
+/* global window, document, localStorage */
+/* eslint-disable no-console */
 
 
 // -- Vendor Modules
@@ -28,8 +28,8 @@ import Spine from '@mobilabs/spine';
 
 
 // -- Local Modules
-import Worker from './worker/main';
-import App from './kapp/main';
+import Worker from './worker/main.js';
+import App from './kapp/main.js';
 
 
 // -- Local Constants
@@ -118,4 +118,4 @@ KApp(lang, page, theme);
 // -- Export
 export default KApp;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle, no-console */
+/* eslint-anable no-console */

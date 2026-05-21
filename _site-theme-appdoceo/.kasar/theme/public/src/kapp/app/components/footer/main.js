@@ -27,7 +27,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -36,8 +36,8 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../config';
-import BRMenu from '../menus/menu-bottom-right/main';
+import config from '../../../config.js';
+import BRMenu from '../menus/menu-bottom-right/main.js';
 
 
 // -- Local Constants
@@ -69,7 +69,7 @@ const Footer = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('footer component created!');
     return this;
   },
@@ -84,7 +84,7 @@ const Footer = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     this._cobrmenu = this.$getChild('<BRMenu />');
     return this;
   },
@@ -99,7 +99,7 @@ const Footer = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state, props) {
+  $render(state, props) {
     const copyright = props.config && props.config.company && props.config.company.copyright
       ? props.config.company.copyright.replace(/{{copyright:year}}/, (new Date()).getFullYear())
       : 'unknown copyright'
@@ -142,4 +142,4 @@ const Footer = RView.Component({
 // Exports:
 export default Footer;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

@@ -25,19 +25,16 @@
  * @version   -
  * ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview')
-    ;
+import RView from '@mobilabs/rview';
 
 
 // -- Local modules
-const TLMenu = require('../menus/menu-top-left/main')
-    , TRMenu = require('../menus/menu-top-right/main')
-    ;
+import TLMenu from '../menus/menu-top-left/main.js';
+import TRMenu from '../menus/menu-top-right/main.js';
 
 
 // -- Local constants
@@ -66,7 +63,7 @@ const Header = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     this.children = { '<TLMenu />': TLMenu, '<TRMenu />': TRMenu };
 
     return `
@@ -109,4 +106,4 @@ const Header = RView.Component({
 
 
 // -- Export
-module.exports = Header;
+export default Header;

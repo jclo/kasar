@@ -24,33 +24,30 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint curly: 0 */
 
 
 // -- Vendor Modules
-const fs    = require('fs')
-    , path  = require('path')
-    , nopt  = require('nopt')
-    ;
+import fs from 'fs';
+import path from 'path';
+import nopt from 'nopt';
 
 
 // -- Local Modules
-const themeconfig       = require('../../theme-config')
-    , config            = require('../../../config')
-    // , buildHTML5        = require('./build.skeleton.html5')
-    , buildJS           = require('./build.skeleton.js.js')
-    , buildCSS          = require('./build.skeleton.css')
-    , buildIMG          = require('./build.skeleton.img')
-    , copyFonts         = require('./build.skeleton.fonts')
-    , copyJSLibs        = require('./build.skeleton.js.libs')
-    , copyTrackers      = require('./build.skeleton.trackers')
-    , copyPHP           = require('./build.skeleton.php')
-    , copyConfig        = require('./build.skeleton.config')
-    , buildpostskeleton = require('./build.skeleton.post')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+// import buildHTML5 from './build.skeleton.html5.js';
+import buildJS from './build.skeleton.js.js';
+import buildCSS from './build.skeleton.css.js';
+import buildIMG from './build.skeleton.img.js';
+import copyFonts from './build.skeleton.fonts.js';
+import copyJSLibs from './build.skeleton.js.libs.js';
+import copyTrackers from './build.skeleton.trackers.js';
+import copyPHP from './build.skeleton.php.js';
+import copyConfig from './build.skeleton.config.js';
+import copyTarte from './build.skeleton.tarte.js';
+import buildpostskeleton from './build.skeleton.post.js';
 
 
 // -- Local Constants
@@ -216,7 +213,7 @@ function _importfiles(done) {
  * @since 0.0.0
  */
 function _build(done) {
-  const PENDING = 10;
+  const PENDING = 11;
 
   /**
    * Wait all processes completed;
@@ -240,6 +237,7 @@ function _build(done) {
     copyTrackers(next);
     copyPHP(next);
     copyConfig(next);
+    copyTarte(next);
     buildpostskeleton(next);
   });
 }

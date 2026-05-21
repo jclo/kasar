@@ -33,21 +33,17 @@
  * @since     0.0.0
  * @version   -
  * ************************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle,
-  import/no-extraneous-dependencies */
+/* global DOMParser */
+/* - */
 
-'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview')
-    ;
+import RView from '@mobilabs/rview';
 
 
 // -- Local modules
-const Breadcrumb = require('../menus/menu-breadcrumb/main')
-    , BTDMenu    = require('../menus/menu-doc-pagination/main')
-    ;
+import Breadcrumb from '../menus/menu-breadcrumb/main.js';
+import BTDMenu from '../menus/menu-doc-pagination/main.js';
 
 
 // -- Local constants
@@ -329,7 +325,7 @@ const Content = RView.Component({
 
   // -- Overwritten Methods ----------------------------------------------------
 
-  events() {
+  $postRender() {
     this.breadcrumb = this.$getChild('<Breadcrumb />');
     this.pagenavmenu = this.$getChild('<BTDMenu />');
   },
@@ -344,7 +340,7 @@ const Content = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     this.children = {
       '<Breadcrumb />': Breadcrumb,
       '<BTDMenu />': BTDMenu,
@@ -395,4 +391,4 @@ const Content = RView.Component({
 
 
 // -- Export
-module.exports = Content;
+export default Content;

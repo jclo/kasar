@@ -22,22 +22,18 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint no-unused-vars: 0 */
 
 
 // -- Vendor Modules
-const nopt = require('nopt')
-    ;
+import nopt from 'nopt';
 
 
 // -- Local Modules
-const buildPages   = require('./build.project.pages')
-    , buildSitemap = require('./build.project.sitemap')
-    , collectIMG   = require('./build.project.img')
-    ;
+import buildPages from './build.project.pages.js';
+import buildSitemap from './build.project.sitemap.js';
+import collectIMG from './build.project.img.js';
 
 
 // -- Local Constants

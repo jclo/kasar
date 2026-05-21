@@ -27,13 +27,11 @@
  * @version   -
  * ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle,
-  import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview');
+import RView from '@mobilabs/rview';
 
 
 // -- Local modules
@@ -108,7 +106,7 @@ const Marketing = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     return `<div>${state.mkt || ''}</div><!-- /.marketing -->`;
   },
 
@@ -146,4 +144,4 @@ const Marketing = RView.Component({
 
 
 // -- Export
-module.exports = Marketing;
+export default Marketing;

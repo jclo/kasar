@@ -20,7 +20,7 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-console, no-console, no-restricted-syntax, guard-for-in */
+/* - */
 
 
 // -- Vendor Modules
@@ -30,8 +30,8 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from './config';
-import Router from './router';
+import config from './config.js';
+import Router from './router.js';
 
 
 // -- Local Constants
@@ -76,4 +76,4 @@ function App(whoiam, i18n, conf, sidemenu, lang, page, theme) {
 // -- Export
 export default App;
 
-/* eslint-enable one-var, semi-style, no-console, no-console, no-restricted-syntax, guard-for-in */
+/* - */

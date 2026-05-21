@@ -26,22 +26,18 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint curly: 0 */
 
 
 // -- Vendor Modules
-const fs = require('fs')
-    ;
+import fs from 'fs';
 
 
 // -- Local Modules
-const config  = require('../../../config')
-    , extra   = require('../../../tobuildweb/extraUrls')
-    , expired = require('../../../tobuildweb/expiredUrls')
-    ;
+import config from '../../../config.js';
+import extra from '../../../tobuildweb/extraUrls.js';
+import expired from '../../../tobuildweb/expiredUrls.js';
 
 
 // -- Local Constants
@@ -235,11 +231,9 @@ function _makesiteMap(pages) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _buildsitemap(website, docsite, done) {
   const pages = [];
 
-  /* eslint-disable-next-line */
   for (const lang in website) {
     for (const page in website[lang]) {
       if (page === 'home') {
@@ -275,7 +269,6 @@ function _buildsitemap(website, docsite, done) {
     done();
   });
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 
 // -- Public -------------------------------------------------------------------
@@ -315,4 +308,4 @@ function Build(webpages, docpages, done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

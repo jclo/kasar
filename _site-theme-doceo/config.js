@@ -1,14 +1,14 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0 */
+/* - */
 
-'use strict';
 
 // -- Node modules
 
+
 // -- Local modules
-const themeconfig = require('./.kasar/theme-config')
-    , docu        = require('./docsidemenu')
-    ;
+import themeconfig from './.kasar/theme-config.js';
+import pack from '../package.json' with { type: 'json' };
+import docu from './docsidemenu.js';
 
 
 // -- Local constants
@@ -17,7 +17,7 @@ const EN          = 'en'
     , DE          = 'de'
     , IT          = 'it'
     , { base }    = themeconfig
-    , { version } = require('../package.json')
+    , { version } = pack
     , basepath    = '/'
     ;
 
@@ -27,7 +27,7 @@ const EN          = 'en'
 
 // -- Main
 
-module.exports = {
+export default {
 
   // This is where is stored the static web site:
   basedist: `${base}/site/_dist`,
@@ -94,6 +94,12 @@ module.exports = {
     siteid: null,
   },
 
+  // You must copy the same value to js/extra.js otherwise tarteaucitron
+  // remains inactive.
+  tarteaucitron: {
+    sitega4id: null, // replace null by G4ID. It looks like G-XXXXXXXXX
+  },
+
   // These are the pages to build. Google doesn't like that the title and the
   // description are shared among several pages. Take care to set a title and a
   // description unique for each page (see the yaml header of the file).
@@ -141,7 +147,6 @@ module.exports = {
 
   // These are the top and bottom menus and a special 'mobile' menu that
   // replace the default menus (top and bottom) on devices with a small screen.
-  /* eslint-disable object-curly-newline */
   menu: {
     en: {
       top: {
@@ -388,6 +393,7 @@ module.exports = {
   scripts: [
     // `${basepath}vendor/libs/modernizr-3.11.2.min.js`,
     `${basepath}vendor/libs/highlight.min.js`,
+    // `${basepath}vendor/tarteaucitron/tarteaucitron.min.js`,
     `${basepath}js/main.min.js`,
   ],
 };

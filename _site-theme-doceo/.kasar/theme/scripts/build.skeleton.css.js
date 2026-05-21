@@ -3,6 +3,7 @@
  * Generates the css output file.
  *
  * Private Functions:
+ *  . _cptarteaucitroncss         copies ./styles/tarteaucitron.css to '_dist/css,
  *  . _cphighlightcss             copies css files to '_dist/css,
  *  . _buildcss                   bundles the css project files,
  *
@@ -18,29 +19,28 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint no-unused-vars: 0, curly: 0 */
 
 
 // -- Vendor Modules
-const fs       = require('fs')
-    , path     = require('path')
-    , CleanCSS = require('clean-css')
-    ;
+import fs from 'fs';
+import path from 'path';
+import CleanCSS from 'clean-css';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
 
 
 // -- Local Constants
-const { dist }          = config
+const SRC               = './site/styles'
+    , TARTEAUCITRON     = 'tarteaucitron.css'
+    , { dist }          = config
     , { css }           = themeconfig
     , { csshighlight }  = themeconfig
+    , { tarteaucitron } = config
     , bundle            = 'style'
     ;
 
@@ -49,6 +49,33 @@ const { dist }          = config
 
 
 // -- Private Functions --------------------------------------------------------
+
+/**
+ * Copies ./styles/tarteaucitron.css file to '_dist/css.
+ *
+ * @function (arg1)
+ * @private
+ * @param {Function}        to be call at the completion,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _cptarteaucitroncss(done) {
+  if (!tarteaucitron || !tarteaucitron.sitega4id) {
+    done();
+    return;
+  }
+
+  const d1 = new Date();
+  process.stdout.write('Starting \'\x1b[36mbuild:skeleton:css:copy:tarte:au:citron:css\x1b[89m\x1b[0m\'...\n');
+
+  fs.cp(`${SRC}/${TARTEAUCITRON}`, `${dist}/css/${TARTEAUCITRON}`, (err) => {
+    if (err) throw new Error(err);
+
+    const d2 = new Date() - d1;
+    process.stdout.write(`Finished '\x1b[36mbuild:skeleton:css:copy:tarte:au:citron:css\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    done();
+  });
+}
 
 /**
  * Copies css files to '_dist/css.
@@ -151,7 +178,7 @@ function _buildcss(done) {
  * @since 0.0.0
  */
 function Build(done) {
-  const PENDING = 2;
+  const PENDING = 3;
 
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mbuild:skeleton:css\x1b[89m\x1b[0m\'...\n');
@@ -171,8 +198,9 @@ function Build(done) {
 
   _buildcss(next);
   _cphighlightcss(next);
+  _cptarteaucitroncss(next);
 }
 
 
 // -- Export
-module.exports = Build;
+export default Build;

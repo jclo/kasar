@@ -34,7 +34,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -43,9 +43,9 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../config';
-import L from './generic/listen';
-import R from './generic/render';
+import config from '../../../config.js';
+import L from './generic/listen.js';
+import R from './generic/render.js';
 
 
 // -- Local Constants
@@ -119,7 +119,7 @@ const SMenu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('shared sidemenu component created!');
     this.state.lang = 'en';
     this.state.openmenu = [];
@@ -137,7 +137,7 @@ const SMenu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $listenDOM() {
     this._listenDOMEvents(this);
     this._events();
     return this;
@@ -153,7 +153,7 @@ const SMenu = RView.Component({
    * @returns {XMLString}   returns the rendered component,
    * @since 0.0.0
    */
-  render(state, props) {
+  $render(state, props) {
     const menu = _extractMenu(state, props);
 
     return `
@@ -234,4 +234,4 @@ const SMenu = RView.Component({
 // Exports:
 export default SMenu;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

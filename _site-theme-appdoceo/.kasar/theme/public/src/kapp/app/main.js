@@ -32,7 +32,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -40,8 +40,8 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../config';
-import AppView from './views/main';
+import config from '../config.js';
+import AppView from './views/main.js';
 
 
 // -- Local Constants
@@ -51,7 +51,6 @@ const { level } = config.logger
 
 
 // -- Local Variables
-let methods;
 
 
 // -- Main -----------------------------------------------------------------
@@ -87,7 +86,7 @@ const App = function(whois, i18n, conf, sidemenu, lang, page, theme) {
 
 // -- Public Methods -------------------------------------------------------
 
-methods = {
+const methods = {
 
   /**
    * Initializes Auth.
@@ -112,7 +111,6 @@ methods = {
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  /* eslint-disable max-len */
   create() {
     if (!this._view) {
       log.trace('creating KApp App ...');
@@ -120,7 +118,6 @@ methods = {
     }
     return this;
   },
-  /* eslint-enable max-len */
 
   /**
    * Removes a component from the App and from the DOM.
@@ -145,7 +142,6 @@ methods = {
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  /* eslint-disable no-proto */
   destroy() {
     if (this._view) {
       log.trace('destroying the App (except I/F) ...');
@@ -156,11 +152,10 @@ methods = {
     }
     return this;
   },
-  /* eslint-enable no-proto */
 };
 
 
 // Exports:
 export default App;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

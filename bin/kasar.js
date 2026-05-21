@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
+ * Copyright (c) 2026 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint no-unused-vars: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const fs       = require('fs')
-    , readline = require('readline')
-    , nopt     = require('nopt')
-    , path     = require('path')
-    , shell    = require('shelljs')
-    ;
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import readline from 'node:readline';
+import nopt from 'nopt';
+import path from 'path';
+import shell from 'shelljs';
 
 
 // -- Local Modules
+import pack from '../package.json' with { type: 'json' };
 
 
 // -- Local Constants
@@ -45,8 +46,10 @@ const thisscript  = 'kasar'
     , site        = 'site'
     , repo        = '.kasar'
     , baseapp     = process.cwd()
+    , __filename  = fileURLToPath(import.meta.url)
+    , __dirname   = dirname(__filename)
     , basescript  = __dirname.replace('/bin', '')
-    , { version } = require('../package.json')
+    , { version } = pack
     // Command line Options
     , opts = {
       help: [Boolean, false],

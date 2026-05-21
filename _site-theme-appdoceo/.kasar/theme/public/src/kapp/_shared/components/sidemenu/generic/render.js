@@ -27,7 +27,7 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -103,16 +103,18 @@ function _renderMenuWithChildren(state, props, menu) {
     , child
     , cactive
     , icon
+    , target
     ;
 
   for (let i = 0; i < menu.children.length; i++) {
     child = menu.children[i];
     cactive = state.activemenu === `${child.lang}:${child.name}` ? ' pure-menu-active' : '';
     icon = child.icon || '';
+    target = child.target || '_self';
 
     li += `
       <li data-menu="${child.lang}:${child.name}" class="pure-menu-item${cactive}">
-        <a class="pure-menu-link" href="${child.link}">${icon}${child.text}</a>
+        <a class="pure-menu-link" href="${child.link}" target="${target}">${icon}${child.text}</a>
         <div class="bar"></div>
       </li>
     `;
@@ -242,4 +244,4 @@ const Render = {
 // -- Export
 export default Render;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

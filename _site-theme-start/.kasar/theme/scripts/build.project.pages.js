@@ -25,32 +25,29 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint no-unused-vars: 0, curly: 0 */
 
 
 // -- Vendor Modules
-const fs        = require('fs')
-    , fse       = require('fs-extra')
-    , Markdown  = require('markdown-it')
-    , mdAttrs   = require('markdown-it-attrs')
-    , MDCont    = require('markdown-it-container')
-    , MDAnchors = require('markdown-it-anchor')
-    , yaml      = require('js-yaml')
-    ;
+import fs from 'fs';
+import fse from 'fs-extra';
+import Markdown from 'markdown-it';
+import mdAttrs from 'markdown-it-attrs';
+import MDCont from 'markdown-it-container';
+import MDAnchors from 'markdown-it-anchor';
+import yaml from 'js-yaml';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    , createPage  = require('../pages/main')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+import createPage from '../pages/main.js';
 
 
 // -- Local Constants
-const { base }     = themeconfig
+const MULTI_LANG   = config.multilingual
+    , { base }     = themeconfig
     , { basepath } = config
     , { dist }     = config
     , { url }      = config.company
@@ -239,7 +236,6 @@ function _getContent(file) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 function _convertWeb2HTML(webpages, menu) {
   let content
     , output
@@ -269,7 +265,6 @@ function _convertWeb2HTML(webpages, menu) {
     }
   }
 }
-/* eslint-enable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 
 /**
  * Extracts data from the selected source file.
@@ -285,10 +280,13 @@ function _generateWebPage(page, lang) {
       , PATH_OUT = ''
       ;
 
-  const output = typeof page === 'object'
+  let output = typeof page === 'object'
     ? page.sections[0].replace(PATH_IN, PATH_OUT).replace(/.md/, '.html')
     : page.replace(PATH_IN, PATH_OUT).replace(/.md/, '.html')
   ;
+
+  const re = new RegExp(`^${lang}/`, 'g'); // ex: .replace(/^fr\//, '');
+  output = MULTI_LANG ? output : output.replace(re, '');
 
   const [header, content] = _getContent(page);
 
@@ -325,7 +323,6 @@ function _generateWebPage(page, lang) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _createWebPages(webpages, menu, done) {
   const web = [];
 
@@ -342,7 +339,6 @@ function _createWebPages(webpages, menu, done) {
   _convertWeb2HTML(web, menu);
   done(web);
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 
 // -- Public -------------------------------------------------------------------
@@ -388,4 +384,4 @@ function Build(done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

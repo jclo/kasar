@@ -27,9 +27,9 @@
 
 
 // -- Node modules
-const fs   = require('fs')
-    , path = require('path')
-    ;
+import fs from 'fs';
+import path from 'path';
+
 
 
 // -- Local modules
@@ -194,4 +194,4 @@ const Parse = {
 
 
 // -- Export
-module.exports = Parse;
+export default Parse;

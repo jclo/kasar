@@ -20,24 +20,20 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint curly: 0 */
 
 
 // -- Vendor Modules
-const fs         = require('fs')
-    , Pakket     = require('pakket')
-    , { minify } = require('terser')
-    ;
+import fs from 'fs';
+import Pakket from 'pakket';
+import { minify } from 'terser';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    , pack        = require('../../../../package.json')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+import pack from '../../../../package.json' with { type: 'json' };
 
 
 // -- Local Constants
@@ -235,4 +231,4 @@ function Build(done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

@@ -3,8 +3,8 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global PicoQ, _moveTo, GLOBAL_OFFSET */
-/* eslint-disable strict, no-underscore-dangle */
+/* global PicoQ, _moveTo, GLOBAL_OFFSET, window */
+/* - */
 (function($) {
   //
 
@@ -100,4 +100,4 @@
   });
 }(PicoQ));
 
-/* eslint-enable strict, no-underscore-dangle */
+/* - */

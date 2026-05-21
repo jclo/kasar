@@ -29,28 +29,24 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint curly: 0 */
 
 
 // -- Vendor Modules
-const fs        = require('fs')
-    , fse       = require('fs-extra')
-    , Markdown  = require('markdown-it')
-    , mdAttrs   = require('markdown-it-attrs')
-    , MDCont    = require('markdown-it-container')
-    , MDAnchors = require('markdown-it-anchor')
-    , yaml      = require('js-yaml')
-    ;
+import fs from 'fs';
+import fse from 'fs-extra';
+import Markdown from 'markdown-it';
+import mdAttrs from 'markdown-it-attrs';
+import MDCont from 'markdown-it-container';
+import MDAnchors from 'markdown-it-anchor';
+import yaml from 'js-yaml';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    , createPage  = require('../pages/main')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+import createPage from '../pages/main.js';
 
 
 // -- Local Constants
@@ -243,7 +239,6 @@ function _getContent(file) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 function _convertWeb2HTML(webpages, menu) {
   let content
     , output
@@ -273,7 +268,6 @@ function _convertWeb2HTML(webpages, menu) {
     }
   }
 }
-/* eslint-enable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 
 /**
  * Extracts data from the selected source file.
@@ -329,7 +323,6 @@ function _generateWebPage(page, lang) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _createWebPages(webpages, menu, done) {
   const web = [];
 
@@ -346,7 +339,6 @@ function _createWebPages(webpages, menu, done) {
   _convertWeb2HTML(web, menu);
   done(web);
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 /**
  * Clones docmenu.
@@ -402,7 +394,6 @@ function _cloneAndTag(obj, name, lang) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 function _convertDoc2HTML(website, menu, docpages, docmenu) {
   let content
     , output
@@ -434,7 +425,6 @@ function _convertDoc2HTML(website, menu, docpages, docmenu) {
     }
   }
 }
-/* eslint-enable no-restricted-syntax, guard-for-in, no-param-reassign, max-len */
 
 /**
  * Extracts doc page info.
@@ -498,7 +488,6 @@ function _generateDocPage(lang, page) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _createDocPages(website, docpages, menu, done) {
   const doc = []
       ;
@@ -573,7 +562,6 @@ function _createDocPages(website, docpages, menu, done) {
   }
   done(doc);
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 
 // -- Public -------------------------------------------------------------------
@@ -623,4 +611,4 @@ function Build(done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

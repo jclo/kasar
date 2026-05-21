@@ -25,7 +25,7 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -164,4 +164,4 @@ const U = {
 // -- Export
 export default U;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

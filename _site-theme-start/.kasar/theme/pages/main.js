@@ -1,20 +1,18 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0 */
+/* global */
+/* eslint curly: 0 */
 
-'use strict';
 
 // -- Node modules
-const kasar = require('../scripts/libs/kasar')
-    ;
 
 
 // -- Local modules
-const VDOM        = require('./lib/vdom')
-    , App         = require('./components/app/app')
-    , themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    , U           = require('./lib/util')
-    ;
+import kasar from '../scripts/libs/kasar.js';
+import VDOM from './lib/vdom.js';
+import App from './components/app/app.js';
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+import U from './lib/util.js';
 
 
 // -- Local constants
@@ -82,4 +80,4 @@ function createPage(website, lang, page, content, norm, params, menu, docsite, d
 
 
 // -- Export
-module.exports = createPage;
+export default createPage;

@@ -26,8 +26,8 @@
  * @since     0.0.0
  * @version   -
  * ********************************************************************** */
-/* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* global window */
+/* - */
 
 
 // -- Vendor Modules
@@ -36,11 +36,11 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../config';
-import VLMenu from '../../../_shared/components/sidemenu/main';
-import Breadcrumb from '../menus/menu-breadcrumb/main';
-import NavMenu from '../menus/menu-nav-page/main';
-import VRMenu from '../menus/menu-vertical-right/main';
+import config from '../../../config.js';
+import VLMenu from '../../../_shared/components/sidemenu/main.js';
+import Breadcrumb from '../menus/menu-breadcrumb/main.js';
+import NavMenu from '../menus/menu-nav-page/main.js';
+import VRMenu from '../menus/menu-vertical-right/main.js';
 
 
 // -- Local Constants
@@ -72,7 +72,7 @@ const Contents = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('contents component created!');
     this.state.page = 'empty!!!';
     return this;
@@ -88,7 +88,7 @@ const Contents = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     this._covlmenu = this.$getChild('<VLMenu />');
     this._cobreadcrumb = this.$getChild('<Breadcrumb />');
     this._conavmenu = this.$getChild('<NavMenu />');
@@ -106,7 +106,7 @@ const Contents = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state, props) {
+  $render(state, props) {
     this.children = {
       '<VLMenu />': { fn: VLMenu, props: { menu: props.menu } },
       '<Breadcrumb />': { fn: Breadcrumb, props: { menu: props.menu } },
@@ -171,4 +171,4 @@ const Contents = RView.Component({
 // Exports:
 export default Contents;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

@@ -25,18 +25,15 @@
  * @version   -
  * ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
 // -- Node modules
-const RView = require('@mobilabs/rview')
-    ;
+import RView from '@mobilabs/rview';
 
 
 // -- Local modules
-const BOTMenu = require('../menus/menu-bottom-right/main')
-    ;
+import BOTMenu from '../menus/menu-bottom-right/main.js';
 
 
 // -- Local constants
@@ -65,7 +62,7 @@ const Footer = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     this.children = { '<BOTMenu />': BOTMenu };
 
     return `
@@ -103,4 +100,4 @@ const Footer = RView.Component({
 
 
 // -- Export
-module.exports = Footer;
+export default Footer;

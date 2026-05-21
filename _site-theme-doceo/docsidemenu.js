@@ -1,13 +1,11 @@
 // ESLint declarations
 /* eslint one-var: 0, semi-style: 0 */
 
-'use strict';
 
 // -- Node modules
 
 // -- Local modules
-const themeconfig = require('./.kasar/theme-config')
-    ;
+import themeconfig from './.kasar/theme-config.js';
 
 
 // -- Local constants
@@ -25,7 +23,7 @@ const EN          = 'en'
 
 // -- Main
 
-module.exports = {
+export default {
   docs: {
     en: [
       `${base}/site/webdocpages/${EN}/introduction.md`,

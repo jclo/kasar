@@ -19,27 +19,27 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
+/* global */
+/* eslint curly: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const fs = require('fs')
-    ;
+import fs from 'fs';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
+import pack from '../../../../package.json' with { type: 'json' };
 
 
 // -- Local Constants
-const { dist }      = config
-    , { scripts }   = config
-    , { index2inc } = themeconfig
-    , { off2inc }   = themeconfig
+const TARTECSS          = 'tarteaucitron.css'
+    , { dist }          = config
+    , { scripts }       = config
+    , { tarteaucitron } = config
+    , { index2inc }     = themeconfig
+    , { off2inc }       = themeconfig
     ;
 
 
@@ -110,6 +110,11 @@ function _buildI(done) {
     if (err) throw new Error(err);
 
     const index = data
+      .replace(/{{product:name}}/, config.product.name)
+      .replace(/{{product:version}}/, config.product.version)
+      .replace(/{{kasar:version}}/, pack.dependencies['@mobilabs/kasar'])
+      .replace(/{{theme:name}}/, themeconfig.theme.name)
+      .replace(/{{theme:version}}/, themeconfig.theme.version)
       .replace(/{{app:title}}/, config.title)
       .replace(/{{app:description}}/, config.description)
       .replace(/{{company:name}}/, config.company.name)
@@ -118,6 +123,7 @@ function _buildI(done) {
       .replace(/{{app:canonical-link}}/, config.company.credits.link)
       .replace(/{{base:path}}/g, config.basepath)
       .replace(/<!-- {{extra:scripts}} -->/, _addScripts())
+      .replace(/<!-- {{tarteaucitron:css}} -->/, tarteaucitron && tarteaucitron.sitega4id ? `<link rel="stylesheet" href="./css/${TARTECSS}">` : '')
     ;
 
     done(index);
@@ -165,4 +171,4 @@ function Build(done) {
 
 
 // -- Export
-module.exports = Build;
+export default Build;

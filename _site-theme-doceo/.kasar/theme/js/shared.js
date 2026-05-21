@@ -3,8 +3,8 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global */
-/* eslint-disable strict, one-var, semi-style, no-underscore-dangle */
+/* global window */
+/* eslint-disable no-unused-vars, curly */
 
 
 // -- Global Constants
@@ -19,7 +19,6 @@ const GLOBAL_OFFSET   = 80
 function _easeInOutExpo(t, b, c, d) {
   if (t === 0) return b;
   if (t === d) return b + c;
-  /* eslint-disable-next-line */
   if ((t /= (d / 2)) < 1) return (c / 2) * Math.pow(2, 10 * (t - 1)) + b;
   /* eslint-disable-next-line */
   return (c / 2) * (-Math.pow(2, -10 * --t) + 2) + b;
@@ -56,4 +55,4 @@ function _moveTo(initial, final) {
   }, delay);
 }
 
-/* eslint-enable strict, one-var, semi-style, no-underscore-dangle */
+/* eslint-enable no-unused-vars, curly */

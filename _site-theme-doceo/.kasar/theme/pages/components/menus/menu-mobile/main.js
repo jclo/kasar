@@ -29,13 +29,11 @@
  * @version   -
  * ************************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle,
-  import/no-extraneous-dependencies */
+/* - */
 
-'use strict';
 
-// -- Vendor Modules
-const RView = require('@mobilabs/rview');
+// -- Node modules
+import RView from '@mobilabs/rview';
 
 
 // -- Local Modules
@@ -190,7 +188,7 @@ const MobileMenu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state/* , props */) {
+  $render(state/* , props */) {
     return `
       <div class="mobilemenu">
         <div class="inner">
@@ -236,4 +234,4 @@ const MobileMenu = RView.Component({
 
 
 // Exports:
-module.exports = MobileMenu;
+export default MobileMenu;

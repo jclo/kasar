@@ -27,7 +27,7 @@
  * @version   -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -36,8 +36,8 @@ import KZlog from '@mobilabs/kzlog';
 
 
 // -- Local Modules
-import config from '../../../../config';
-import U from '../menu-utils/util1';
+import config from '../../../../config.js';
+import U from '../menu-utils/util1.js';
 
 
 // -- Local Constants
@@ -61,7 +61,6 @@ const { level } = config.logger
  * @returns {Array}         returns the bottom right menu,
  * @since 0.0.0
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _extractMenu(state, props) {
   let menu = {};
 
@@ -75,7 +74,6 @@ function _extractMenu(state, props) {
 
   return menu;
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 
 // -- Public ---------------------------------------------------------------
@@ -94,7 +92,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  init() {
+  $init() {
     log.trace('menu component created!');
     this.state.lang = 'en';
     this.state.menu = null;
@@ -111,7 +109,7 @@ const Menu = RView.Component({
    * @returns {Object}      returns this,
    * @since 0.0.0
    */
-  events() {
+  $postRender() {
     return this;
   },
 
@@ -125,7 +123,7 @@ const Menu = RView.Component({
    * @returns {XMLString}   returns the XMLString of the component,
    * @since 0.0.0
    */
-  render(state, props) {
+  $render(state, props) {
     const menu = _extractMenu(state, props);
 
     return `
@@ -160,4 +158,4 @@ const Menu = RView.Component({
 // Exports:
 export default Menu;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

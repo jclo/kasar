@@ -1,17 +1,15 @@
 // ESLint declarations:
 /* global describe */
-/* eslint one-var: 0, semi-style: 0 */
+/* - */
 
-'use strict';
 
 // -- Vendor Modules
 
 
 // -- Local Modules
-const Kasar  = require('../index')
-    , pack    = require('../package.json')
-    , testlib = require('./int/lib')
-    ;
+import Kasar from '../index.js';
+import pack from '../package.json' with { type: 'json' };
+import testlib from './int/lib.js';
 
 
 // -- Local Constants

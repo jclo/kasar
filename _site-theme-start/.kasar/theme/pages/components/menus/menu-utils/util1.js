@@ -26,9 +26,8 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
-'use strict';
 
 // -- Vendor Modules
 
@@ -55,7 +54,6 @@
  * @param {Object}          the docsite,
  * @returns {string}        the matching page link,
  */
-/* eslint-disable no-restricted-syntax, guard-for-in */
 function _findLink(website, page, submenu, docsite) {
   // Return if the link exist.
   if (website[submenu.lang][page]) {
@@ -85,7 +83,6 @@ function _findLink(website, page, submenu, docsite) {
   // Must never occur!
   return '#';
 }
-/* eslint-enable no-restricted-syntax, guard-for-in */
 
 /**
  * Adds a children to the menu.
@@ -99,7 +96,6 @@ function _findLink(website, page, submenu, docsite) {
  * @returns {XMLString}   returns the generated menu,
  * @since 0.0.0
  */
-/* eslint-disable no-continue */
 function _addChildren(website, menu, page, target, docsite) {
   let child = ''
     , icon
@@ -137,7 +133,6 @@ function _addChildren(website, menu, page, target, docsite) {
 
   return child;
 }
-/* eslint-enable no-continue */
 
 /**
  * Creates a menu with children.
@@ -291,6 +286,4 @@ const Util = {
 
 
 // -- Export
-module.exports = Util;
-
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+export default Util;

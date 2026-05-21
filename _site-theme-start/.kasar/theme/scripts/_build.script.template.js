@@ -20,23 +20,19 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint no-unused-vars: 0 */
 
 
 // -- Vendor Modules
-const fs    = require('fs')
-    , path  = require('path')
-    , nopt  = require('nopt')
-    ;
+import fs from 'fs';
+import path from 'path';
+import nopt from 'nopt';
 
 
 // -- Local Modules
-const themeconfig = require('../../theme-config')
-    , config      = require('../../../config')
-    ;
+import themeconfig from '../../theme-config.js';
+import config from '../../../config.js';
 
 
 // -- Local Constants

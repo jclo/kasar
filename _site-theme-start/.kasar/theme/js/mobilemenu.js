@@ -3,8 +3,8 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global PicoQ */
-/* eslint-disable strict, one-var, semi-style, no-underscore-dangle */
+/* global PicoQ, window, document */
+/* - */
 (function($) {
   //
 
@@ -163,4 +163,4 @@
   });
 }(PicoQ));
 
-/* eslint-enable strict, one-var, semi-style, no-underscore-dangle */
+/* - */

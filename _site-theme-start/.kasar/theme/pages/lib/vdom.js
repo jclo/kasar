@@ -1,18 +1,15 @@
 // ESLint declarations
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
+/* global document */
+/* - */
 
-'use strict';
 
 // -- Node modules
-const { JSDOM } = require('jsdom')
-    ;
+import { JSDOM } from 'jsdom';
 
 
 // -- Local modules
-const themeconfig = require('../../../theme-config')
-    , config      = require('../../../../config')
-    ;
+import themeconfig from '../../../theme-config.js';
+import config from '../../../../config.js';
 
 
 // -- Local constants
@@ -20,6 +17,7 @@ const { fonts }    = themeconfig
     , { google }   = config
     , { company }  = config
     , { basepath } = config
+    , tcitron      = config.tarteaucitron
     ;
 
 
@@ -180,6 +178,28 @@ function _appendTopScripts(vdom, scripts) {
 // }
 
 /**
+ * Inserts tarte au citron css file for customization.
+ *
+ * @function (arg1)
+ * @private
+ * @param {Object}          the VDOM object,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _addTarteaucitron(vdom) {
+  if (tcitron && tcitron.sitega4id) {
+    const body = vdom.window.document.getElementsByTagName('BODY')[0]
+        , el   = body.children[1]
+        , link = document.createElement('link')
+        ;
+
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', `${basepath}css/tarteaucitron.css`);
+    el.parentNode.insertBefore(link, el);
+  }
+}
+
+/**
  * Sets the url of the server supplying the fonts.
  *
  * @function (arg1, arg2)
@@ -259,11 +279,9 @@ function _setCanonical(vdom, canonical) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-param-reassign */
 function _setTitle(vdom, title) {
   vdom.window.document.title = title;
 }
-/* eslint-enable no-param-reassign */
 
 /**
  * Returns the created DOM.
@@ -285,7 +303,7 @@ function _createVDOM(product, kversion, theme, lang) {
   // Attaches this vdom to a global Node.js window.
   global.window = vdom.window;
   global.document = vdom.window.document;
-  global.navigator = { userAgent: 'node.js' };
+  // global.navigator = { userAgent: 'node.js' };
   global.DOMParser = vdom.window.DOMParser;
   return vdom;
 }
@@ -306,7 +324,6 @@ function _createVDOM(product, kversion, theme, lang) {
  * @since 0.0.0
  */
 function VDOM(product, kversion, theme, lang) {
-  /* eslint-disable-next-line no-use-before-define */
   const obj = Object.create(methods);
   obj.vdom = _createVDOM(product, kversion, theme, lang);
   return obj;
@@ -333,6 +350,7 @@ const methods = {
     _setGoogleVerify(this.vdom, google);
     _setDescription(this.vdom, description);
     _setFontUrl(this.vdom, fonts.remote);
+    _addTarteaucitron(this.vdom);
     // _insertNormalize(this.vdom, norm);
     return this;
   },
@@ -397,4 +415,4 @@ const methods = {
 
 
 // -- Export the constructor
-module.exports = VDOM;
+export default VDOM;

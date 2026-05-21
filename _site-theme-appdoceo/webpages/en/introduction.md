@@ -2,6 +2,7 @@
 name: 'introduction'
 title: 'Intro'
 description: 'this is a description of the introduction page ...'
+canonical: 'introduction.html'
 ---
 
 # Introduction

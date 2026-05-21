@@ -22,16 +22,13 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0,
-  import/no-extraneous-dependencies: 0 */
-
-'use strict';
+/* global */
+/* eslint curly: 0 */
 
 
 // -- Node modules
-const fs   = require('fs')
-    , path = require('path')
-    ;
+import fs from 'fs';
+import path from 'path';
 
 
 // -- Local modules
@@ -196,4 +193,4 @@ const Parse = {
 
 
 // -- Export
-module.exports = Parse;
+export default Parse;

@@ -3,11 +3,9 @@
  *
  * ************************************************************************** */
 // ESLint declarations
-/* global */
-/* eslint one-var: 0, strict: ["error", "function"], semi-style: 0
-  no-console: 0 */
+/* global window, document, localStorage */
+/* - */
 (function() {
-  'use strict';
 
   const ICON_TOP_ID  = 'switchthemetopmenu'
       , ICON_SIDE_ID = 'switchthemesidemenu'

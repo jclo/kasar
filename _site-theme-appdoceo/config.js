@@ -5,9 +5,9 @@
 // -- Node modules
 
 // -- Local modules
-const themeconfig = require('./.kasar/theme-config')
-    // , docu        = require('./docsidemenu')
-    ;
+import themeconfig from './.kasar/theme-config.js';
+import pack from '../package.json' with { type: 'json' };
+// import docu from './docsidemenu.js';
 
 
 // -- Local constants
@@ -16,7 +16,7 @@ const FR          = 'fr'
     , DE          = 'de'
     , IT          = 'it'
     , { base }    = themeconfig
-    , { version } = require('../package.json')
+    , { version } = pack
     , basepath    = '/'
     ;
 
@@ -26,7 +26,7 @@ const FR          = 'fr'
 
 // -- Main
 
-module.exports = {
+export default {
 
   // This is where is stored the static web site:
   basedist: `${base}/site/_dist`,
@@ -69,6 +69,7 @@ module.exports = {
       name: 'mycompany',
       link: 'https://www.mycompany.com',
     },
+    coordinates: [0, 0],
   },
 
   // These are the tags to include on your pages to help google to identify
@@ -92,6 +93,12 @@ module.exports = {
 
   axeptio: {
     siteid: null,
+  },
+
+  // You must copy the same value to js/extra.js otherwise tarteaucitron
+  // remains inactive.
+  tarteaucitron: {
+    sitega4id: null, // replace null by G4ID. It looks like G-XXXXXXXXX
   },
 
   // These are the pages to build. Google doesn't like that the title and the
@@ -142,6 +149,26 @@ module.exports = {
           },
         ],
       },
+      {
+        title: 'Links',
+        links: [
+          {
+            text: 'Google',
+            link: 'https://google.com',
+            target: '_blank',
+          },
+          {
+            text: 'Yahoo',
+            link: 'https://yahoo.com',
+            target: '_blank',
+          },
+          {
+            text: 'Bing',
+            link: 'https://bing.com',
+            target: '_blank',
+          },
+        ],
+      },
     ],
     fr: [
       `${base}/site/webpages/${FR}/introduction.md`,
@@ -164,7 +191,6 @@ module.exports = {
 
   // These are the top and bottom menus and a special 'mobile' menu that
   // replace the default menus (top and bottom) on devices with a small screen.
-  /* eslint-disable object-curly-newline */
   menu: {
     en: {
       top: {
@@ -397,5 +423,7 @@ module.exports = {
   // output.
   scripts: [
     `${basepath}vendor/libs/highlight.min.js`,
+    // `${basepath}vendor/tarteaucitron/tarteaucitron.min.js`,
+    `${basepath}vendor/libs/tarteaucitron.init.min.js`,
   ],
 };

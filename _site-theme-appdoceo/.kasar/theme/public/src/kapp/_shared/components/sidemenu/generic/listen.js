@@ -26,7 +26,7 @@
  * @version      -
  * ********************************************************************** */
 /* global */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
+/* - */
 
 
 // -- Vendor Modules
@@ -112,7 +112,6 @@ function _listenMenuWithChildren(that) {
  * @returns {}              -,
  * @since 0.0.0
  */
-/* eslint-disable no-param-reassign */
 function _listenSimpleMenu(that) {
   that.$().on('click', (e) => {
     if (e.target.classList.contains('pure-menu-link')
@@ -120,8 +119,12 @@ function _listenSimpleMenu(that) {
       && e.target.parentNode.classList.contains('pure-menu-item')
       && !e.target.parentNode.classList.contains('pure-menu-has-children')
     ) {
-      e.preventDefault();
       const data = e.target.parentNode.getAttribute('data-menu');
+      if (data && data.endsWith('externallink')) {
+        return;
+      }
+
+      e.preventDefault();
       if (data) {
         that.$emit('kapp:from:_shared:components:sidemenu:to:app:contents:views:load:page', {
           menu: data,
@@ -133,7 +136,6 @@ function _listenSimpleMenu(that) {
     }
   });
 }
-/* eslint-enable no-param-reassign */
 
 /**
  * Listen the DOM events.
@@ -193,4 +195,4 @@ const Listen = {
 // -- Export
 export default Listen;
 
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */
