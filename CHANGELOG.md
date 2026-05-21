@@ -3,6 +3,7 @@
 ### 3.0.0 (May 20, 2026)
 
   * Updated the project with @mobilabs/es6lib ESM v3,
+  * Removed build for CI Actions,
   * ...,
 
 
